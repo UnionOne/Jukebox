@@ -1,6 +1,5 @@
 package com.itibo.grob.dataaccess.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Persistable;
 
@@ -17,13 +16,36 @@ import java.util.Set;
         }
 )
 public class Account implements Persistable<Integer> {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_gen")
+    @SequenceGenerator(name = "account_gen", sequenceName = "account_id_seq", allocationSize = 1)
+    @Column(name = "id", unique = true, nullable = false)
     private Integer id;
+
+    @Column(name = "login", nullable = false, length = 20)
     private String login;
+
+    @Column(name = "email", nullable = false)
     private String email;
+
+    @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "account_role", schema = "public", joinColumns = {
+            @JoinColumn(name = "account_id", nullable = false, updatable = false)}, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", nullable = false, updatable = false)})
     private Set<Role> roles = new HashSet<>(0);
+
+    @Column(name = "jukebox")
     private String jukebox;
 
     public Account() {
@@ -53,10 +75,13 @@ public class Account implements Persistable<Integer> {
         this.lastName = lastName;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_gen")
-    @SequenceGenerator(name = "account_gen", sequenceName = "account_id_seq", allocationSize = 1)
-    @Column(name = "id", unique = true, nullable = false)
+    @Override
+    @Transient
+    public boolean isNew() {
+        return id == null;
+    }
+
+    @Override
     public Integer getId() {
         return id;
     }
@@ -65,7 +90,6 @@ public class Account implements Persistable<Integer> {
         this.id = id;
     }
 
-    @Column(name = "login", nullable = false, length = 20)
     public String getLogin() {
         return login;
     }
@@ -74,7 +98,6 @@ public class Account implements Persistable<Integer> {
         this.login = login;
     }
 
-    @Column(name = "email", nullable = false)
     public String getEmail() {
         return email;
     }
@@ -83,7 +106,6 @@ public class Account implements Persistable<Integer> {
         this.email = email;
     }
 
-    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }
@@ -92,7 +114,6 @@ public class Account implements Persistable<Integer> {
         this.password = password;
     }
 
-    @Column(name = "first_name")
     public String getFirstName() {
         return firstName;
     }
@@ -101,7 +122,6 @@ public class Account implements Persistable<Integer> {
         this.firstName = firstName;
     }
 
-    @Column(name = "last_name")
     public String getLastName() {
         return lastName;
     }
@@ -110,10 +130,6 @@ public class Account implements Persistable<Integer> {
         this.lastName = lastName;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "account_role", schema = "public", joinColumns = {
-            @JoinColumn(name = "account_id", nullable = false, updatable = false)}, inverseJoinColumns = {
-            @JoinColumn(name = "role_id", nullable = false, updatable = false)})
     public Set<Role> getRoles() {
         return roles;
     }
@@ -122,7 +138,6 @@ public class Account implements Persistable<Integer> {
         this.roles = roles;
     }
 
-    @Column(name = "jukebox")
     public String getJukebox() {
         return jukebox;
     }
@@ -143,11 +158,5 @@ public class Account implements Persistable<Integer> {
                 ", roles=" + roles +
                 ", jukebox=" + jukebox +
                 '}';
-    }
-
-    @Override
-    @Transient
-    public boolean isNew() {
-        return id == null;
     }
 }
