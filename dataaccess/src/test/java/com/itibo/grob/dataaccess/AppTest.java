@@ -3,6 +3,7 @@ package com.itibo.grob.dataaccess;
 import com.itibo.grob.dataaccess.model.Account;
 import com.itibo.grob.dataaccess.model.Role;
 import com.itibo.grob.dataaccess.repository.AccountRepository;
+import com.itibo.grob.dataaccess.repository.RoleRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +22,9 @@ import java.util.Arrays;
 public class AppTest {
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Before
     @Rollback(false)
@@ -62,6 +66,13 @@ public class AppTest {
         accountRepository.save(newAccount);
         System.out.println("New Account by login: " + accountRepository.findByLogin("vladik"));
         System.out.println("********** ADD ACCOUNT **********");
+    }
+
+    @Test
+    public void testRoleCount() {
+        System.out.println("********** ROLES COUNT **********");
+        System.out.println("Account count: " + roleRepository.count());
+        System.out.println("********** ROLES COUNT **********");
     }
 
     @After
