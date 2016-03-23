@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "role", uniqueConstraints = @UniqueConstraint(columnNames = "name"))
+@Table(name = "role")
 public class Role implements Persistable<Integer> {
     private static final long serialVersionUID = 1L;
 
@@ -18,13 +18,13 @@ public class Role implements Persistable<Integer> {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name")
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "account_role", schema = "public", joinColumns = {
-            @JoinColumn(name = "role_id", nullable = false, updatable = false)}, inverseJoinColumns = {
-            @JoinColumn(name = "account_id", nullable = false, updatable = false)})
+            @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false, updatable = false)}, inverseJoinColumns = {
+            @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false, updatable = false)})
     private Set<Account> accounts = new HashSet<>(0);
 
     public Role() {
@@ -83,7 +83,6 @@ public class Role implements Persistable<Integer> {
         return "Role{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", accounts=" + accounts +
                 '}';
     }
 }

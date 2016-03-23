@@ -39,11 +39,11 @@ public class Account implements Persistable<Integer> {
     @Column(name = "last_name")
     private String lastName;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "account_role", schema = "public", joinColumns = {
-            @JoinColumn(name = "account_id", nullable = false, updatable = false)}, inverseJoinColumns = {
-            @JoinColumn(name = "role_id", nullable = false, updatable = false)})
-    private Set<Role> roles = new HashSet<>(0);
+            @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false, updatable = false)}, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false, updatable = false)})
+    private Role role;
 
     @Column(name = "jukebox")
     private String jukebox;
@@ -52,27 +52,14 @@ public class Account implements Persistable<Integer> {
         super();
     }
 
-    public Account(Integer id) {
-        super();
-        this.id = id;
-    }
-
-    public Account(String login, String email, String password, String firstName, String lastName) {
+    public Account(String login, String email, String password, String firstName, String lastName, String jukebox) {
         super();
         this.login = login;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public Account(Integer id, String login, String email, String password, String firstName, String lastName) {
-        this.id = id;
-        this.login = login;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.jukebox = jukebox;
     }
 
     @Override
@@ -130,12 +117,12 @@ public class Account implements Persistable<Integer> {
         this.lastName = lastName;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getJukebox() {
@@ -155,8 +142,8 @@ public class Account implements Persistable<Integer> {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", roles=" + roles +
-                ", jukebox=" + jukebox +
+                ", role=" + role +
+                ", jukebox='" + jukebox + '\'' +
                 '}';
     }
 }

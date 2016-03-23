@@ -4,7 +4,6 @@ import com.itibo.grob.dataaccess.model.Account;
 import com.itibo.grob.dataaccess.model.Role;
 import com.itibo.grob.dataaccess.repository.AccountRepository;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,8 +14,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath*:spring-db-context.xml")
@@ -28,18 +25,11 @@ public class AppTest {
     @Before
     @Rollback(false)
     public void setUp() {
-        Account ivan = new Account("Govnov", "email@mail.com", "pass", "Ivan", "Govnov");
-        ivan.setJukebox("jukebox ivana");
-//        Set<Role> ivanRoles = new HashSet<>(0);
-//        ivanRoles.add(new Role("ROLE_USER"));
-//        ivan.setRoles(ivanRoles);
+        Account ivan = new Account("Govnov", "email@mail.com", "pass", "Ivan", "Govnov", "jukebox ivana");
+        ivan.setRole(new Role("ROLE_USER"));
 
-        Account lenin = new Account("Ilich", "lenin@mail.com", "pass", "Volodia", "Lenin");
-        lenin.setJukebox("jukebox lenina");
-//        Set<Role> leninRoles = new HashSet<>(0);
-//        leninRoles.add(new Role("ROLE_USER"));
-//        leninRoles.add(new Role("ROLE_ADMIN"));
-//        lenin.setRoles(leninRoles);
+        Account lenin = new Account("Ilich", "lenin@mail.com", "pass", "Volodia", "Lenin", "jukebox lenina");
+        lenin.setRole(new Role("ROLE_ADMIN"));
 
         accountRepository.save(Arrays.asList(ivan, lenin));
     }
@@ -67,8 +57,8 @@ public class AppTest {
     @Test
     public void testAddAccount() {
         System.out.println("********** ADD ACCOUNT **********");
-        Account newAccount = new Account("vladik", "daski@ugodnil.com", "esculentum512", "Vlad", "Sidliarevich");
-        newAccount.setJukebox("vladika jukebox");
+        Account newAccount = new Account("vladik", "damski@ugodnil.com", "esculentum512", "Vlad", "Sidliarevich", "vladika jukebox");
+        newAccount.setRole(new Role("ROLE_USER"));
         accountRepository.save(newAccount);
         System.out.println("New Account by login: " + accountRepository.findByLogin("vladik"));
         System.out.println("********** ADD ACCOUNT **********");
