@@ -14,6 +14,7 @@ CREATE TABLE role(
 );
 
 CREATE TABLE account_role(
+  id SERIAL PRIMARY KEY NOT NULL,
   account_id INTEGER NOT NULL,
   role_id INTEGER NOT NULL
 );
