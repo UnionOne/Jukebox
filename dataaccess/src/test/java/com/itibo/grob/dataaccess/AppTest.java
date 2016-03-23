@@ -14,7 +14,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "classpath*:spring-db-context.xml")
@@ -30,48 +32,63 @@ public class AppTest {
     @Rollback(false)
     public void setUp() {
         Account ivan = new Account("Govnov", "email@mail.com", "pass", "Ivan", "Govnov", "jukebox ivana");
-        ivan.setRole(new Role("ROLE_USER"));
+
+        List<Role> ivanRoleList = new ArrayList<>();
+        ivanRoleList.add(new Role("ROLE_USER"));
+        roleRepository.save(ivanRoleList);
+        ivan.setRoles(ivanRoleList);
 
         Account lenin = new Account("Ilich", "lenin@mail.com", "pass", "Volodia", "Lenin", "jukebox lenina");
-        lenin.setRole(new Role("ROLE_ADMIN"));
+
+        List<Role> leninRoleList = new ArrayList<>();
+        leninRoleList.add(new Role("ROLE_USER"));
+        leninRoleList.add(new Role("ROLE_ADMIN"));
+        roleRepository.save(leninRoleList);
+        lenin.setRoles(leninRoleList);
 
         accountRepository.save(Arrays.asList(ivan, lenin));
     }
 
     @Test
     public void testCount() {
-        System.out.println("********** COUNT **********");
+        System.out.println("\n********** COUNT **********");
         System.out.println("Account count: " + accountRepository.count());
         System.out.println("********** COUNT **********");
     }
 
     @Test
     public void testFindByLogin() {
-        System.out.println("********** FIND BY LOGIN **********");
-        System.out.println("Account by id: " + accountRepository.findByLogin("Govnov"));
+        System.out.println("\n********** FIND BY LOGIN **********");
+        System.out.println("Account by id: " + accountRepository.findByLogin("Ilich"));
         System.out.println("********** FIND BY ID **********");
     }
 
     @Test
     public void testFindById() {
-        System.out.println("********** FIND BY ID **********");
+        System.out.println("\n********** FIND BY ID **********");
         System.out.println("Account by id: " + accountRepository.findById(1));
         System.out.println("********** FIND BY ID **********");
     }
+
     @Test
     public void testAddAccount() {
-        System.out.println("********** ADD ACCOUNT **********");
+        System.out.println("\n********** ADD ACCOUNT **********");
         Account newAccount = new Account("vladik", "damski@ugodnil.com", "esculentum512", "Vlad", "Sidliarevich", "vladika jukebox");
-        newAccount.setRole(new Role("ROLE_USER"));
+
+        List<Role> roles = new ArrayList<>();
+        roles.add(new Role("ROlE_USER"));
+        roleRepository.save(roles);
+        newAccount.setRoles(roles);
+
         accountRepository.save(newAccount);
         System.out.println("New Account by login: " + accountRepository.findByLogin("vladik"));
         System.out.println("********** ADD ACCOUNT **********");
     }
 
     @Test
-    public void testRoleCount() {
-        System.out.println("********** ROLES COUNT **********");
-        System.out.println("Account count: " + roleRepository.count());
+    public void testRolesCount() {
+        System.out.println("\n********** ROLES COUNT **********");
+        System.out.println("Roles count: " + roleRepository.count());
         System.out.println("********** ROLES COUNT **********");
     }
 

@@ -4,8 +4,6 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "role")
@@ -21,30 +19,13 @@ public class Role implements Persistable<Integer> {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "account_role", schema = "public", joinColumns = {
-            @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false, updatable = false)}, inverseJoinColumns = {
-            @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false, updatable = false)})
-    private Set<Account> accounts = new HashSet<>(0);
-
     public Role() {
         super();
-    }
-
-    public Role(Integer id) {
-        super();
-        this.id = id;
     }
 
     public Role(String name) {
         super();
         this.name = name;
-    }
-
-    public Role(String name, Integer id) {
-        super();
-        this.name = name;
-        this.id = id;
     }
 
     @Override
@@ -68,14 +49,6 @@ public class Role implements Persistable<Integer> {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Set<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(Set<Account> accounts) {
-        this.accounts = accounts;
     }
 
     @Override

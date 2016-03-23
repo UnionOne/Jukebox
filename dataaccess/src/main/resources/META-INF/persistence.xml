@@ -6,6 +6,7 @@
     <persistence-unit name="hib-jpa-persistence-unit" transaction-type="RESOURCE_LOCAL">
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
             <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
         </properties>
     </persistence-unit>

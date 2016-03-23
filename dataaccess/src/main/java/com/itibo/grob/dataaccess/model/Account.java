@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(
@@ -37,11 +38,11 @@ public class Account implements Persistable<Integer> {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "account_role", schema = "public", joinColumns = {
-            @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false, updatable = false)}, inverseJoinColumns = {
-            @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false, updatable = false)})
-    private Role role;
+            @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "role_id", referencedColumnName = "id")})
+    private List<Role> roles;
 
     @Column(name = "jukebox")
     private String jukebox;
@@ -115,12 +116,12 @@ public class Account implements Persistable<Integer> {
         this.lastName = lastName;
     }
 
-    public Role getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     public String getJukebox() {
@@ -140,7 +141,7 @@ public class Account implements Persistable<Integer> {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", role=" + role +
+                ", roles=" + roles +
                 ", jukebox='" + jukebox + '\'' +
                 '}';
     }
