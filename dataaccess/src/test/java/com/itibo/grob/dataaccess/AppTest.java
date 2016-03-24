@@ -1,9 +1,11 @@
 package com.itibo.grob.dataaccess;
 
 import com.itibo.grob.dataaccess.model.Account;
+import com.itibo.grob.dataaccess.model.Jukebox;
 import com.itibo.grob.dataaccess.model.Role;
 import com.itibo.grob.dataaccess.model.Track;
 import com.itibo.grob.dataaccess.repository.AccountRepository;
+import com.itibo.grob.dataaccess.repository.JukeboxRepository;
 import com.itibo.grob.dataaccess.repository.RoleRepository;
 import com.itibo.grob.dataaccess.repository.TrackRepository;
 import org.junit.After;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,6 +35,10 @@ public class AppTest {
 
     @Autowired
     private TrackRepository trackRepository;
+
+    @Autowired
+    private JukeboxRepository jukeboxRepository;
+
 
     @Before
     @Rollback(false)
@@ -52,27 +59,37 @@ public class AppTest {
         lenin.setRoles(leninRoleList);
 
         accountRepository.save(Arrays.asList(ivan, lenin));
+
+        Jukebox jukebox = new Jukebox();
+
+        List<Track> tracks = new LinkedList<>();
+        tracks.add(new Track("GrOb - Ivan Govnov", "03:32", "punk", "Vse idet po plany", "GrOb", "link"));
+        tracks.add(new Track("Iron Maiden - Prowler", "03:54", "heavy metal", "Iron Maiden", "Iron Maiden", "link"));
+        trackRepository.save(tracks);
+        jukebox.setTracks(tracks);
+
+        jukeboxRepository.save(jukebox);
     }
 
     @Test
     public void testCount() {
-        System.out.println("\n********** COUNT **********");
+        System.out.println("\n********** ACCOUNTS COUNT **********");
         System.out.println("Account count: " + accountRepository.count());
-        System.out.println("********** COUNT **********");
+        System.out.println("********** ACCOUNTS COUNT **********");
     }
 
     @Test
-    public void testFindByLogin() {
-        System.out.println("\n********** FIND BY LOGIN **********");
+    public void testFindAccountByLogin() {
+        System.out.println("\n********** FIND ACCOUNT BY LOGIN **********");
         System.out.println("Account by id: " + accountRepository.findByLogin("Ilich"));
-        System.out.println("********** FIND BY ID **********");
+        System.out.println("********** FIND ACCOUNT BY ID **********");
     }
 
     @Test
-    public void testFindById() {
-        System.out.println("\n********** FIND BY ID **********");
+    public void testFindAccountById() {
+        System.out.println("\n********** FIND ACCOUNT BY ID **********");
         System.out.println("Account by id: " + accountRepository.findById(1));
-        System.out.println("********** FIND BY ID **********");
+        System.out.println("********** FIND ACCOUNT BY ID **********");
     }
 
     @Test
@@ -92,9 +109,9 @@ public class AppTest {
 
     @Test
     public void testFindAllAccount() {
-        System.out.println("\n********** FIND ALL **********");
-        System.out.println("Account by id: " + accountRepository.findAll());
-        System.out.println("********** FIND ALL **********");
+        System.out.println("\n********** FIND ALL ACCOUNTS **********");
+        System.out.println("Accounts: " + accountRepository.findAll());
+        System.out.println("********** FIND ALL ACCOUNTS **********");
     }
 
     @Test
@@ -107,9 +124,23 @@ public class AppTest {
     @Test
     public void testAddTrack() {
         System.out.println("\n********** ADD TRACK **********");
-        Track track = new Track("GO", "", "", "" ,"", "");
+        Track track = new Track("GrOb - Ivan Govnov", "03:32", "punk", "Vse idet po plany" ,"GrOb", "link");
         System.out.println("Track added: " + trackRepository.save(track));
         System.out.println("********** ADD TRACK **********");
+    }
+
+    @Test
+    public void testFindAllJukebox() {
+        System.out.println("\n********** ALL JUKEBOXES **********");
+        System.out.println("Jukeboxes: " + jukeboxRepository.findAll());
+        System.out.println("********** ALL JUKEBOXES **********");
+    }
+
+    @Test
+    public void testCountTrack() {
+        System.out.println("\n********** TRACKS COUNT **********");
+        System.out.println("Tracks count: " + trackRepository.count());
+        System.out.println("********** TRACKS COUNT **********");
     }
 
     @After

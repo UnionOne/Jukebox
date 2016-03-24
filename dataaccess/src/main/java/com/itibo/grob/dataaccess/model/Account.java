@@ -40,9 +40,10 @@ public class Account implements Persistable<Integer> {
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "account_role", schema = "public", joinColumns = {
-            @JoinColumn(name = "account_id", referencedColumnName = "id")}, inverseJoinColumns = {
-            @JoinColumn(name = "role_id", referencedColumnName = "id")})
+    @JoinTable(name = "account_role", schema = "public",
+            joinColumns = {@JoinColumn(name = "account_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
+    )
     private List<Role> roles;
 
     @Column(name = "jukebox")
