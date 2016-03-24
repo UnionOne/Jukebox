@@ -5,7 +5,7 @@ CREATE TABLE account(
   password CHAR(50) NOT NULL,
   first_name CHAR(50) NOT NULL,
   last_name CHAR(50) NOT NULL,
-  jukebox CHAR(50) NOT NULL
+  jukebox_id INTEGER NOT NULL
 );
 
 CREATE TABLE role(

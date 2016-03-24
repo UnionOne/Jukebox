@@ -18,7 +18,6 @@ public class Account implements Persistable<Integer> {
     private static final long serialVersionUID = 1L;
 
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_gen")
     @SequenceGenerator(name = "account_gen", sequenceName = "account_id_seq", allocationSize = 1)
     @Column(name = "id", unique = true, nullable = false)
@@ -46,21 +45,21 @@ public class Account implements Persistable<Integer> {
     )
     private List<Role> roles;
 
-    @Column(name = "jukebox")
-    private String jukebox;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "jukebox_id")
+    private Jukebox jukebox;
 
     public Account() {
         super();
     }
 
-    public Account(String login, String email, String password, String firstName, String lastName, String jukebox) {
+    public Account(String login, String email, String password, String firstName, String lastName) {
         super();
         this.login = login;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.jukebox = jukebox;
     }
 
     @Override
@@ -126,11 +125,11 @@ public class Account implements Persistable<Integer> {
         this.roles = roles;
     }
 
-    public String getJukebox() {
+    public Jukebox getJukebox() {
         return jukebox;
     }
 
-    public void setJukebox(String jukebox) {
+    public void setJukebox(Jukebox jukebox) {
         this.jukebox = jukebox;
     }
 

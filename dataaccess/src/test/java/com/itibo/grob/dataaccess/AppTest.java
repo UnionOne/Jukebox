@@ -43,20 +43,41 @@ public class AppTest {
     @Before
     @Rollback(false)
     public void setUp() {
-        Account ivan = new Account("Govnov", "email@mail.com", "pass", "Ivan", "Govnov", "jukebox ivana");
+        Account ivan = new Account("Govnov", "email@mail.com", "pass", "Ivan", "Govnov");
 
         List<Role> ivanRoleList = new ArrayList<>();
         ivanRoleList.add(new Role("ROLE_USER"));
         roleRepository.save(ivanRoleList);
         ivan.setRoles(ivanRoleList);
 
-        Account lenin = new Account("Ilich", "lenin@mail.com", "pass", "Volodia", "Lenin", "jukebox lenina");
+        Jukebox ivansJukebox = new Jukebox();
+
+        List<Track> ivansTracks = new LinkedList<>();
+        ivansTracks.add(new Track("Jefferson Airplane - White Rabbit", "03:32", "Psychedelic Rock", "Surrealistic Pillow", "Jefferson Airplane", "link"));
+        ivansTracks.add(new Track("Animals - House Of The Rising Sun", "03:15", "rock'n'roll", "The Animals", "Animals", "link"));
+        trackRepository.save(ivansTracks);
+        ivansJukebox.setTracks(ivansTracks);
+
+        jukeboxRepository.save(ivansJukebox);
+        ivan.setJukebox(ivansJukebox);
+
+        Account lenin = new Account("Ilich", "lenin@mail.com", "pass", "Volodia", "Lenin");
 
         List<Role> leninRoleList = new ArrayList<>();
         leninRoleList.add(new Role("ROLE_USER"));
         leninRoleList.add(new Role("ROLE_ADMIN"));
         roleRepository.save(leninRoleList);
         lenin.setRoles(leninRoleList);
+
+        Jukebox leninJukebox = new Jukebox();
+
+        List<Track> leninTracks = new LinkedList<>();
+        leninTracks.add(new Track("Megadeth - She Wolf", "03:00", "speed metal", "Cryptic Writings", "Megadeth", "link"));
+        trackRepository.save(leninTracks);
+        leninJukebox.setTracks(leninTracks);
+
+        jukeboxRepository.save(leninJukebox);
+        lenin.setJukebox(leninJukebox);
 
         accountRepository.save(Arrays.asList(ivan, lenin));
 
@@ -95,12 +116,23 @@ public class AppTest {
     @Test
     public void testAddAccount() {
         System.out.println("\n********** ADD ACCOUNT **********");
-        Account newAccount = new Account("vladik", "damski@ugodnil.com", "esculentum512", "Vlad", "Sidliarevich", "vladika jukebox");
+        Account newAccount = new Account("vladik", "damski@ugodnil.com", "esculentum512", "Vlad", "Sidliarevich");
 
         List<Role> roles = new ArrayList<>();
         roles.add(new Role("ROlE_USER"));
         roleRepository.save(roles);
         newAccount.setRoles(roles);
+
+        Jukebox jukebox = new Jukebox();
+
+        List<Track> tracks = new LinkedList<>();
+        tracks.add(new Track("GrOb - Ivan Govnov", "03:32", "punk", "Vse idet po plany", "GrOb", "link"));
+        tracks.add(new Track("Iron Maiden - Prowler", "03:54", "heavy metal", "Iron Maiden", "Iron Maiden", "link"));
+        trackRepository.save(tracks);
+        jukebox.setTracks(tracks);
+
+        jukeboxRepository.save(jukebox);
+        newAccount.setJukebox(jukebox);
 
         accountRepository.save(newAccount);
         System.out.println("New Account by login: " + accountRepository.findByLogin("vladik"));
@@ -115,6 +147,13 @@ public class AppTest {
     }
 
     @Test
+    public void testFindJukeboxByAccountLogin() {
+        System.out.println("\n********** Jukebox by Account login **********");
+        System.out.println("Jukebox: " + accountRepository.findByLogin("Govnov").getJukebox());
+        System.out.println("********** Jukebox by Account login **********");
+    }
+
+    @Test
     public void testRolesCount() {
         System.out.println("\n********** ROLES COUNT **********");
         System.out.println("Roles count: " + roleRepository.count());
@@ -124,16 +163,9 @@ public class AppTest {
     @Test
     public void testAddTrack() {
         System.out.println("\n********** ADD TRACK **********");
-        Track track = new Track("GrOb - Ivan Govnov", "03:32", "punk", "Vse idet po plany" ,"GrOb", "link");
+        Track track = new Track("GrOb - Ivan Govnov", "03:32", "punk", "Vse idet po plany", "GrOb", "link");
         System.out.println("Track added: " + trackRepository.save(track));
         System.out.println("********** ADD TRACK **********");
-    }
-
-    @Test
-    public void testFindAllJukebox() {
-        System.out.println("\n********** ALL JUKEBOXES **********");
-        System.out.println("Jukeboxes: " + jukeboxRepository.findAll());
-        System.out.println("********** ALL JUKEBOXES **********");
     }
 
     @Test
@@ -141,6 +173,20 @@ public class AppTest {
         System.out.println("\n********** TRACKS COUNT **********");
         System.out.println("Tracks count: " + trackRepository.count());
         System.out.println("********** TRACKS COUNT **********");
+    }
+
+    @Test
+    public void testFindAllJukeboxes() {
+        System.out.println("\n********** ALL JUKEBOXES **********");
+        System.out.println("Jukeboxes: " + jukeboxRepository.findAll());
+        System.out.println("********** ALL JUKEBOXES **********");
+    }
+
+    @Test
+    public void testFindJukeboxesCount() {
+        System.out.println("\n********** JUKEBOXES COUNT **********");
+        System.out.println("Jukeboxes: " + jukeboxRepository.count());
+        System.out.println("********** JUKEBOXES COUNT **********");
     }
 
     @After

@@ -5,6 +5,8 @@ import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
 
+// TODO Genre as Enum maybe with some dependencies
+
 @Entity
 @Table(name = "track")
 public class Track implements Persistable<Integer> {
