@@ -2,8 +2,10 @@ package com.itibo.grob.dataaccess;
 
 import com.itibo.grob.dataaccess.model.Account;
 import com.itibo.grob.dataaccess.model.Role;
+import com.itibo.grob.dataaccess.model.Track;
 import com.itibo.grob.dataaccess.repository.AccountRepository;
 import com.itibo.grob.dataaccess.repository.RoleRepository;
+import com.itibo.grob.dataaccess.repository.TrackRepository;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +29,9 @@ public class AppTest {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private TrackRepository trackRepository;
 
     @Before
     @Rollback(false)
@@ -86,10 +91,25 @@ public class AppTest {
     }
 
     @Test
+    public void testFindAllAccount() {
+        System.out.println("\n********** FIND ALL **********");
+        System.out.println("Account by id: " + accountRepository.findAll());
+        System.out.println("********** FIND ALL **********");
+    }
+
+    @Test
     public void testRolesCount() {
         System.out.println("\n********** ROLES COUNT **********");
         System.out.println("Roles count: " + roleRepository.count());
         System.out.println("********** ROLES COUNT **********");
+    }
+
+    @Test
+    public void testAddTrack() {
+        System.out.println("\n********** ADD TRACK **********");
+        Track track = new Track("GO", "", "", "" ,"", "");
+        System.out.println("Track added: " + trackRepository.save(track));
+        System.out.println("********** ADD TRACK **********");
     }
 
     @After

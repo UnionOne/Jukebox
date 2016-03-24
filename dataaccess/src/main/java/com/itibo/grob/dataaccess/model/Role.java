@@ -11,6 +11,7 @@ public class Role implements Persistable<Integer> {
     private static final long serialVersionUID = 1L;
 
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_gen")
     @SequenceGenerator(name = "role_gen", sequenceName = "role_id_seq", allocationSize = 1)
     @Column(name = "id", unique = true, nullable = false)

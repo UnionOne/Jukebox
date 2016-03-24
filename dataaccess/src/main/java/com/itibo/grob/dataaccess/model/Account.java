@@ -18,6 +18,7 @@ public class Account implements Persistable<Integer> {
     private static final long serialVersionUID = 1L;
 
     @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_gen")
     @SequenceGenerator(name = "account_gen", sequenceName = "account_id_seq", allocationSize = 1)
     @Column(name = "id", unique = true, nullable = false)
