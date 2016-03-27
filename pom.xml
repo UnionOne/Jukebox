@@ -11,6 +11,7 @@
     <modules>
         <module>dataaccess</module>
         <module>webapp</module>
+        <module>services</module>
     </modules>
     <packaging>pom</packaging>
     <name>Jukebox GROB</name>
