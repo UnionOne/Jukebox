@@ -5,8 +5,6 @@ import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
 
-// TODO Genre as Enum maybe with some dependencies
-
 @Entity
 @Table(name = "track")
 public class Track implements Persistable<Integer> {
@@ -24,8 +22,9 @@ public class Track implements Persistable<Integer> {
     @Column(name = "duration", nullable = false, length = 50)
     private String duration;
 
-    @Column(name = "genre", nullable = false)
-    private String genre;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
 
     @Column(name = "album", nullable = false)
     private String album;
@@ -40,7 +39,7 @@ public class Track implements Persistable<Integer> {
         super();
     }
 
-    public Track(String name, String duration, String genre, String album, String band, String link) {
+    public Track(String name, String duration, Genre genre, String album, String band, String link) {
         this.name = name;
         this.duration = duration;
         this.genre = genre;
@@ -80,11 +79,11 @@ public class Track implements Persistable<Integer> {
         this.duration = duration;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 

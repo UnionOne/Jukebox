@@ -23,7 +23,7 @@ CREATE TABLE track(
   id SERIAL PRIMARY KEY NOT NULL,
   name CHAR(50) NOT NULL,
   duration CHAR(50) NOT NULL,
-  genre CHAR(50) NOT NULL,
+  genre_id INTEGER NOT NULL,
   album CHAR(50) NOT NULL,
   band CHAR(50) NOT NULL,
   link CHAR(100) NOT NULL

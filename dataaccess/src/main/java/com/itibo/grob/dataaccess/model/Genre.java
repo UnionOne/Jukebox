@@ -5,12 +5,7 @@ import org.springframework.data.domain.Persistable;
 import javax.persistence.*;
 
 @Entity()
-@Table(
-        name = "genre",
-        uniqueConstraints = {
-                @UniqueConstraint(name = "uc_genre_name", columnNames = {"name"})
-        }
-)
+@Table(name = "genre")
 public class Genre implements Persistable<Integer> {
     private static final long serialVersionUID = 1L;
 

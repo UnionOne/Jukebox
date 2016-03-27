@@ -49,10 +49,18 @@ public class AppTest {
         ivan.setRoles(ivanRoleList);
 
         Jukebox ivansJukebox = new Jukebox();
-
         List<Track> ivansTracks = new LinkedList<>();
-        ivansTracks.add(new Track("Jefferson Airplane - White Rabbit", "03:32", "Psychedelic Rock", "Surrealistic Pillow", "Jefferson Airplane", "link"));
-        ivansTracks.add(new Track("Animals - House Of The Rising Sun", "03:15", "rock'n'roll", "The Animals", "Animals", "link"));
+
+        List<Genre> genres = new LinkedList<>();
+        genres.add(new Genre("psychedelic rock"));
+        genres.add(new Genre("rock'n'roll"));
+        genres.add(new Genre("speed metal"));
+        genres.add(new Genre("punk"));
+        genres.add(new Genre("heavy metal"));
+        genreRepository.save(genres);
+
+        ivansTracks.add(new Track("Jefferson Airplane - White Rabbit", "03:32", genreRepository.findByNameIgnoreCase("psychedelic rock"), "Surrealistic Pillow", "Jefferson Airplane", "link"));
+        ivansTracks.add(new Track("Animals - House Of The Rising Sun", "03:15", genreRepository.findByNameIgnoreCase("rock'n'roll"),"The Animals", "Animals", "link"));
         trackRepository.save(ivansTracks);
         ivansJukebox.setTracks(ivansTracks);
 
@@ -70,7 +78,7 @@ public class AppTest {
         Jukebox leninJukebox = new Jukebox();
 
         List<Track> leninTracks = new LinkedList<>();
-        leninTracks.add(new Track("Megadeth - She Wolf", "03:00", "speed metal", "Cryptic Writings", "Megadeth", "link"));
+        leninTracks.add(new Track("Megadeth - She Wolf", "03:00", genreRepository.findByNameIgnoreCase("speed metal"), "Cryptic Writings", "Megadeth", "link"));
         trackRepository.save(leninTracks);
         leninJukebox.setTracks(leninTracks);
 
@@ -78,24 +86,6 @@ public class AppTest {
         lenin.setJukebox(leninJukebox);
 
         accountRepository.save(Arrays.asList(ivan, lenin));
-
-        Jukebox jukebox = new Jukebox();
-
-        List<Track> tracks = new LinkedList<>();
-        tracks.add(new Track("GrOb - Ivan Govnov", "03:32", "punk", "Vse idet po plany", "GrOb", "link"));
-        tracks.add(new Track("Iron Maiden - Prowler", "03:54", "heavy metal", "Iron Maiden", "Iron Maiden", "link"));
-        trackRepository.save(tracks);
-        jukebox.setTracks(tracks);
-
-        jukeboxRepository.save(jukebox);
-
-        List<Genre> genres = new LinkedList<>();
-        genres.add(new Genre("punk"));
-        genres.add(new Genre("heavy metal"));
-        genres.add(new Genre("speed metal"));
-        genres.add(new Genre("psychedelic rock"));
-        genres.add(new Genre("rock'n'roll"));
-        genreRepository.save(genres);
     }
 
     @Test
@@ -125,15 +115,15 @@ public class AppTest {
         Account newAccount = new Account("vladik", "damski@ugodnil.com", "esculentum512", "Vlad", "Sidliarevich");
 
         List<Role> roles = new ArrayList<>();
-        roles.add(new Role("ROlE_USER"));
+        roles.add(new Role("ROLE_USER"));
         roleRepository.save(roles);
         newAccount.setRoles(roles);
 
         Jukebox jukebox = new Jukebox();
 
         List<Track> tracks = new LinkedList<>();
-        tracks.add(new Track("GrOb - Ivan Govnov", "03:32", "punk", "Vse idet po plany", "GrOb", "link"));
-        tracks.add(new Track("Iron Maiden - Prowler", "03:54", "heavy metal", "Iron Maiden", "Iron Maiden", "link"));
+        tracks.add(new Track("GrOb - Ivan Govnov", "03:32", genreRepository.findByNameIgnoreCase("punk"), "Vse idet po plany", "GrOb", "link"));
+        tracks.add(new Track("Iron Maiden - Prowler", "03:54", genreRepository.findByNameIgnoreCase("heavy metal"), "Iron Maiden", "Iron Maiden", "link"));
         trackRepository.save(tracks);
         jukebox.setTracks(tracks);
 
@@ -169,7 +159,7 @@ public class AppTest {
     @Test
     public void testAddTrack() {
         System.out.println("\n********** ADD TRACK **********");
-        Track track = new Track("GrOb - Ivan Govnov", "03:32", "punk", "Vse idet po plany", "GrOb", "link");
+        Track track = new Track("GrOb - Ivan Govnov", "03:32", genreRepository.findByNameIgnoreCase("punk"), "Vse idet po plany", "GrOb", "link");
         System.out.println("Track added: " + trackRepository.save(track));
         System.out.println("********** ADD TRACK **********");
     }
