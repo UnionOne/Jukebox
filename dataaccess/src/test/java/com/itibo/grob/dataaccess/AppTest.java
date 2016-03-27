@@ -3,6 +3,7 @@ package com.itibo.grob.dataaccess;
 import com.itibo.grob.dataaccess.model.*;
 import com.itibo.grob.dataaccess.repository.*;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -198,6 +199,7 @@ public class AppTest {
     public void testGenresCount() {
         System.out.println("\n********** GENRES COUNT **********");
         System.out.println("Genres: " + genreRepository.count());
+        Assert.assertEquals(5, genreRepository.count());
         System.out.println("********** GENRES COUNT **********");
     }
 
