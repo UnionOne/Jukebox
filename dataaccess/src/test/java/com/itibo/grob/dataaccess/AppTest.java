@@ -50,6 +50,8 @@ public class AppTest {
     @Before
     @Rollback(false)
     public void setUp() {
+        // USER
+
         Account ivan = new Account("Govnov", "email@mail.com", "pass", "Ivan", "Govnov");
 
         List<Role> ivanRoleList = new ArrayList<>();
@@ -102,7 +104,22 @@ public class AppTest {
 
         accountRepository.save(Arrays.asList(ivan, lenin));
 
+        // ADMIN
+
+        Genre genre = new Genre("heavy metal");
+        genreRepository.save(genre);
+
+        Track track = new Track("Mastermind", "03:48", genre, "Cryptic Writings", "Megadeth", "link");
+        trackRepository.save(track);
+        Track track1 = new Track("The Disintegrators", "03:05", genre, "Cryptic Writings", "Megadeth", "link");
+        trackRepository.save(track1);
+
+        List<Track> trackList = new LinkedList<>();
+        trackList.add(track);
+        trackList.add(track1);
+
         Album album = new Album("Cryptic Writings", "1997", "Megadeth");
+        album.setTracks(trackList);
         Album album1 = new Album("Rust in Peace", "1990", "Megadeth");
         albumRepository.save(Arrays.asList(album, album1));
 
@@ -241,7 +258,7 @@ public class AppTest {
     public void testGenresCount() {
         System.out.println("\n********** GENRES COUNT **********");
         System.out.println("Genres: " + genreRepository.count());
-        Assert.assertEquals(4, genreRepository.count());
+        Assert.assertEquals(5, genreRepository.count());
         System.out.println("********** GENRES COUNT **********");
     }
 
@@ -305,7 +322,14 @@ public class AppTest {
     public void testFindMemberByFirstName() {
         System.out.println("\n********** MEMBER BY FIRST NAME **********");
         System.out.println("Member by name: " + memberRepository.findMemberByFirstName("David"));
-        System.out.println("********** MEMBER BY FIRST NAME**********");
+        System.out.println("********** MEMBER BY FIRST NAME **********");
+    }
+
+    @Test
+    public void testFindAlbumByName() {
+        System.out.println("\n********** ALBUM BY NAME **********");
+        System.out.println("Album by name: " + albumRepository.findAlbumByNameIgnoreCase("Cryptic Writings"));
+        System.out.println("********** ALBUM BY NAME **********");
     }
 
     @After
