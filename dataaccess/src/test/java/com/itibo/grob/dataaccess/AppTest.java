@@ -51,16 +51,14 @@ public class AppTest {
         Jukebox ivansJukebox = new Jukebox();
         List<Track> ivansTracks = new LinkedList<>();
 
-        List<Genre> genres = new LinkedList<>();
-        genres.add(new Genre("psychedelic rock"));
-        genres.add(new Genre("rock'n'roll"));
-        genres.add(new Genre("speed metal"));
-        genres.add(new Genre("punk"));
-        genres.add(new Genre("heavy metal"));
-        genreRepository.save(genres);
+        Genre psyGenre = new Genre("psychedelic rock");
+        genreRepository.save(psyGenre);
+        ivansTracks.add(new Track("Jefferson Airplane - White Rabbit", "03:32", psyGenre, "Surrealistic Pillow", "Jefferson Airplane", "link"));
 
-        ivansTracks.add(new Track("Jefferson Airplane - White Rabbit", "03:32", genreRepository.findByNameIgnoreCase("psychedelic rock"), "Surrealistic Pillow", "Jefferson Airplane", "link"));
-        ivansTracks.add(new Track("Animals - House Of The Rising Sun", "03:15", genreRepository.findByNameIgnoreCase("rock'n'roll"),"The Animals", "Animals", "link"));
+        Genre rockGenre = new Genre("rock'n'roll");
+        genreRepository.save(rockGenre);
+        ivansTracks.add(new Track("Animals - House Of The Rising Sun", "03:15", rockGenre, "The Animals", "Animals", "link"));
+
         trackRepository.save(ivansTracks);
         ivansJukebox.setTracks(ivansTracks);
 
@@ -78,7 +76,15 @@ public class AppTest {
         Jukebox leninJukebox = new Jukebox();
 
         List<Track> leninTracks = new LinkedList<>();
-        leninTracks.add(new Track("Megadeth - She Wolf", "03:00", genreRepository.findByNameIgnoreCase("speed metal"), "Cryptic Writings", "Megadeth", "link"));
+
+        Genre speedGenre = new Genre("speed metal");
+        genreRepository.save(speedGenre);
+        leninTracks.add(new Track("Megadeth - She Wolf", "03:00", speedGenre, "Cryptic Writings", "Megadeth", "link"));
+
+        Genre speedGenre2 = new Genre("speed metal");
+        genreRepository.save(speedGenre2);
+        leninTracks.add(new Track("Megadeth - Hangar 18", "05:11 ", speedGenre2, "Rust in Peace", "Megadeth", "link"));
+
         trackRepository.save(leninTracks);
         leninJukebox.setTracks(leninTracks);
 
@@ -122,8 +128,15 @@ public class AppTest {
         Jukebox jukebox = new Jukebox();
 
         List<Track> tracks = new LinkedList<>();
-        tracks.add(new Track("GrOb - Ivan Govnov", "03:32", genreRepository.findByNameIgnoreCase("punk"), "Vse idet po plany", "GrOb", "link"));
-        tracks.add(new Track("Iron Maiden - Prowler", "03:54", genreRepository.findByNameIgnoreCase("heavy metal"), "Iron Maiden", "Iron Maiden", "link"));
+
+        Genre punkGenre = new Genre("punk");
+        genreRepository.save(punkGenre);
+        tracks.add(new Track("GrOb - Ivan Govnov", "03:32", punkGenre, "Vse idet po plany", "GrOb", "link"));
+
+        Genre heavyGenre = new Genre("heavy metal");
+        genreRepository.save(heavyGenre);
+        tracks.add(new Track("Iron Maiden - Prowler", "03:54", heavyGenre, "Iron Maiden", "Iron Maiden", "link"));
+
         trackRepository.save(tracks);
         jukebox.setTracks(tracks);
 
@@ -159,7 +172,11 @@ public class AppTest {
     @Test
     public void testAddTrack() {
         System.out.println("\n********** ADD TRACK **********");
-        Track track = new Track("GrOb - Ivan Govnov", "03:32", genreRepository.findByNameIgnoreCase("punk"), "Vse idet po plany", "GrOb", "link");
+
+        Genre punkGenre = new Genre("punk");
+        genreRepository.save(punkGenre);
+        Track track = new Track("GrOb - Ivan Govnov", "03:32", punkGenre, "Vse idet po plany", "GrOb", "link");
+
         System.out.println("Track added: " + trackRepository.save(track));
         System.out.println("********** ADD TRACK **********");
     }
@@ -189,8 +206,17 @@ public class AppTest {
     public void testGenresCount() {
         System.out.println("\n********** GENRES COUNT **********");
         System.out.println("Genres: " + genreRepository.count());
-        Assert.assertEquals(5, genreRepository.count());
+        Assert.assertEquals(4, genreRepository.count());
         System.out.println("********** GENRES COUNT **********");
+    }
+
+    @Test
+    public void testFindGenresByNameIgnoreCase() {
+        System.out.println("\n********** GENRES BY NAME **********");
+        List<Genre> genres = genreRepository.findByNameIgnoreCase("speed metal");
+        System.out.println("Genres: " + genres.toString());
+        Assert.assertEquals(2, genres.size());
+        System.out.println("********** GENRES BY NAME **********");
     }
 
     @After

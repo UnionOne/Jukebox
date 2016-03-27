@@ -79,14 +79,6 @@ public class Track implements Persistable<Integer> {
         this.duration = duration;
     }
 
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
-
     public String getAlbum() {
         return album;
     }
@@ -117,7 +109,7 @@ public class Track implements Persistable<Integer> {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", duration='" + duration + '\'' +
-                ", genre='" + genre + '\'' +
+                ", genre=" + genre +
                 ", album='" + album + '\'' +
                 ", band='" + band + '\'' +
                 ", link='" + link + '\'' +
