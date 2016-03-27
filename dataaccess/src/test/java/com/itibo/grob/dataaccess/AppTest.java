@@ -1,13 +1,7 @@
 package com.itibo.grob.dataaccess;
 
-import com.itibo.grob.dataaccess.model.Account;
-import com.itibo.grob.dataaccess.model.Jukebox;
-import com.itibo.grob.dataaccess.model.Role;
-import com.itibo.grob.dataaccess.model.Track;
-import com.itibo.grob.dataaccess.repository.AccountRepository;
-import com.itibo.grob.dataaccess.repository.JukeboxRepository;
-import com.itibo.grob.dataaccess.repository.RoleRepository;
-import com.itibo.grob.dataaccess.repository.TrackRepository;
+import com.itibo.grob.dataaccess.model.*;
+import com.itibo.grob.dataaccess.repository.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +32,9 @@ public class AppTest {
 
     @Autowired
     private JukeboxRepository jukeboxRepository;
+
+    @Autowired
+    private GenreRepository genreRepository;
 
 
     @Before
@@ -90,6 +87,14 @@ public class AppTest {
         jukebox.setTracks(tracks);
 
         jukeboxRepository.save(jukebox);
+
+        List<Genre> genres = new LinkedList<>();
+        genres.add(new Genre("punk"));
+        genres.add(new Genre("heavy metal"));
+        genres.add(new Genre("speed metal"));
+        genres.add(new Genre("psychedelic rock"));
+        genres.add(new Genre("rock'n'roll"));
+        genreRepository.save(genres);
     }
 
     @Test
@@ -189,8 +194,19 @@ public class AppTest {
         System.out.println("********** JUKEBOXES COUNT **********");
     }
 
+    @Test
+    public void testGenresCount() {
+        System.out.println("\n********** GENRES COUNT **********");
+        System.out.println("Genres: " + genreRepository.count());
+        System.out.println("********** GENRES COUNT **********");
+    }
+
     @After
     public void clean() {
         accountRepository.deleteAll();
+        roleRepository.deleteAll();
+        trackRepository.deleteAll();
+        jukeboxRepository.deleteAll();
+        genreRepository.deleteAll();
     }
 }
