@@ -35,7 +35,7 @@ public class Track implements Persistable<Integer> {
     @Column(name = "link", nullable = false)
     private String link;
 
-    public Track () {
+    public Track() {
         super();
     }
 

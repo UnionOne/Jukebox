@@ -118,8 +118,13 @@ public class AppTest {
         members.add(david);
         members.add(david2);
 
+        List<Album> albums = new LinkedList<>();
+        albums.add(album);
+        albums.add(album1);
+
         Band megadeth = new Band("Megadeth", "1983");
         megadeth.setMembers(members);
+        megadeth.setAlbums(albums);
 
         bandRepository.save(megadeth);
     }
@@ -274,7 +279,7 @@ public class AppTest {
     @Test
     public void testBandsCount() {
         System.out.println("\n********** BANDS COUNT **********");
-        long count  = bandRepository.count();
+        long count = bandRepository.count();
         System.out.println("Bands count: " + count);
         Assert.assertEquals(1, count);
         System.out.println("********** BANDS COUNT **********");

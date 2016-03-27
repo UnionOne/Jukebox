@@ -30,7 +30,13 @@ public class Band implements Persistable<Integer> {
             inverseJoinColumns = {@JoinColumn(name = "member_id", referencedColumnName = "id")}
     )
     private List<Member> members;
-    //private String albums;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "band_album", schema = "public",
+            joinColumns = {@JoinColumn(name = "band_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "album_id", referencedColumnName = "id")}
+    )
+    private List<Album> albums;
 
     @Column(name = "year")
     private String year;
@@ -95,12 +101,21 @@ public class Band implements Persistable<Integer> {
         this.members = members;
     }
 
+    public List<Album> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<Album> albums) {
+        this.albums = albums;
+    }
+
     @Override
     public String toString() {
         return "Band{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", members=" + members +
+                ", albums=" + albums +
                 ", year='" + year + '\'' +
                 ", description='" + description + '\'' +
                 '}';
