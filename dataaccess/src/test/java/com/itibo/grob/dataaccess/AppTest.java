@@ -37,6 +37,9 @@ public class AppTest {
     @Autowired
     private GenreRepository genreRepository;
 
+    @Autowired
+    private AlbumRepository albumRepository;
+
 
     @Before
     @Rollback(false)
@@ -92,6 +95,10 @@ public class AppTest {
         lenin.setJukebox(leninJukebox);
 
         accountRepository.save(Arrays.asList(ivan, lenin));
+
+        Album album = new Album("Cryptic Writings", "1997", "Megadeth");
+        Album album1 = new Album("Rust in Peace", "1990", "Megadeth");
+        albumRepository.save(Arrays.asList(album, album1));
     }
 
     @Test
@@ -217,6 +224,21 @@ public class AppTest {
         System.out.println("Genres: " + genres.toString());
         Assert.assertEquals(2, genres.size());
         System.out.println("********** GENRES BY NAME **********");
+    }
+
+    @Test
+    public void testAlbumsCount() {
+        System.out.println("\n********** ALBUMS COUNT **********");
+        System.out.println("Albums: " + albumRepository.count());
+        Assert.assertEquals(2, albumRepository.count());
+        System.out.println("********** ALBUMS COUNT **********");
+    }
+
+    @Test
+    public void testFindAllAlbums() {
+        System.out.println("\n********** ALL ALBUMS **********");
+        System.out.println("Albums: " + albumRepository.findAll());
+        System.out.println("********** ALL ALBUMS **********");
     }
 
     @After

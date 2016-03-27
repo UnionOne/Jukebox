@@ -40,6 +40,7 @@ public class Track implements Persistable<Integer> {
     }
 
     public Track(String name, String duration, Genre genre, String album, String band, String link) {
+        super();
         this.name = name;
         this.duration = duration;
         this.genre = genre;

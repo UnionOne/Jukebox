@@ -50,6 +50,14 @@ CREATE TABLE track_genre(
   track_id INTEGER NOT NULL
 );
 
+CREATE TABLE album(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name CHAR(50) NOT NULL,
+  year CHAR(25),
+  band CHAR(50),
+  description TEXT
+);
+
 TRUNCATE TABLE account_role RESTART IDENTITY CASCADE;
 
 TRUNCATE TABLE account RESTART IDENTITY CASCADE;

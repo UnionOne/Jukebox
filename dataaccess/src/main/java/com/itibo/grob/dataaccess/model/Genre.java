@@ -3,7 +3,6 @@ package com.itibo.grob.dataaccess.model;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity()
 @Table(name = "genre")
