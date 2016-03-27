@@ -12,6 +12,8 @@ import javax.persistence.*;
         }
 )
 public class Band implements Persistable<Integer> {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "band_gen")
     @SequenceGenerator(name = "band_gen", sequenceName = "band_id_seq", allocationSize = 1)

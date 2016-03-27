@@ -43,6 +43,9 @@ public class AppTest {
     @Autowired
     private BandRepository bandRepository;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
 
     @Before
     @Rollback(false)
@@ -105,6 +108,10 @@ public class AppTest {
 
         Band megadeth = new Band("Megadeth", "1983");
         bandRepository.save(megadeth);
+
+        Member egor = new Member("Egor", "Letov");
+        egor.setBiography("Da da eto ego biografia");
+        memberRepository.save(egor);
     }
 
     @Test
@@ -261,6 +268,29 @@ public class AppTest {
         System.out.println("Bands count: " + count);
         Assert.assertEquals(1, count);
         System.out.println("********** BANDS COUNT **********");
+    }
+
+    @Test
+    public void testFindAllMembers() {
+        System.out.println("\n********** ALL MEMBERS **********");
+        System.out.println("Members: " + memberRepository.findAll());
+        System.out.println("********** ALL MEMBERS **********");
+    }
+
+    @Test
+    public void testMembersCount() {
+        System.out.println("\n********** MEMBERS COUNT **********");
+        long count = memberRepository.count();
+        System.out.println("Members count: " + count);
+        Assert.assertEquals(1, count);
+        System.out.println("********** MEMBERS COUNT **********");
+    }
+
+    @Test
+    public void testFindMemberByFirstName() {
+        System.out.println("\n********** MEMBER BY FIRST NAME **********");
+        System.out.println("Member by name: " + memberRepository.findMemberByFirstName("Egor"));
+        System.out.println("********** MEMBER BY FIRST NAME**********");
     }
 
     @After

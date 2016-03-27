@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "album")
 public class Album implements Persistable<Integer> {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "album_gen")
     @SequenceGenerator(name = "album_gen", sequenceName = "album_id_seq", allocationSize = 1)

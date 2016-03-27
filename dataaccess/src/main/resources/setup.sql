@@ -65,6 +65,13 @@ CREATE TABLE band(
   description CHAR(50)
 );
 
+CREATE TABLE member(
+  id SERIAL PRIMARY KEY NOT NULL,
+  first_name CHAR(50) NOT NULL,
+  last_name CHAR(50) NOT NULL,
+  biography TEXT
+);
+
 TRUNCATE TABLE account_role RESTART IDENTITY CASCADE;
 
 TRUNCATE TABLE account RESTART IDENTITY CASCADE;
