@@ -40,6 +40,9 @@ public class AppTest {
     @Autowired
     private AlbumRepository albumRepository;
 
+    @Autowired
+    private BandRepository bandRepository;
+
 
     @Before
     @Rollback(false)
@@ -99,6 +102,9 @@ public class AppTest {
         Album album = new Album("Cryptic Writings", "1997", "Megadeth");
         Album album1 = new Album("Rust in Peace", "1990", "Megadeth");
         albumRepository.save(Arrays.asList(album, album1));
+
+        Band megadeth = new Band("Megadeth", "1983");
+        bandRepository.save(megadeth);
     }
 
     @Test
@@ -239,6 +245,22 @@ public class AppTest {
         System.out.println("\n********** ALL ALBUMS **********");
         System.out.println("Albums: " + albumRepository.findAll());
         System.out.println("********** ALL ALBUMS **********");
+    }
+
+    @Test
+    public void testFindAllBands() {
+        System.out.println("\n********** ALL BANDS **********");
+        System.out.println("Bands: " + bandRepository.findAll());
+        System.out.println("********** ALL BANDS **********");
+    }
+
+    @Test
+    public void testBandsCount() {
+        System.out.println("\n********** BANDS COUNT **********");
+        long count  = bandRepository.count();
+        System.out.println("Bands count: " + count);
+        Assert.assertEquals(1, count);
+        System.out.println("********** BANDS COUNT **********");
     }
 
     @After
