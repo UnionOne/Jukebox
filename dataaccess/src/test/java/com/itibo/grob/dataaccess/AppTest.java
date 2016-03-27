@@ -106,12 +106,22 @@ public class AppTest {
         Album album1 = new Album("Rust in Peace", "1990", "Megadeth");
         albumRepository.save(Arrays.asList(album, album1));
 
-        Band megadeth = new Band("Megadeth", "1983");
-        bandRepository.save(megadeth);
+        Member david = new Member("David", "Scott Mustaine");
+        david.setBiography("Da da eto ego biografia");
+        memberRepository.save(david);
 
-        Member egor = new Member("Egor", "Letov");
-        egor.setBiography("Da da eto ego biografia");
-        memberRepository.save(egor);
+        Member david2 = new Member("David", "Warren Ellefson");
+        david2.setBiography("Da da eto toje ego biografia");
+        memberRepository.save(david2);
+
+        List<Member> members = new LinkedList<>();
+        members.add(david);
+        members.add(david2);
+
+        Band megadeth = new Band("Megadeth", "1983");
+        megadeth.setMembers(members);
+
+        bandRepository.save(megadeth);
     }
 
     @Test
@@ -282,14 +292,14 @@ public class AppTest {
         System.out.println("\n********** MEMBERS COUNT **********");
         long count = memberRepository.count();
         System.out.println("Members count: " + count);
-        Assert.assertEquals(1, count);
+        Assert.assertEquals(2, count);
         System.out.println("********** MEMBERS COUNT **********");
     }
 
     @Test
     public void testFindMemberByFirstName() {
         System.out.println("\n********** MEMBER BY FIRST NAME **********");
-        System.out.println("Member by name: " + memberRepository.findMemberByFirstName("Egor"));
+        System.out.println("Member by name: " + memberRepository.findMemberByFirstName("David"));
         System.out.println("********** MEMBER BY FIRST NAME**********");
     }
 

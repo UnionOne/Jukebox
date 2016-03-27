@@ -3,6 +3,7 @@ package com.itibo.grob.dataaccess.model;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(
@@ -23,7 +24,12 @@ public class Band implements Persistable<Integer> {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    //private String members;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "band_member", schema = "public",
+            joinColumns = {@JoinColumn(name = "band_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "member_id", referencedColumnName = "id")}
+    )
+    private List<Member> members;
     //private String albums;
 
     @Column(name = "year")
@@ -81,11 +87,20 @@ public class Band implements Persistable<Integer> {
         this.description = description;
     }
 
+    public List<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(List<Member> members) {
+        this.members = members;
+    }
+
     @Override
     public String toString() {
         return "Band{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", members=" + members +
                 ", year='" + year + '\'' +
                 ", description='" + description + '\'' +
                 '}';
