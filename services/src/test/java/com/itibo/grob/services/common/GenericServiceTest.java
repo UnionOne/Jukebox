@@ -202,6 +202,6 @@ public abstract class GenericServiceTest<T extends Persistable<ID>, ID extends S
     @Test
     public void saveOneEntityAndFlushTest() {
         T saved = service.save(entity);
-        Assert.assertEquals(entity, service.findOne(saved.getId()));
+        Assert.assertEquals(entity, service.saveAndFlush(entity));
     }
 }
