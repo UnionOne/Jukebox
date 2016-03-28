@@ -155,7 +155,7 @@ public abstract class GenericServiceTest<T extends Persistable<ID>, ID extends S
     }
 
     @Test
-    public void findAllEntititesByPageableTest() {
+    public void findAllEntitiesByPageableTest() {
         Iterable<T> found = service.findAll(sort);
         service.delete(found);
         Assert.assertEquals(Collections.EMPTY_LIST, found);

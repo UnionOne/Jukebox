@@ -17,13 +17,14 @@ public class AccountServiceImpl extends AbstractGenericService<Account, Integer,
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountServiceImpl.class);
 
     @Override
-    public Account findById(Integer id) {
+    public Account findOneAccountById(Integer id) {
         LOGGER.info("Finding {} entity with id = {}", simpleTypeName, id);
+        System.out.println("Finding " + simpleTypeName + " entity with id = " + id);
         return repository.findById(id);
     }
 
     @Override
-    public Account findByLogin(String login) {
+    public Account findOneAccountByLogin(String login) {
         LOGGER.info("Finding {} entity with login = {}", simpleTypeName, login);
         return repository.findByLogin(login);
     }
