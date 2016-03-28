@@ -7,4 +7,6 @@ public interface AccountService extends GenericService<Account, Integer> {
     Account findOneAccountById(Integer id);
 
     Account findOneAccountByLogin(String login);
+
+    Account deleteByLogin(String login);
 }

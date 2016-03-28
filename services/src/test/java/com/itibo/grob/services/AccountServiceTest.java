@@ -42,4 +42,12 @@ public class AccountServiceTest extends GenericServiceTest<Account, Integer, Acc
 
         Assert.assertEquals(saved, found);
     }
+
+    @Test
+    public void deleteAccountByLoginTest() {
+        Account saved = service.save(entity);
+        Account deleted = service.deleteByLogin(entity.getLogin());
+
+        Assert.assertEquals(saved, deleted);
+    }
 }
