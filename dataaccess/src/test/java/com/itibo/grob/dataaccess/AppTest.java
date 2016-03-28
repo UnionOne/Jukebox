@@ -156,14 +156,14 @@ public class AppTest {
     @Test
     public void testFindAccountByLogin() {
         System.out.println("\n********** FIND ACCOUNT BY LOGIN **********");
-        System.out.println("Account by id: " + accountRepository.findByLogin("Ilich"));
+        System.out.println("Account by id: " + accountRepository.findOneAccountByLogin("Ilich"));
         System.out.println("********** FIND ACCOUNT BY ID **********");
     }
 
     @Test
     public void testFindAccountById() {
         System.out.println("\n********** FIND ACCOUNT BY ID **********");
-        System.out.println("Account by id: " + accountRepository.findById(1));
+        System.out.println("Account by id: " + accountRepository.findOneAccountById(1));
         System.out.println("********** FIND ACCOUNT BY ID **********");
     }
 
@@ -196,7 +196,7 @@ public class AppTest {
         newAccount.setJukebox(jukebox);
 
         accountRepository.save(newAccount);
-        System.out.println("New Account by login: " + accountRepository.findByLogin("vladik"));
+        System.out.println("New Account by login: " + accountRepository.findOneAccountByLogin("vladik"));
         System.out.println("********** ADD ACCOUNT **********");
     }
 
@@ -210,7 +210,7 @@ public class AppTest {
     @Test
     public void testFindJukeboxByAccountLogin() {
         System.out.println("\n********** Jukebox by Account login **********");
-        System.out.println("Jukebox: " + accountRepository.findByLogin("Govnov").getJukebox());
+        System.out.println("Jukebox: " + accountRepository.findOneAccountByLogin("Govnov").getJukebox());
         System.out.println("********** Jukebox by Account login **********");
     }
 
