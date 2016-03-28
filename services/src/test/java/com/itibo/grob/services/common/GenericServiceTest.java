@@ -62,7 +62,7 @@ public abstract class GenericServiceTest<T extends Persistable<ID>, ID extends S
     }
 
     @Test
-    public void countEtitiesTest() {
+    public void countEntitiesTest() {
         long before = service.count();
         service.save(entity);
         long after = service.count();

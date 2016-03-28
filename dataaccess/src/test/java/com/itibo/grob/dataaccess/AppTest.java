@@ -265,7 +265,7 @@ public class AppTest {
     @Test
     public void testFindGenresByNameIgnoreCase() {
         System.out.println("\n********** GENRES BY NAME **********");
-        List<Genre> genres = genreRepository.findByNameIgnoreCase("speed metal");
+        List<Genre> genres = genreRepository.findAllByNameIgnoreCase("speed metal");
         System.out.println("Genres: " + genres.toString());
         Assert.assertEquals(2, genres.size());
         System.out.println("********** GENRES BY NAME **********");
@@ -321,7 +321,7 @@ public class AppTest {
     @Test
     public void testFindMemberByFirstName() {
         System.out.println("\n********** MEMBER BY FIRST NAME **********");
-        System.out.println("Member by name: " + memberRepository.findMemberByFirstName("David"));
+        System.out.println("Member by name: " + memberRepository.findAllMemberByFirstName("David"));
         System.out.println("********** MEMBER BY FIRST NAME **********");
     }
 

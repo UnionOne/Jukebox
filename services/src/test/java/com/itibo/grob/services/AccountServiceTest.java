@@ -20,7 +20,7 @@ public class AccountServiceTest extends GenericServiceTest<Account, Integer, Acc
     protected Iterable<? extends Account> generateEntities(int maxEntitiesCount) {
         List<Account> list = new LinkedList<>();
 
-        for(int i = 0; i < maxEntitiesCount; i++) {
+        for (int i = 0; i < maxEntitiesCount; i++) {
             list.add(generateEntity());
         }
 

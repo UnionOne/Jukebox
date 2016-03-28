@@ -1,9 +1,7 @@
 package com.itibo.grob.services.common;
 
-import com.itibo.grob.dataaccess.model.Account;
-import com.itibo.grob.dataaccess.model.Role;
-import com.itibo.grob.services.AccountService;
-import com.itibo.grob.services.RoleService;
+import com.itibo.grob.dataaccess.model.*;
+import com.itibo.grob.services.*;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,25 @@ public class EntityUtils {
     private AccountService accountService;
 
     @Autowired
+    private AlbumService albumService;
+
+    @Autowired
+    private BandService bandService;
+
+    @Autowired
+    private GenreService genreService;
+
+    @Autowired
+    private JukeboxService jukeboxService;
+
+    @Autowired
+    private MemberService memberService;
+
+    @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private TrackService trackService;
 
     public static String getRandomString(int length) {
         return RandomStringUtils.random(length, true, true);
@@ -44,7 +60,40 @@ public class EntityUtils {
                 getRandomString(MAX_STRING_LENGTH));
     }
 
+    public Album generateAlbum() {
+        return new Album(getRandomString(MAX_STRING_LENGTH),
+                getRandomString(MAX_STRING_LENGTH),
+                getRandomString(MAX_STRING_LENGTH));
+    }
+
+    public Band generateBand() {
+        return new Band(getRandomString(MAX_STRING_LENGTH),
+                getRandomString(MAX_STRING_LENGTH));
+    }
+
+    public Genre generateGenre() {
+        return new Genre(getRandomString(MAX_STRING_LENGTH));
+    }
+
+    public Jukebox generateJukebox() {
+        return new Jukebox();
+    }
+
+    public Member generateMember() {
+        return new Member(getRandomString(MAX_STRING_LENGTH),
+                getRandomString(MAX_STRING_LENGTH));
+    }
+
     public Role generateRole() {
         return new Role(getRandomString(MAX_STRING_LENGTH));
+    }
+
+    public Track generateTrack() {
+        return new Track(getRandomString(MAX_STRING_LENGTH),
+                getRandomString(MAX_STRING_LENGTH),
+                generateGenre(),
+                getRandomString(MAX_STRING_LENGTH),
+                getRandomString(MAX_STRING_LENGTH),
+                getRandomString(MAX_STRING_LENGTH));
     }
 }

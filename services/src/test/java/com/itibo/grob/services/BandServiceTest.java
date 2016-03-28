@@ -1,6 +1,6 @@
 package com.itibo.grob.services;
 
-import com.itibo.grob.dataaccess.model.Role;
+import com.itibo.grob.dataaccess.model.Band;
 import com.itibo.grob.services.common.GenericServiceTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,15 +8,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Transactional
-public class RoleServiceTest extends GenericServiceTest<Role, Integer, RoleService> {
+public class BandServiceTest extends GenericServiceTest<Band, Integer, BandService> {
     @Override
-    protected Role generateEntity() {
-        return entityUtils.generateRole();
+    protected Band generateEntity() {
+        return entityUtils.generateBand();
     }
 
     @Override
-    protected Iterable<? extends Role> generateEntities(int maxEntitiesCount) {
-        List<Role> list = new LinkedList<>();
+    protected Iterable<? extends Band> generateEntities(int maxEntitiesCount) {
+        List<Band> list = new LinkedList<>();
 
         for (int i = 0; i < maxEntitiesCount; i++) {
             list.add(generateEntity());
