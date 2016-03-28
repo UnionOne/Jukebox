@@ -11,7 +11,6 @@ import java.util.List;
 
 @Transactional
 public class AccountServiceTest extends GenericServiceTest<Account, Integer, AccountService> {
-
     @Override
     protected Account generateEntity() {
         return entityUtils.generateAccount();

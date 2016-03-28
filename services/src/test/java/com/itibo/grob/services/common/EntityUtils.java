@@ -1,7 +1,9 @@
 package com.itibo.grob.services.common;
 
 import com.itibo.grob.dataaccess.model.Account;
+import com.itibo.grob.dataaccess.model.Role;
 import com.itibo.grob.services.AccountService;
+import com.itibo.grob.services.RoleService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class EntityUtils {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private RoleService roleService;
 
     public static String getRandomString(int length) {
         return RandomStringUtils.random(length, true, true);
@@ -37,5 +42,9 @@ public class EntityUtils {
                 getRandomString(MAX_STRING_LENGTH),
                 getRandomString(MAX_STRING_LENGTH),
                 getRandomString(MAX_STRING_LENGTH));
+    }
+
+    public Role generateRole() {
+        return new Role(getRandomString(MAX_STRING_LENGTH));
     }
 }

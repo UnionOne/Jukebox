@@ -5,10 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Persistable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 
 import java.io.Serializable;
 import java.lang.reflect.Field;
@@ -156,9 +153,9 @@ public abstract class GenericServiceTest<T extends Persistable<ID>, ID extends S
 
     @Test
     public void findAllEntitiesByPageableTest() {
-        Iterable<T> found = service.findAll(sort);
+        Page<T> found = service.findAll(pageable);
         service.delete(found);
-        Assert.assertEquals(Collections.EMPTY_LIST, found);
+        Assert.assertEquals(service.findAll(pageable), found);
     }
 
     @Test

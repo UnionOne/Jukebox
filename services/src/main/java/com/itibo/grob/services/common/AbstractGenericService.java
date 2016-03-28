@@ -95,7 +95,7 @@ public abstract class AbstractGenericService<T extends Persistable<ID>, ID exten
     @Override
     public Iterable<T> findAll(Iterable<ID> ids) {
         LOGGER.debug("Finding all {} entities with ids {}", simpleTypeName, ids);
-        System.out.println("Finding all  " + simpleTypeName + " entities with ids" + ids);
+        System.out.println("Finding all  " + simpleTypeName + " entities with ids " + ids);
         Iterable<T> found = repository.findAll(ids);
         LOGGER.trace("Search results: {}", found);
         System.out.println("Search results: " + found);
@@ -106,7 +106,7 @@ public abstract class AbstractGenericService<T extends Persistable<ID>, ID exten
     @Override
     public Page<T> findAll(Pageable pageable) {
         LOGGER.debug("Finding all {} entities with pageable restrictions {}", simpleTypeName, pageable);
-        System.out.println("Finding all  " + simpleTypeName + " entities with pageable restrictions" + pageable);
+        System.out.println("Finding all  " + simpleTypeName + " entities with pageable restrictions " + pageable);
         Page<T> found = repository.findAll(pageable);
         LOGGER.trace("Search results: {}", found);
         System.out.println("Search results: " + found);
@@ -117,7 +117,7 @@ public abstract class AbstractGenericService<T extends Persistable<ID>, ID exten
     @Override
     public List<T> findAll(Sort sort) {
         LOGGER.debug("Finding all {} entities sorted by {}", simpleTypeName, sort);
-        System.out.println("Finding all  " + simpleTypeName + " entities sorted by" + sort);
+        System.out.println("Finding all  " + simpleTypeName + " entities sorted by " + sort);
         List<T> found = repository.findAll(sort);
         LOGGER.trace("Search results: {}", found);
         System.out.println("Search results: " + found);
@@ -128,7 +128,7 @@ public abstract class AbstractGenericService<T extends Persistable<ID>, ID exten
     @Override
     public T findOne(ID id) {
         LOGGER.debug("Finding all {} entities with id {}", simpleTypeName, id);
-        System.out.println("Finding all  " + simpleTypeName + " entities with id" + id);
+        System.out.println("Finding all  " + simpleTypeName + " entities with id " + id);
         T found = repository.findOne(id);
         LOGGER.trace("Search results: {}", found);
         System.out.println("Search results: " + found);
