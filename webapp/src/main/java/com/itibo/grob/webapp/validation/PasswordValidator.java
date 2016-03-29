@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 @FacesValidator("password")
 public class PasswordValidator implements Validator {
-    private static final String PASSWORD_PATTERN = "^[a-z0-9_-]{6,32}$";
+    private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9_-]{6,32}$";
 
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {

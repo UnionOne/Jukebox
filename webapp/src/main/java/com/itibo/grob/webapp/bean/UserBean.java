@@ -1,5 +1,7 @@
 package com.itibo.grob.webapp.bean;
 
+import com.itibo.grob.dataaccess.model.Account;
+import com.itibo.grob.services.AccountService;
 import com.itibo.grob.services.ManagerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +17,9 @@ public class UserBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Autowired
+    private AccountService accountService;
+
+    @Autowired
     private ManagerAccountService managerAccountService;
 
     private String login;
@@ -22,6 +27,12 @@ public class UserBean implements Serializable {
     private String email;
     private String firstName;
     private String lastName;
+
+    public void addUser() {
+        Account account = new Account(this.login, this.email, this.password, this.firstName, this.lastName);
+        managerAccountService.addAccount(account);
+        accountService.save(account);
+    }
 
     public String getLogin() {
         return login;

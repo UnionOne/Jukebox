@@ -51,7 +51,14 @@
                 <h:message for="lastName" id="lastNameError" style="color: red"/>
             </h:panelGrid>
 
-            <h:link value="back" outcome="default"/>
+            <h:commandButton value="Register" action="#{userBean.addUser}">
+                <f:ajax execute="login password email firstName lastName"/>
+            </h:commandButton>
+
+            <div>
+                <h:link value="back" outcome="default"/>
+            </div>
+
         </h:form>
     </h:body>
 </f:view>

@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 @FacesValidator("lastName")
 public class LastNameValidator implements Validator {
-    private static final String LAST_NAME_PATTERN = "^[a-z]{3,20}$";
+    private static final String LAST_NAME_PATTERN = "^[a-zA-Z]{3,20}$";
 
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
