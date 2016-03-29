@@ -19,17 +19,19 @@
         <bean:logout logout-success-url="/pages/login.xhtml?logout"/>
     </bean:http>
 
-    <!--<bean:authentication-manager>-->
-        <!--<bean:authentication-provider user-service-ref="customUserDetailsService"/>-->
-    <!--</bean:authentication-manager>-->
-
-    <bean:authentication-manager>
-        <bean:authentication-provider>
-            <bean:user-service>
-                <bean:user name="chiz" password="qwerty" authorities="ROLE_USER"/>
-            </bean:user-service>
+    <bean:authentication-manager alias="authenticationManager">
+        <bean:authentication-provider user-service-ref="customUserDetailsService">
+            <bean:password-encoder hash="plaintext"/>
         </bean:authentication-provider>
     </bean:authentication-manager>
+
+    <!--<bean:authentication-manager>-->
+        <!--<bean:authentication-provider>-->
+            <!--<bean:user-service>-->
+                <!--<bean:user name="chiz" password="qwerty" authorities="ROLE_USER"/>-->
+            <!--</bean:user-service>-->
+        <!--</bean:authentication-provider>-->
+    <!--</bean:authentication-manager>-->
 
     <import resource="classpath:spring-services-context.xml"/>
 
