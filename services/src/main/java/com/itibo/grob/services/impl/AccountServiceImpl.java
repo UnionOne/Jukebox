@@ -27,6 +27,7 @@ public class AccountServiceImpl extends AbstractGenericService<Account, Integer,
     public Account findOneAccountByLogin(String login) {
         LOGGER.info("Finding {} entity with login = {}", simpleTypeName, login);
         System.out.println("Finding " + simpleTypeName + " entity with login = " + login);
+        System.out.println("Account: " + repository.findOneAccountByLogin(login));
         return repository.findOneAccountByLogin(login);
     }
 
