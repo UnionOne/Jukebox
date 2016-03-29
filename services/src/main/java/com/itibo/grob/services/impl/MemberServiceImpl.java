@@ -21,7 +21,6 @@ public class MemberServiceImpl extends AbstractGenericService<Member, Integer, M
     @Override
     public List<Member> findAllMemberByFirstName(String name) {
         LOGGER.info("Finding {} entity with name = {}", simpleTypeName, name);
-        System.out.println("Finding " + simpleTypeName + " entity with name = " + name);
         return repository.findAllMemberByFirstName(name);
     }
 }

@@ -19,7 +19,6 @@ public class AlbumServiceImpl extends AbstractGenericService<Album, Integer, Alb
     @Override
     public Album findAlbumByNameIgnoreCase(String name) {
         LOGGER.info("Finding {} entity with name = {}", simpleTypeName, name);
-        System.out.println("Finding " + simpleTypeName + " entity with name = " + name);
         return repository.findAlbumByNameIgnoreCase(name);
     }
 }

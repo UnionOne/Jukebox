@@ -19,22 +19,18 @@ public class AccountServiceImpl extends AbstractGenericService<Account, Integer,
     @Override
     public Account findOneAccountById(Integer id) {
         LOGGER.info("Finding {} entity with id = {}", simpleTypeName, id);
-        System.out.println("Finding " + simpleTypeName + " entity with id = " + id);
         return repository.findOneAccountById(id);
     }
 
     @Override
     public Account findOneAccountByLogin(String login) {
         LOGGER.info("Finding {} entity with login = {}", simpleTypeName, login);
-        System.out.println("Finding " + simpleTypeName + " entity with login = " + login);
-        System.out.println("Account: " + repository.findOneAccountByLogin(login));
         return repository.findOneAccountByLogin(login);
     }
 
     @Override
     public Account deleteByLogin(String login) {
         LOGGER.info("Deleting {} entity with login = {}", simpleTypeName, login);
-        System.out.println("Deleting " + simpleTypeName + " entity with login = " + login);
         return repository.deleteByLogin(login);
     }
 }

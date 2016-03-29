@@ -21,7 +21,6 @@ public class GenreServiceImpl extends AbstractGenericService<Genre, Integer, Gen
     @Override
     public List<Genre> findAllByNameIgnoreCase(String name) {
         LOGGER.info("Finding {} entity with name = {}", simpleTypeName, name);
-        System.out.println("Finding " + simpleTypeName + " entity with name = " + name);
         return repository.findAllByNameIgnoreCase(name);
     }
 }
