@@ -18,8 +18,8 @@ public class UserBean implements Serializable {
     private ManagerAccountService managerAccountService;
 
     private String login;
-    private String email;
     private String password;
+    private String email;
     private String firstName;
     private String lastName;
 

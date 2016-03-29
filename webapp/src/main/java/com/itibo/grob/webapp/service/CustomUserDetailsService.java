@@ -33,11 +33,11 @@ public class CustomUserDetailsService implements UserDetailsService {
         );
     }
 
-    public Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
+    private Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
         return getGrantedAuthorities(getRoles(role));
     }
 
-    public List<String> getRoles(Integer role) {
+    private List<String> getRoles(Integer role) {
 
         List<String> roles = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         return roles;
     }
 
-    public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
+    private static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         for (String role : roles) {

@@ -9,16 +9,16 @@ import javax.faces.validator.ValidatorException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@FacesValidator("login")
-public class LoginValidator implements Validator {
-    private static final String LOGIN_PATTERN = "^[a-z0-9_-]{3,20}$";
+@FacesValidator("email")
+public class EmailValidator implements Validator {
+    private static final String EMAIL_PATTERN = "^([a-z0-9_-]+)@([a-z0-9_-]+)\\.([a-z]{2,6})$";
 
     @Override
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
-        Pattern pattern = Pattern.compile(LOGIN_PATTERN);
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(o.toString());
         if (!matcher.matches()) {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login is not ok", null));
+            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email is not ok", null));
         }
     }
 }

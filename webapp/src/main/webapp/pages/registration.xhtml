@@ -12,8 +12,6 @@
 </h:head>
 
 <f:view>
-    <h:outputLabel value="Hello, world"/>
-
     <h:body>
         <h:form>
             <h:panelGrid columns="3">
@@ -23,7 +21,37 @@
                     <f:ajax event="blur" execute="@this" render="loginError"/>
                 </h:inputText>
                 <h:message for="login" id="loginError" style="color: red"/>
+
+                <h:outputLabel value="Password"/>
+                <h:inputSecret id="password" value="#{userBean.password}">
+                    <f:validator validatorId="password"/>
+                    <f:ajax event="blur" execute="@this" render="passwordError"/>
+                </h:inputSecret>
+                <h:message for="password" id="passwordError" style="color: red"/>
+
+                <h:outputLabel value="Email"/>
+                <h:inputText id="email" value="#{userBean.email}">
+                    <f:validator validatorId="email"/>
+                    <f:ajax event="blur" execute="@this" render="emailError"/>
+                </h:inputText>
+                <h:message for="email" id="emailError" style="color: red"/>
+
+                <h:outputLabel value="First Name"/>
+                <h:inputText id="firstName" value="#{userBean.firstName}">
+                    <f:validator validatorId="firstName"/>
+                    <f:ajax event="blur" execute="@this" render="firstNameError"/>
+                </h:inputText>
+                <h:message for="firstName" id="firstNameError" style="color: red"/>
+
+                <h:outputLabel value="Last Name"/>
+                <h:inputText id="lastName" value="#{userBean.lastName}">
+                    <f:validator validatorId="lastName"/>
+                    <f:ajax event="blur" execute="@this" render="lastNameError"/>
+                </h:inputText>
+                <h:message for="lastName" id="lastNameError" style="color: red"/>
             </h:panelGrid>
+
+            <h:link value="back" outcome="default"/>
         </h:form>
     </h:body>
 </f:view>
