@@ -1,16 +1,16 @@
 CREATE TABLE account(
   id SERIAL PRIMARY KEY NOT NULL,
-  login CHAR(50) UNIQUE NOT NULL,
-  email CHAR(50) UNIQUE NOT NULL,
-  password CHAR(50) NOT NULL,
-  first_name CHAR(50) NOT NULL,
-  last_name CHAR(50) NOT NULL,
+  login TEXT UNIQUE NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
   jukebox_id INTEGER
 );
 
 CREATE TABLE role(
   id SERIAL PRIMARY KEY NOT NULL,
-  name CHAR(25) NOT NULL
+  name TEXT NOT NULL
 );
 
 CREATE TABLE account_role(
@@ -21,12 +21,12 @@ CREATE TABLE account_role(
 
 CREATE TABLE track(
   id SERIAL PRIMARY KEY NOT NULL,
-  name CHAR(50) NOT NULL,
-  duration CHAR(50) NOT NULL,
+  name TEXT NOT NULL,
+  duration TEXT NOT NULL,
   genre_id INTEGER NOT NULL,
-  album CHAR(50) NOT NULL,
-  band CHAR(50) NOT NULL,
-  link CHAR(100) NOT NULL
+  album TEXT NOT NULL,
+  band TEXT NOT NULL,
+  link TEXT NOT NULL
 );
 
 CREATE TABLE jukebox(
@@ -41,34 +41,28 @@ CREATE TABLE jukebox_track(
 
 CREATE TABLE genre(
   id SERIAL PRIMARY KEY NOT NULL,
-  name CHAR(50) NOT NULL
-);
-
-CREATE TABLE track_genre(
-  id SERIAL PRIMARY KEY NOT NULL,
-  genre_id INTEGER NOT NULL,
-  track_id INTEGER NOT NULL
+  name TEXT NOT NULL
 );
 
 CREATE TABLE album(
   id SERIAL PRIMARY KEY NOT NULL,
-  name CHAR(50) NOT NULL,
-  year CHAR(25),
-  band CHAR(50),
+  name TEXT NOT NULL,
+  year TEXT,
+  band TEXT,
   description TEXT
 );
 
 CREATE TABLE band(
   id SERIAL PRIMARY KEY NOT NULL,
-  name CHAR(50) UNIQUE NOT NULL,
-  year CHAR(50),
-  description CHAR(50)
+  name TEXT UNIQUE NOT NULL,
+  year TEXT,
+  description TEXT
 );
 
 CREATE TABLE member(
   id SERIAL PRIMARY KEY NOT NULL,
-  first_name CHAR(50) NOT NULL,
-  last_name CHAR(50) NOT NULL,
+  first_name TEXT NOT NULL,
+  last_name TEXT NOT NULL,
   biography TEXT
 );
 

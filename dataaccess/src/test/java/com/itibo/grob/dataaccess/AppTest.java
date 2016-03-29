@@ -48,7 +48,7 @@ public class AppTest {
 
 
     @Before
-    @Rollback(false)
+    @Rollback(true)
     public void setUp() {
         // USER
 

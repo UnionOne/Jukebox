@@ -27,55 +27,10 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
-//        if (account.getRoles().size() == 1) {
-//            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-//        } else if (account.getRoles().size() == 2) {
-//            authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-//            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-//        }
-
         for (Role role : account.getRoles()) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
         return new User(account.getLogin(), account.getPassword(), true, true, true, true, authorities);
     }
-
-//    @Override
-//    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-//        Account account = accountService.findOneAccountByLogin(login);
-//
-//        return new User(
-//                account.getLogin(),
-//                account.getPassword(),
-//                true, true, true, true,
-//                getAuthorities(account.getRoles().size())
-//        );
-//    }
-//
-//    private Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
-//        return getGrantedAuthorities(getRoles(role));
-//    }
-//
-//    private List<String> getRoles(Integer role) {
-//
-//        List<String> roles = new ArrayList<>();
-//
-//        if (role == 2) {
-//            roles.add("ROLE_USER");
-//            roles.add("ROLE_ADMIN");
-//        } else if (role == 1) {
-//            roles.add("ROLE_USER");
-//        }
-//        return roles;
-//    }
-//
-//    private static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
-//        List<GrantedAuthority> authorities = new ArrayList<>();
-//
-//        for (String role : roles) {
-//            authorities.add(new SimpleGrantedAuthority(role));
-//        }
-//        return authorities;
-//    }
 }
