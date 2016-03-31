@@ -5,7 +5,6 @@
 body {
     padding-top: 40px;
     padding-bottom: 40px;
-    background-color: #eee;
 }
 
 .form-signin {
@@ -38,4 +37,22 @@ body {
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px){
+    .header .marketing .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+.marketing {
+    margin: 40px 0;
 }
