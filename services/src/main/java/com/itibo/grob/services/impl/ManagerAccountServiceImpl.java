@@ -1,8 +1,10 @@
 package com.itibo.grob.services.impl;
 
 import com.itibo.grob.dataaccess.model.Account;
+import com.itibo.grob.dataaccess.model.Jukebox;
 import com.itibo.grob.dataaccess.model.Role;
 import com.itibo.grob.services.AccountService;
+import com.itibo.grob.services.JukeboxService;
 import com.itibo.grob.services.ManagerAccountService;
 import com.itibo.grob.services.RoleService;
 import org.slf4j.Logger;
@@ -25,13 +27,20 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private JukeboxService jukeboxService;
+
     @Override
     public void addAccount(Account account) {
         List<Role> roles = new ArrayList<>();
         roles.add(new Role("ROLE_USER"));
         roleService.save(roles);
 
+        Jukebox jukebox = new Jukebox();
+        jukeboxService.save(jukebox);
+
         account.setRoles(roles);
+        account.setJukebox(jukebox);
         accountService.save(account);
 
         LOGGER.info("Setting role to {} entity", account);
