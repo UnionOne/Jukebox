@@ -60,3 +60,7 @@ body {
 .footer {
     text-align: center;
 }
+
+.control-label {
+    font-size: medium;
+}

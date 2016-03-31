@@ -29,9 +29,20 @@ public class UserBean implements Serializable {
     private String lastName;
 
     public void addUser() {
-        Account account = new Account(this.login, this.email, this.password, this.firstName, this.lastName);
-        managerAccountService.addAccount(account);
-        accountService.save(account);
+        Integer id = accountService.findOneAccountByLogin(this.login).getId();
+        if(!accountService.exists(id)) {
+            Account account = new Account(this.login, this.email, this.password, this.firstName, this.lastName);
+            managerAccountService.addAccount(account);
+            accountService.save(account);
+        }
+    }
+
+    public void reset() {
+        this.login = null;
+        this.password = null;
+        this.email = null;
+        this.firstName = null;
+        this.lastName = null;
     }
 
     public String getLogin() {

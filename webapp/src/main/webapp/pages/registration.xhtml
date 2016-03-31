@@ -1,67 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:reset="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-    <h:outputLabel value="Regitration"/>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 
 <f:view>
-    <h:body>
-        <h:form>
-            <h:panelGrid columns="3">
-                <h:outputLabel value="Login"/>
-                <h:inputText id="login" value="#{userBean.login}" required="true">
-                    <f:validator validatorId="login"/>
-                    <f:ajax event="blur" execute="@this" render="loginError"/>
-                </h:inputText>
-                <h:message for="login" id="loginError" style="color: red"/>
 
-                <h:outputLabel value="Password"/>
-                <h:inputSecret id="password" value="#{userBean.password}" required="true">
-                    <f:validator validatorId="password"/>
-                    <f:ajax event="blur" execute="@this" render="passwordError"/>
-                </h:inputSecret>
-                <h:message for="password" id="passwordError" style="color: red"/>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation">
+                        <h:link value="Home" outcome="default"/>
+                    </li>
 
-                <h:outputLabel value="Email"/>
-                <h:inputText id="email" value="#{userBean.email}" required="true">
-                    <f:validator validatorId="email"/>
-                    <f:ajax event="blur" execute="@this" render="emailError"/>
-                </h:inputText>
-                <h:message for="email" id="emailError" style="color: red"/>
+                    <li role="presentation" class="active">
+                        <h:link value="Registration" outcome="registration"/>
+                    </li>
 
-                <h:outputLabel value="First Name"/>
-                <h:inputText id="firstName" value="#{userBean.firstName}" required="true">
-                    <f:validator validatorId="firstName"/>
-                    <f:ajax event="blur" execute="@this" render="firstNameError"/>
-                </h:inputText>
-                <h:message for="firstName" id="firstNameError" style="color: red"/>
+                    <li role="presentation">
+                        <h:link value="Sig In" outcome="login"/>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Jukebox</h3>
+        </div>
 
-                <h:outputLabel value="Last Name"/>
-                <h:inputText id="lastName" value="#{userBean.lastName}" required="true">
-                    <f:validator validatorId="lastName"/>
-                    <f:ajax event="blur" execute="@this" render="lastNameError"/>
-                </h:inputText>
-                <h:message for="lastName" id="lastNameError" style="color: red"/>
-            </h:panelGrid>
+        <div class="jumbotron">
+            <h:form styleClass="form-horizontal">
 
-            <h:commandButton value="Register" action="#{userBean.addUser}">
-                <f:ajax execute="login password email firstName lastName"/>
-            </h:commandButton>
+                <div class="form-group">
+                    <h:outputLabel value="Login" styleClass="col-lg-4 control-label"/>
+                    <div class="col-md-4">
+                        <h:inputText id="login" value="#{userBean.login}" a:placeholder="Login"
+                                     styleClass="form-control input-lg" required="true">
+                            <f:validator validatorId="login"/>
+                            <f:ajax event="blur" execute="@this" render="loginError"/>
+                        </h:inputText>
+                        <h:message for="login" id="loginError" style="color: red"/>
+                    </div>
+                </div>
 
-            <h:button value="Sign In" outcome="login"/>
+                <div class="form-group">
+                    <h:outputLabel value="Password" styleClass="col-md-4 control-label"/>
+                    <div class="col-md-4">
+                        <h:inputSecret id="password" value="#{userBean.password}" a:placeholder="Password"
+                                       styleClass="form-control input-lg" required="true">
+                            <f:validator validatorId="password"/>
+                            <f:ajax event="blur" execute="@this" render="passwordError"/>
+                        </h:inputSecret>
+                        <h:message for="password" id="passwordError" style="color: red"/>
+                    </div>
+                </div>
 
-            <div>
-                <h:link value="Home" outcome="default"/>
-            </div>
+                <div class="form-group">
+                    <h:outputLabel value="Email" styleClass="col-md-4 control-label"/>
+                    <div class="col-md-4">
+                        <h:inputText id="email" value="#{userBean.email}" a:placeholder="Email"
+                                     styleClass="form-control input-lg" required="true">
+                            <f:validator validatorId="email"/>
+                            <f:ajax event="blur" execute="@this" render="emailError"/>
+                        </h:inputText>
+                        <h:message for="email" id="emailError" style="color: red"/>
+                    </div>
+                </div>
 
-        </h:form>
-    </h:body>
+                <div class="form-group">
+                    <h:outputLabel value="First Name" styleClass="col-md-4 control-label"/>
+                    <div class="col-md-4">
+                        <h:inputText id="firstName" value="#{userBean.firstName}" a:placeholder="First Name"
+                                     styleClass="form-control input-lg" required="true">
+                            <f:validator validatorId="firstName"/>
+                            <f:ajax event="blur" execute="@this" render="firstNameError"/>
+                        </h:inputText>
+                        <h:message for="firstName" id="firstNameError" style="color: red"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h:outputLabel value="Last Name" styleClass="col-md-4 control-label" for="lastName"/>
+                    <div class="col-md-4">
+                        <h:inputText id="lastName" value="#{userBean.lastName}" a:placeholder="Last Name"
+                                     styleClass="form-control input-lg" required="true">
+                            <f:validator validatorId="lastName"/>
+                            <f:ajax event="blur" execute="@this" render="lastNameError"/>
+                        </h:inputText>
+                        <h:message for="lastName" id="lastNameError" style="color: red"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <h:commandButton value="Register" action="#{userBean.addUser}" style="margin: 5px"
+                                     styleClass="btn btn-lg btn-primary">
+                        <f:ajax execute="login password email firstName lastName"/>
+                    </h:commandButton>
+
+                    <h:commandButton value="Reset" action="#{userBean.reset}" style="margin: 5px"
+                                        styleClass="btn btn-lg btn-danger">
+                    </h:commandButton>
+                </div>
+            </h:form>
+        </div>
+
+        <footer class="footer">
+            <p>© 2016 Jukebox.</p>
+        </footer>
+    </div>
 </f:view>
 </html>
