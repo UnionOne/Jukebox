@@ -17,8 +17,8 @@ public class LoginValidator implements Validator {
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
         Pattern pattern = Pattern.compile(LOGIN_PATTERN);
         Matcher matcher = pattern.matcher(o.toString());
-        if (!matcher.matches()) {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login is not ok", null));
+        if (!matcher.matches() || o.toString().equals("")) {
+            throw new ValidatorException(new FacesMessage("Login is not ok"));
         }
     }
 }

@@ -17,8 +17,8 @@ public class PasswordValidator implements Validator {
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
         Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
         Matcher matcher = pattern.matcher(o.toString());
-        if (!matcher.matches()) {
-            throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Password is not ok", null));
+        if (!matcher.matches() || o.toString().equals("")) {
+            throw new ValidatorException(new FacesMessage("Password is not ok"));
         }
     }
 }
