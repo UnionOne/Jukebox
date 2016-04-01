@@ -5,17 +5,44 @@
       xmlns:file="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="style.css"/>
+</h:head>
+
 <f:view>
-    <h:outputLabel value="Eto Jukebox from account tipa"/>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation">
+                        <h:link value="My Account" outcome="cabinet.xhtml"/>
+                    </li>
 
-    <a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
+                    <li role="presentation" class="active">
+                        <h:link value="Jukebox" outcome="jukebox"/>
+                    </li>
 
-    <audio controls="controls">
-        <source src="${pageContext.request.contextPath}/faces/resources/audio/music.mp3" type="audio/mpeg"/>
-    </audio>
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">Jukebox</h3>
+        </div>
 
-    <div>
-        <h:link value="Account Cabinet" outcome="cabinet.xhtml"/>
+        <div class="jumbotron">
+            <h:outputLabel value="Eto Jukebox from account tipa"/>
+
+            <audio controls="controls">
+                <source src="${pageContext.request.contextPath}/faces/resources/audio/music.mp3" type="audio/mpeg"/>
+            </audio>
+
+        </div>
+
+        <footer class="footer">
+            <p>© 2016 Jukebox.</p>
+        </footer>
     </div>
 </f:view>
 </html>

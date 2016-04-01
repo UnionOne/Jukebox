@@ -4,6 +4,9 @@ import com.itibo.grob.dataaccess.model.Account;
 import com.itibo.grob.services.AccountService;
 import com.itibo.grob.services.ManagerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
@@ -45,6 +48,14 @@ public class UserBean implements Serializable {
         this.email = "";
         this.firstName = "";
         this.lastName = "";
+    }
+
+    public String getAuthUsername() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if(!(authentication instanceof AnonymousAuthenticationToken)) {
+            return authentication.getName();
+        }
+        return null;
     }
 
     public String getLogin() {
