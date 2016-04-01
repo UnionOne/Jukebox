@@ -50,12 +50,16 @@ public class UserBean implements Serializable {
         this.lastName = "";
     }
 
-    public String getAuthUsername() {
+    private String getAuthUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(!(authentication instanceof AnonymousAuthenticationToken)) {
             return authentication.getName();
         }
         return null;
+    }
+
+    public Account getAuthAccount() {
+        return accountService.findOneAccountByLogin(getAuthUsername());
     }
 
     public String getLogin() {

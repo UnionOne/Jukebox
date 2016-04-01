@@ -31,9 +31,48 @@
         </div>
 
         <div class="jumbotron">
-            <h:outputLabel value="Account Details"/>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="well well-lg">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4">
+                                    <img src="http://placehold.it/380x500" class="img-rounded img-responsive"/>
+                                </div>
+                                <div class="input-group" style="margin-bottom: 25px">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"/>
+                                    </span>
+                                    <h:inputText styleClass="form-control username" value="#{userBean.getAuthAccount().login}"/>
+                                </div>
 
-            <h:outputLabel value="#{userBean.getAuthUsername()}"/>
+                                <div class="input-group" style="margin-bottom: 25px">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-envelope"/>
+                                    </span>
+                                    <h:inputText styleClass="form-control text" value="#{userBean.getAuthAccount().email}"/>
+                                </div>
+
+                                <div class="input-group" style="margin-bottom: 25px">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-sunglasses"/>
+                                    </span>
+                                    <h:inputText styleClass="form-control text" value="#{userBean.getAuthAccount().firstName}"/>
+                                </div>
+
+                                <div class="input-group" style="margin-bottom: 25px">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-tag"/>
+                                    </span>
+                                    <h:inputText styleClass="form-control text" value="#{userBean.getAuthAccount().lastName}"/>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <footer class="footer">
