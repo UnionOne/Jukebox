@@ -7,6 +7,8 @@
 <h:head>
     <h:outputStylesheet library="css" name="bootstrap.css"/>
     <h:outputStylesheet library="css" name="style.css"/>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"
+          type="text/css"/>
 </h:head>
 
 <f:view>
@@ -29,7 +31,7 @@
             </nav>
             <h3 class="text-muted">Jukebox</h3>
         </div>
-
+        <hr/>
         <div class="jumbotron">
             <h1>Jukebox</h1>
 
@@ -42,35 +44,49 @@
             </p>
         </div>
 
-        <div class="row marketing">
-            <div class="col-lg-4">
-                <h4>Metallica</h4>
-                <p>Metallica is an American heavy metal band formed in Los Angeles, California.
-                    Metallica was formed in 1981 when vocalist/guitarist James Hetfield
-                    responded to an advertisement posted by drummer Lars Ulrich in a local newspaper.
-                </p>
-            </div>
+        <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h:graphicImage styleClass="img-rounded" library="img" name="metallica.png" width="160" height="160"/>
+                    <h4>Metallica</h4>
+                    <p>Metallica is an American heavy metal band formed in Los Angeles, California.
+                        Metallica was formed in 1981 when vocalist/guitarist James Hetfield
+                        responded to an advertisement posted by drummer Lars Ulrich in a local newspaper.
+                    </p>
+                    <p>
+                        <h:link styleClass="btn btn-default" value="View details »" outcome="login"/>
+                    </p>
+                </div>
 
-            <div class="col-lg-4">
-                <h4>Grazhdanskaya Oborona</h4>
-                <p>Grazhdanskaya Oborona were one of the earliest Soviet and Russian psychedelic/punk rock bands.
-                    They influenced many Soviet and, subsequently, Russian bands.
-                    From the early 1990s, the band's music began to evolve in the direction of
-                    psychedelic rock and shoegaze, and band leader Yegor Letov's lyrics became more
-                    metaphysical than political.
-                </p>
-            </div>
+                <div class="col-lg-4">
+                    <h:graphicImage styleClass="img-circle" library="img" name="grob.jpg" width="160" height="160"/>
+                    <h4>Grazhdanskaya Oborona</h4>
+                    <p>Grazhdanskaya Oborona were one of the earliest Soviet and Russian psychedelic/punk rock bands.
+                        They influenced many Soviet and, subsequently, Russian bands.
+                        From the early 1990s, the band's music began to evolve in the direction of
+                        psychedelic rock and shoegaze, and band leader Yegor Letov's lyrics became more
+                        metaphysical than political.
+                    </p>
+                    <p>
+                        <h:link styleClass="btn btn-default" value="View details »" outcome="login"/>
+                    </p>
+                </div>
 
-            <div class="col-lg-4">
-                <h4>Iron Maiden</h4>
-                <p>Iron Maiden are an English heavy metal band formed in Leyton, East London,
-                    in 1975 by bassist and primary songwriter Steve Harris.
-                    The band's discography has grown to thirty-eight albums,
-                    including sixteen studio albums, eleven live albums, four EPs, and seven compilations.
-                </p>
+                <div class="col-lg-4">
+                    <h:graphicImage styleClass="img-circle" library="img" name="iron.png" width="160" height="160"/>
+                    <h4>Iron Maiden</h4>
+                    <p>Iron Maiden are an English heavy metal band formed in Leyton, East London,
+                        in 1975 by bassist and primary songwriter Steve Harris.
+                        The band's discography has grown to thirty-eight albums,
+                        including sixteen studio albums, eleven live albums, four EPs, and seven compilations.
+                    </p>
+                    <p>
+                        <h:link styleClass="btn btn-default" value="View details »" outcome="login"/>
+                    </p>
+                </div>
             </div>
         </div>
-
+        <hr/>
         <footer class="footer">
             <p>© 2016 Jukebox.</p>
         </footer>

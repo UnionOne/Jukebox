@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.FaceletException;
 import java.io.Serializable;
 
 @ManagedBean(name = "userBean")
@@ -32,13 +34,9 @@ public class UserBean implements Serializable {
     private String lastName;
 
     public void addUser() {
-        if (!login.equals("") && !email.equals("") && !password.equals("") && !firstName.equals("") && !lastName.equals("")) {
-            Integer id = accountService.findOneAccountByLogin(this.login).getId();
-            if (!accountService.exists(id)) {
-                Account account = new Account(this.login, this.email, this.password, this.firstName, this.lastName);
-                managerAccountService.addAccount(account);
-                accountService.save(account);
-            }
+        if (!login.isEmpty() && !email.isEmpty() && !password.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty()) {
+            Account newAccount = new Account(this.login, this.email, this.password, this.firstName, this.lastName);
+            managerAccountService.addAccount(newAccount);
         }
     }
 
@@ -52,7 +50,7 @@ public class UserBean implements Serializable {
 
     private String getAuthUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(!(authentication instanceof AnonymousAuthenticationToken)) {
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
             return authentication.getName();
         }
         return null;

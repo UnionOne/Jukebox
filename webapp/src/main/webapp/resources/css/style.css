@@ -2,9 +2,10 @@
     padding: 0;
     margin: 0;
 }
+
 body {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .form-signin {
@@ -61,6 +62,11 @@ body {
 
 .marketing {
     margin: 40px 0;
+}
+
+.marketing .col-lg-4 {
+    margin-bottom: 20px;
+    text-align: center;
 }
 
 .footer {
