@@ -15,7 +15,7 @@
         <bean:intercept-url pattern="/pages/default.xhtml" access="permitAll"/>
         <bean:intercept-url pattern="/pages/registration.xhtml" access="permitAll"/>
         <bean:intercept-url pattern="/pages/jukebox.xhtml" access="hasAuthority('ROLE_USER')"/>
-        <bean:intercept-url pattern="/pages/cabinet.xhtml" access="hasAuthority('ROLE_USER')"/>
+        <bean:intercept-url pattern="/pages/account.xhtml" access="hasAuthority('ROLE_USER')"/>
         <bean:form-login login-page="/pages/login.xhtml" default-target-url="/pages/jukebox.xhtml"
                          authentication-failure-url="/pages/login.xhtml?auth=fail"/>
         <bean:logout logout-success-url="/pages/login.xhtml?logout"/>

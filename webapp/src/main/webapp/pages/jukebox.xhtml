@@ -4,7 +4,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:file="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
     <h:outputStylesheet library="css" name="bootstrap.css"/>
     <h:outputStylesheet library="css" name="style.css"/>
@@ -16,7 +17,7 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation">
-                        <h:link value="My Account" outcome="cabinet.xhtml"/>
+                        <h:link value="My Account" outcome="account.xhtml"/>
                     </li>
 
                     <li role="presentation" class="active">
@@ -34,9 +35,9 @@
         <div class="jumbotron">
             <h:outputLabel value="Eto Jukebox from account tipa"/>
 
-            <audio controls="controls">
-                <source src="${pageContext.request.contextPath}/faces/resources/audio/music.mp3" type="audio/mpeg"/>
-            </audio>
+            <!--<audio controls="controls">-->
+                <!--<source src="${pageContext.request.contextPath}/faces/resources/audio/music.mp3" type="audio/mpeg"/>-->
+            <!--</audio>-->
 
         </div>
         <hr/>

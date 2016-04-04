@@ -1,7 +1,9 @@
 package com.itibo.grob.webapp.bean;
 
 import com.itibo.grob.dataaccess.model.Account;
+import com.itibo.grob.dataaccess.model.Jukebox;
 import com.itibo.grob.services.AccountService;
+import com.itibo.grob.services.JukeboxService;
 import com.itibo.grob.services.ManagerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -11,8 +13,6 @@ import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.view.facelets.FaceletContext;
-import javax.faces.view.facelets.FaceletException;
 import java.io.Serializable;
 
 @ManagedBean(name = "userBean")
@@ -23,6 +23,9 @@ public class UserBean implements Serializable {
 
     @Autowired
     private AccountService accountService;
+
+    @Autowired
+    private JukeboxService jukeboxService;
 
     @Autowired
     private ManagerAccountService managerAccountService;
