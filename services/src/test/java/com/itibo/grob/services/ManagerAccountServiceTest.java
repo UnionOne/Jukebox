@@ -1,6 +1,7 @@
 package com.itibo.grob.services;
 
 import com.itibo.grob.dataaccess.model.Account;
+import com.itibo.grob.dataaccess.model.Track;
 import com.itibo.grob.services.common.AbstractSpringTest;
 import com.itibo.grob.services.common.EntityUtils;
 import org.junit.Before;
@@ -19,14 +20,22 @@ public class ManagerAccountServiceTest extends AbstractSpringTest{
     private ManagerAccountService managerAccountService;
 
     private Account account;
+    private Track track;
 
     @Before
     public void before() {
         account = entityUtils.generateAccount();
+        track = entityUtils.generateTrack();
     }
 
     @Test
     public void addAccountTest() {
         managerAccountService.addAccount(account);
+    }
+
+    @Test
+    public void addTrackTest() {
+        managerAccountService.addAccount(account);
+        managerAccountService.addTrack(account, track);
     }
 }

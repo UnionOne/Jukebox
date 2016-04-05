@@ -4,10 +4,7 @@ import com.itibo.grob.dataaccess.model.Account;
 import com.itibo.grob.dataaccess.model.Genre;
 import com.itibo.grob.dataaccess.model.Jukebox;
 import com.itibo.grob.dataaccess.model.Track;
-import com.itibo.grob.services.AccountService;
-import com.itibo.grob.services.GenreService;
-import com.itibo.grob.services.JukeboxService;
-import com.itibo.grob.services.TrackService;
+import com.itibo.grob.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -27,6 +24,9 @@ public class JukeboxBean {
     private AccountService accountService;
 
     @Autowired
+    ManagerAccountService managerAccountService;
+
+    @Autowired
     private JukeboxService jukeboxService;
 
     @Autowired
@@ -43,17 +43,10 @@ public class JukeboxBean {
     private String link;
 
     public void addTrack() {
-        Account account = getAccount();
-
         Genre genre = new Genre(genreName);
-        genreService.save(genre);
+        Track track = new Track(name, duration, genre, album, band, link);
 
-        assert account != null;
-        List<Track> tracks = account.getJukebox().getTracks();
-        tracks.add(new Track(name, duration, genre, album, band, link));
-        trackService.save(tracks);
-
-        accountService.save(account);
+        managerAccountService.addTrack(getAccount(), track);
     }
 
     private Account getAccount() {
