@@ -5,7 +5,8 @@
       xmlns:file="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://java.sun.com/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
     <h:outputStylesheet library="css" name="bootstrap.css"/>
     <h:outputStylesheet library="css" name="style.css"/>
@@ -33,10 +34,119 @@
         </div>
         <hr/>
         <div class="jumbotron">
+            <div class="container">
+                <ul class="nav nav-pills pull-left">
+                    <li role="presentation">
+                        <h:commandButton value="Add new" onclick="PF('dlg').show();"
+                                         styleClass="btn btn-md btn-primary"/>
+                    </li>
+                </ul>
+            </div>
+
             <h:outputLabel value="Eto Jukebox from account tipa"/>
 
+            <p:dialog header="Track" widgetVar="dlg" resizable="false">
+                <!--<h:outputLabel for="name" value="Name"/>-->
+                <!--<p:inputText id="name" value="#{jukeboxBean.name}" a:placeholder="Name"/>-->
+                <h:form styleClass="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Name</label>
+                        <div class="col-md-8">
+                            <h:inputText id="name" a:placeholder="Name" value="#{jukeboxBean.name}"
+                                         styleClass="form-control input-sm"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Duration</label>
+                        <div class="col-md-8">
+                            <h:inputText id="duration" a:placeholder="Duration" value="#{jukeboxBean.duration}"
+                                         styleClass="form-control input-sm"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Genre</label>
+                        <div class="col-md-8">
+                            <h:inputText id="genre" a:placeholder="Genre" value="#{jukeboxBean.genreName}"
+                                         styleClass="form-control input-sm"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Album</label>
+                        <div class="col-md-8">
+                            <h:inputText id="album" a:placeholder="Album" value="#{jukeboxBean.album}"
+                                         styleClass="form-control input-sm"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Band</label>
+                        <div class="col-md-8">
+                            <h:inputText id="band" a:placeholder="Band" value="#{jukeboxBean.band}"
+                                         styleClass="form-control input-sm"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Link</label>
+                        <div class="col-md-8">
+                            <h:inputText id="link" a:placeholder="Link" value="#{jukeboxBean.link}"
+                                         styleClass="form-control input-sm"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"/>
+                        <div class="col-md-8">
+                            <h:commandButton value="Add new" action="#{jukeboxBean.addTrack}"
+                                             styleClass="btn btn-success">
+                                <f:ajax execute="name duration genre album band link"/>
+                            </h:commandButton>
+                            <h:commandButton value="Reset" action="#{jukeboxBean.reset}"
+                                             styleClass="btn btn-danger"/>
+                        </div>
+                    </div>
+                </h:form>
+            </p:dialog>
+
+            <div class="container">
+                <div class="table-responsive">
+                    <p:dataTable var="track" value="#{jukeboxBean.trackList()}" rows="10"
+                                 styleClass="table table-bordered"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 rowsPerPageTemplate="5, 10, 15">
+
+                        <p:column headerText="Name">
+                            <h:outputText value="#{track.name}"/>
+                        </p:column>
+
+                        <p:column headerText="Duration">
+                            <h:outputText value="#{track.duration}"/>
+                        </p:column>
+
+                        <p:column headerText="Album">
+                            <h:outputText value="#{track.album}"/>
+                        </p:column>
+
+                        <p:column headerText="Band">
+                            <h:outputText value="#{track.band}"/>
+                        </p:column>
+
+                        <p:column headerText="Link">
+                            <a href="#{track.link}" class="btn btn-default btn-md">
+                                <span class="glyphicon glyphicon-play" aria-hidden="true"/> Star
+                            </a>
+                        </p:column>
+
+                    </p:dataTable>
+                </div>
+            </div>
+
             <!--<audio controls="controls">-->
-                <!--<source src="${pageContext.request.contextPath}/faces/resources/audio/music.mp3" type="audio/mpeg"/>-->
+            <!--<source src="${pageContext.request.contextPath}/faces/resources/audio/music.mp3" type="audio/mpeg"/>-->
             <!--</audio>-->
 
         </div>

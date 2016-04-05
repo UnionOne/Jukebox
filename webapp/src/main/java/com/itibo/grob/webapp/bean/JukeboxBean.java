@@ -57,6 +57,10 @@ public class JukeboxBean {
         return null;
     }
 
+    public List<Track> trackList() {
+       return getAccount().getJukebox().getTracks();
+    }
+
     public void reset() {
         name = "";
         duration = "";
