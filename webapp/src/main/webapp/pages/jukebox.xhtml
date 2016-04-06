@@ -10,6 +10,7 @@
 <h:head>
     <h:outputStylesheet library="css" name="bootstrap.css"/>
     <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="css" name="bootstrap3_player.css"/>
 </h:head>
 
 <f:view>
@@ -30,20 +31,23 @@
                     </li>
                 </ul>
             </nav>
-            <h3 class="text-muted">Jukebox</h3>
+            <!--<h3 class="text-muted">Jukebox</h3>-->
+            <div class="row col-md-6 col-md-offset-3 col-xs-12" style="margin-left: -1%; width: 50%;">
+                <audio controls="controls">
+                    <source src="http://www.w3schools.com/html/horse.mp3" type="audio/mpeg"/>
+                </audio>
+            </div>
         </div>
         <hr/>
         <div class="jumbotron">
             <div class="container">
                 <ul class="nav nav-pills pull-left">
                     <li role="presentation">
-                        <h:commandButton value="Add new" onclick="PF('dlg').show();"
-                                         styleClass="btn btn-md btn-primary"/>
+                        <h:commandButton value="Add new track" onclick="PF('dlg').show();"
+                                         styleClass="btn btn-md btn-primary" style="margin-bottom: 10px;"/>
                     </li>
                 </ul>
             </div>
-
-            <h:outputLabel value="Eto Jukebox from account tipa"/>
 
             <p:dialog header="Track" widgetVar="dlg" resizable="false">
                 <!--<h:outputLabel for="name" value="Name"/>-->
@@ -117,7 +121,7 @@
                                  styleClass="table table-bordered"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="5, 10, 15">
+                                 rowsPerPageTemplate="3, 5, 10, 15">
 
                         <p:column headerText="Name">
                             <h:outputText value="#{track.name}"/>
@@ -136,18 +140,18 @@
                         </p:column>
 
                         <p:column headerText="Link">
-                            <a href="#{track.link}" class="btn btn-default btn-md">
-                                <span class="glyphicon glyphicon-play" aria-hidden="true"/> Star
+                            <a href="#" class="btn btn-default btn-md">
+                                <span class="glyphicon glyphicon-play" aria-hidden="true"/>
                             </a>
+                            <!--<audio controls="controls">-->
+                                <!--<source src="#{track.link}" type="audio/mpeg"/>-->
+                            <!--</audio>-->
+
                         </p:column>
 
                     </p:dataTable>
                 </div>
             </div>
-
-            <!--<audio controls="controls">-->
-            <!--<source src="${pageContext.request.contextPath}/faces/resources/audio/music.mp3" type="audio/mpeg"/>-->
-            <!--</audio>-->
 
         </div>
         <hr/>
@@ -155,5 +159,8 @@
             <p>© 2016 Jukebox.</p>
         </footer>
     </div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <h:outputScript library="js" name="bootstrap3_player.js"/>
 </f:view>
 </html>
