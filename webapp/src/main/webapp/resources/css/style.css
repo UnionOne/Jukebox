@@ -81,3 +81,7 @@ body {
     margin-top: 5px;
 }
 
+.table-header {
+    margin: 2px;
+    padding-left: 13%;
+}

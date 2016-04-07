@@ -41,6 +41,7 @@ public class JukeboxBean {
     private String album;
     private String band;
     private String link;
+    private String play;
 
     public void addTrack() {
         Genre genre = new Genre(genreName);
@@ -116,5 +117,13 @@ public class JukeboxBean {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getPlay() {
+        return play;
+    }
+
+    public void setPlay(String play) {
+        this.play = play;
     }
 }
