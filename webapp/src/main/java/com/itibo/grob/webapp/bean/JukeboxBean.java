@@ -59,6 +59,7 @@ public class JukeboxBean {
     }
 
     public List<Track> trackList() {
+        Track track = new Track();
        return getAccount().getJukebox().getTracks();
     }
 
