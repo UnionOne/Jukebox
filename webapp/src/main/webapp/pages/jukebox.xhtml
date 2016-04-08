@@ -32,9 +32,9 @@
                 </ul>
             </nav>
             <!--<h3 class="text-muted">Jukebox</h3>-->
-            <div class="row col-md-6 col-md-offset-3 col-xs-12" style="margin-left: -1%; width: 50%;">
+            <div class="row col-md-6 col-md-offset-3 col-xs-12" id="player" style="margin-left: -15px; width: 50%;">
                 <audio controls="controls">
-                    <source src="#{jukeboxBean.play}" type="audio/mpeg"/>
+                    <source src="#{jukeboxBean.getPlay()}" type="audio/mpeg"/>
                 </audio>
             </div>
         </div>
@@ -115,43 +115,52 @@
 
             <div class="container">
                 <div class="table-responsive">
-                    <p:dataTable id="tracks" var="track" value="#{jukeboxBean.trackList()}" rows="10"
-                                 styleClass="table table-bordered"
-                                 paginator="true"
-                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                 rowsPerPageTemplate="3, 5, 10, 15"
-                                 draggableRows="true">
+                    <h:form>
+                        <p:dataTable id="tracks" var="track" value="#{jukeboxBean.trackList()}" rows="10"
+                                     styleClass="table table-bordered"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="3, 5, 10, 15">
 
-                        <f:facet name="header">
-                            <div class="table-header" style="margin: 2px;">
-                                Jukebox
-                                <p:commandButton id="toggler" type="button" value="Columns" style="float: right;" icon="ui-icon-calculator"/>
-                                <p:columnToggler trigger="toggler" datasource="tracks"/>
-                            </div>
+                            <f:facet name="header">
+                                <div class="table-header" style="margin: 2px;">
+                                    Jukebox
+                                    <p:commandButton id="toggler" type="button" value="Columns" style="float: right;"
+                                                     icon="ui-icon-calculator"/>
+                                    <p:columnToggler trigger="toggler" datasource="tracks"/>
+                                </div>
+                            </f:facet>
 
-                        </f:facet>
+                            <p:ajax event="rowEdit" listener="#{jukeboxBean.onRowEdit}"/>
 
-                        <p:column headerText="Name">
-                            <h:outputText value="#{track.name}"/>
-                        </p:column>
+                            <p:column headerText="Name">
+                                <h:outputText value="#{track.name}"/>
+                            </p:column>
 
-                        <p:column headerText="Duration">
-                            <h:outputText value="#{track.duration}"/>
-                        </p:column>
+                            <p:column headerText="Duration">
+                                <h:outputText value="#{track.duration}"/>
+                            </p:column>
 
-                        <p:column headerText="Album">
-                            <h:outputText value="#{track.album}"/>
-                        </p:column>
+                            <p:column headerText="Album">
+                                <h:outputText value="#{track.album}"/>
+                            </p:column>
 
-                        <p:column headerText="Band">
-                            <h:outputText value="#{track.band}"/>
-                        </p:column>
+                            <p:column headerText="Band">
+                                <h:outputText value="#{track.band}"/>
+                            </p:column>
 
-                        <!--<p:column headerText="Link">-->
+                            <p:column style="width: 64px" headerText="Play">
+                                <!--<p:rowEditor/>-->
+                                <!--<h:commandLink value="link" action="#{jukeboxBean.setPlay(track.link)}"/>-->
+                                <h:commandButton value="play" actionListener="#{jukeboxBean.setPlay(track.link)}"/>
+                            </p:column>
+
+                            <!--<p:column headerText="Link">-->
                             <!--<h:button action="#{jukeboxBean.setPlay(track.link)}"/>-->
-                        <!--</p:column>-->
+                            <!--</p:column>-->
 
-                    </p:dataTable>
+                        </p:dataTable>
+                    </h:form>
                 </div>
             </div>
 
