@@ -135,23 +135,27 @@
                             </f:facet>
 
                             <p:column headerText="Name">
-                                <h:outputText value="#{track.name}"/>
+                                <h:inputText value="#{jukeboxBean.name}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.name}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column headerText="Duration">
-                                <h:outputText value="#{track.duration}"/>
+                                <h:inputText value="#{jukeboxBean.duration}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.duration}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column headerText="Genre">
-                                <h:outputText value="#{track.genre}"/>
+                                <h:inputText value="#{jukeboxBean.genreName}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.genreName}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column headerText="Album">
-                                <h:outputText value="#{track.album}"/>
+                                <h:inputText value="#{jukeboxBean.album}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.album}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column headerText="Band">
-                                <h:inputText id="bandInput" value="#{jukeboxBean.band}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:inputText value="#{jukeboxBean.band}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.band}" rendered="#{not track.edit}"/>
                             </p:column>
 

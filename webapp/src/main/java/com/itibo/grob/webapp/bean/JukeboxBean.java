@@ -56,13 +56,23 @@ public class JukeboxBean {
 
     public void editTrack(Track track) {
         track.setEdit(true);
+        this.name = track.getName();
+        this.duration = track.getDuration();
+        this.genreName = track.getGenreName();
+        this.album = track.getAlbum();
         this.band = track.getBand();
+        this.link = track.getLink();
         trackService.save(track);
     }
 
     public void saveTrack(Track track) {
         track.setEdit(false);
+        track.setName(this.name);
+        track.setDuration(this.duration);
+        track.setGenre(new Genre(this.genreName));
+        track.setAlbum(this.album);
         track.setBand(this.band);
+        track.setLink(this.link);
         trackService.save(track);
     }
 

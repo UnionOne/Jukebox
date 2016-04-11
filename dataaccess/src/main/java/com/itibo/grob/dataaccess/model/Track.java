@@ -108,8 +108,16 @@ public class Track implements Persistable<Integer> {
         this.link = link;
     }
 
-    public String getGenre() {
+    public Genre getGenre() {
+        return this.genre;
+    }
+
+    public String getGenreName() {
         return this.genre.getName();
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 
     public Boolean getEdit() {
