@@ -126,7 +126,7 @@
                                      rowsPerPageTemplate="3, 5, 10, 15">
 
                             <f:facet name="header">
-                                <div class="table-header" style="margin: 2px;">
+                                <div class="table-header" style="margin: 4px;">
                                     Jukebox
                                     <p:commandButton id="toggler" type="button" value="Columns" style="float: right;"
                                                      icon="ui-icon-calculator"/>
@@ -134,14 +134,16 @@
                                 </div>
                             </f:facet>
 
-                            <p:ajax event="rowEdit" listener="#{jukeboxBean.onRowEdit}"/>
-
                             <p:column headerText="Name">
                                 <h:outputText value="#{track.name}"/>
                             </p:column>
 
                             <p:column headerText="Duration">
                                 <h:outputText value="#{track.duration}"/>
+                            </p:column>
+
+                            <p:column headerText="Genre">
+                                <h:outputText value="#{track.genre}"/>
                             </p:column>
 
                             <p:column headerText="Album">

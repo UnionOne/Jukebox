@@ -104,6 +104,10 @@ public class Track implements Persistable<Integer> {
         this.link = link;
     }
 
+    public String getGenre() {
+        return this.genre.getName();
+    }
+
     @Override
     public String toString() {
         return "Track{" +
