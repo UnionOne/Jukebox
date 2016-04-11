@@ -168,11 +168,11 @@
                                 <h:commandButton value="Save" actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}"/>
                             </p:column>
 
-                            <p:column style="width: 128px" headerText="Delete">
-                                <h:commandButton value="Delete" actionListener="#{jukeboxBean.deleteTrack(track)}"/>
+                            <p:column style="width: 40px;">
+                                <h:commandButton value="Delete" actionListener="#{jukeboxBean.deleteTrack(track)}" image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
 
-                            <p:column style="width: 32px">
+                            <p:column style="width: 35px">
                                 <h:commandLink actionListener="#{jukeboxBean.setPlay(track.link)}">
                                     <h:graphicImage library="icon" name="glyphicons-174-play.png" />
                                 </h:commandLink>
