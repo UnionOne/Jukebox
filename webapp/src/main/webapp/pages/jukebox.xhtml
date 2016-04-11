@@ -160,7 +160,8 @@
                             </p:column>
 
                             <p:column style="width: 64px" headerText="Play">
-                                <h:commandButton value="play" actionListener="#{jukeboxBean.setPlay(track.link)}"/>
+                                <h:inputText value="#{jukeboxBean.link}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:commandButton value="play" actionListener="#{jukeboxBean.setPlay(track.link)}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column style="width: 128px" headerText="Edit">
