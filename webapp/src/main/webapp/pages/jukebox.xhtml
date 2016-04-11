@@ -31,7 +31,10 @@
                     </li>
                 </ul>
             </nav>
-            <!--<h3 class="text-muted">Jukebox</h3>-->
+            <div>
+                <h3 class="text-muted">Jukebox</h3>
+            </div>
+
             <div class="row col-md-6 col-md-offset-3 col-xs-12" id="player" style="margin-left: -15px; width: 50%;">
                 <audio controls="controls">
                     <source src="#{jukeboxBean.getPlay()}" type="audio/mpeg"/>
@@ -153,6 +156,10 @@
                                 <!--<p:rowEditor/>-->
                                 <!--<h:commandLink value="link" action="#{jukeboxBean.setPlay(track.link)}"/>-->
                                 <h:commandButton value="play" actionListener="#{jukeboxBean.setPlay(track.link)}"/>
+                            </p:column>
+
+                            <p:column style="width: 64px" headerText="Edit">
+                                <h:commandButton value="Delete" actionListener="#{jukeboxBean.deleteTrack(track)}"/>
                             </p:column>
 
                             <!--<p:column headerText="Link">-->

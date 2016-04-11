@@ -33,8 +33,6 @@ public class JukeboxBean {
     @Autowired
     private TrackService trackService;
 
-//    private Account account = getAccount();
-
     private String name;
     private String duration;
     private String genreName;
@@ -48,6 +46,10 @@ public class JukeboxBean {
         Track track = new Track(name, duration, genre, album, band, link);
 
         managerAccountService.addTrack(getAccount(), track);
+    }
+
+    public void deleteTrack(Track track) {
+        trackService.delete(track);
     }
 
     private Account getAccount() {
