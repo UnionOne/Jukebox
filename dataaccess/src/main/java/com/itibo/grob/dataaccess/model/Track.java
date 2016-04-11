@@ -35,6 +35,9 @@ public class Track implements Persistable<Integer> {
     @Column(name = "link", nullable = false)
     private String link;
 
+    @Column(name = "edit", nullable = false)
+    private Boolean edit;
+
     public Track() {
         super();
     }
@@ -47,6 +50,7 @@ public class Track implements Persistable<Integer> {
         this.album = album;
         this.band = band;
         this.link = link;
+        this.edit = false;
     }
 
     @Override
@@ -106,6 +110,14 @@ public class Track implements Persistable<Integer> {
 
     public String getGenre() {
         return this.genre.getName();
+    }
+
+    public Boolean getEdit() {
+        return edit;
+    }
+
+    public void setEdit(Boolean edit) {
+        this.edit = edit;
     }
 
     @Override

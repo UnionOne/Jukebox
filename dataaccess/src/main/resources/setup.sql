@@ -26,7 +26,8 @@ CREATE TABLE track(
   genre_id INTEGER NOT NULL,
   album TEXT NOT NULL,
   band TEXT NOT NULL,
-  link TEXT NOT NULL
+  link TEXT NOT NULL,
+  edit BOOLEAN NOT NULL
 );
 
 CREATE TABLE jukebox(

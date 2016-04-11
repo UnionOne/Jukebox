@@ -85,3 +85,9 @@ body {
     margin: 2px;
     padding-left: 13%;
 }
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1300px;
+    }
+}

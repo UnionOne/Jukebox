@@ -42,12 +42,6 @@ public class JukeboxBean {
     private String band;
     private String link;
     private String play;
-    private boolean edit;
-
-    @PostConstruct
-    public void init() {
-        this.edit = false;
-    }
 
     public void addTrack() {
         Genre genre = new Genre(genreName);
@@ -60,6 +54,18 @@ public class JukeboxBean {
         trackService.delete(track);
     }
 
+    public void editTrack(Track track) {
+        track.setEdit(true);
+        this.band = track.getBand();
+        trackService.save(track);
+    }
+
+    public void saveTrack(Track track) {
+        track.setEdit(false);
+        track.setBand(this.band);
+        trackService.save(track);
+    }
+
     private Account getAccount() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
@@ -69,7 +75,7 @@ public class JukeboxBean {
     }
 
     public List<Track> trackList() {
-        Track track = new Track();
+//        Track track = new Track();
        return getAccount().getJukebox().getTracks();
     }
 
@@ -136,13 +142,5 @@ public class JukeboxBean {
 
     public void setPlay(String play) {
         this.play = play;
-    }
-
-    public boolean isEdit() {
-        return edit;
-    }
-
-    public void setEdit(boolean edit) {
-        this.edit = edit;
     }
 }

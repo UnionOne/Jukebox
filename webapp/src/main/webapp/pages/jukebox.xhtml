@@ -151,18 +151,17 @@
                             </p:column>
 
                             <p:column headerText="Band">
-                                <h:outputText value="#{track.band}" rendered="#{not jukeboxBean.edit}"/>
+                                <h:inputText id="bandInput" value="#{jukeboxBean.band}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.band}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column style="width: 64px" headerText="Play">
-                                <!--<p:rowEditor/>-->
-                                <!--<h:commandLink value="link" action="#{jukeboxBean.setPlay(track.link)}"/>-->
                                 <h:commandButton value="play" actionListener="#{jukeboxBean.setPlay(track.link)}"/>
                             </p:column>
 
                             <p:column style="width: 128px" headerText="Edit">
-                                <h:commandButton value="Edit" actionListener="#{jukeboxBean.setEdit(true)}" rendered="#{not jukeboxBean.edit}"/>
-                                <h:commandButton value="Save" actionListener="#{jukeboxBean.setEdit(false)}" rendered="#{jukeboxBean.edit}"/>
+                                <h:commandButton value="Edit" actionListener="#{jukeboxBean.editTrack(track)}" rendered="#{not track.edit}"/>
+                                <h:commandButton value="Save" actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}"/>
                             </p:column>
 
                             <p:column style="width: 128px" headerText="Delete">
