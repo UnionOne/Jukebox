@@ -159,16 +159,8 @@
                                 <h:outputText value="#{track.band}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column style="width: 64px" headerText="Play">
-                                <h:inputText value="#{jukeboxBean.link}" rendered="#{track.edit}" style="width: 100%;"/>
-                                <!--<h:commandButton actionListener="#{jukeboxBean.setPlay(track.link)}" rendered="#{not track.edit}">-->
-                                    <!--<h:graphicImage library="icon" name="glyphicons-174-play.png" />-->
-                                <!--</h:commandButton>-->
-                                <h:commandLink actionListener="#{jukeboxBean.setPlay(track.link)}" rendered="#{not track.edit}">
-                                    <h:graphicImage library="icon" name="glyphicons-174-play.png" />
-                                </h:commandLink>
-
-                                <!--<h:commandButton value="play" actionListener="#{jukeboxBean.setPlay(track.link)}" rendered="#{not track.edit}"/>-->
+                            <p:column headerText="Link">
+                                <h:inputText value="#{jukeboxBean.link}" style="width: 100%;" rendered="#{track.edit}"/>
                             </p:column>
 
                             <p:column style="width: 128px" headerText="Edit">
@@ -178,6 +170,12 @@
 
                             <p:column style="width: 128px" headerText="Delete">
                                 <h:commandButton value="Delete" actionListener="#{jukeboxBean.deleteTrack(track)}"/>
+                            </p:column>
+
+                            <p:column style="width: 32px">
+                                <h:commandLink actionListener="#{jukeboxBean.setPlay(track.link)}">
+                                    <h:graphicImage library="icon" name="glyphicons-174-play.png" />
+                                </h:commandLink>
                             </p:column>
 
                             <!--<p:column headerText="Link">-->
