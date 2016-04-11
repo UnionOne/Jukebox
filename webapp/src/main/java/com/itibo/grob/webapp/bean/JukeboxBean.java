@@ -2,6 +2,7 @@ package com.itibo.grob.webapp.bean;
 
 import com.itibo.grob.dataaccess.model.Account;
 import com.itibo.grob.dataaccess.model.Genre;
+import com.itibo.grob.dataaccess.model.Jukebox;
 import com.itibo.grob.dataaccess.model.Track;
 import com.itibo.grob.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.util.List;
@@ -40,6 +42,12 @@ public class JukeboxBean {
     private String band;
     private String link;
     private String play;
+    private boolean edit;
+
+    @PostConstruct
+    public void init() {
+        this.edit = false;
+    }
 
     public void addTrack() {
         Genre genre = new Genre(genreName);
@@ -128,5 +136,13 @@ public class JukeboxBean {
 
     public void setPlay(String play) {
         this.play = play;
+    }
+
+    public boolean isEdit() {
+        return edit;
+    }
+
+    public void setEdit(boolean edit) {
+        this.edit = edit;
     }
 }
