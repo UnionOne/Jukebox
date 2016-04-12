@@ -163,13 +163,13 @@
                                 <h:inputText value="#{jukeboxBean.link}" style="width: 100%;" rendered="#{track.edit}"/>
                             </p:column>
 
-                            <p:column style="width: 128px" headerText="Edit">
-                                <h:commandButton value="Edit" actionListener="#{jukeboxBean.editTrack(track)}" rendered="#{not track.edit}"/>
-                                <h:commandButton value="Save" actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}"/>
+                            <p:column style="width: 40px">
+                                <h:commandButton actionListener="#{jukeboxBean.editTrack(track)}" rendered="#{not track.edit}" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}" image="/faces/resources/icon/glyphicons-207-ok.png"/>
                             </p:column>
 
                             <p:column style="width: 40px;">
-                                <h:commandButton value="Delete" actionListener="#{jukeboxBean.deleteTrack(track)}" image="/faces/resources/icon/glyphicons-17-bin.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}" image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
 
                             <p:column style="width: 35px">
