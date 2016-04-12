@@ -139,17 +139,17 @@
                                 <h:outputText value="#{track.name}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Duration">
+                            <p:column headerText="Duration" priority="1">
                                 <h:inputText value="#{jukeboxBean.duration}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.duration}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Genre">
+                            <p:column headerText="Genre" priority="1">
                                 <h:inputText value="#{jukeboxBean.genreName}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.genreName}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Album">
+                            <p:column headerText="Album" priority="3">
                                 <h:inputText value="#{jukeboxBean.album}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.album}" rendered="#{not track.edit}"/>
                             </p:column>
@@ -159,22 +159,22 @@
                                 <h:outputText value="#{track.band}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Link">
+                            <p:column headerText="Link" priority="2">
                                 <h:inputText value="#{jukeboxBean.link}" style="width: 100%;" rendered="#{track.edit}"/>
                             </p:column>
 
-                            <p:column style="width: 40px">
+                            <p:column style="width: 40px" priority="1">
                                 <h:commandButton actionListener="#{jukeboxBean.editTrack(track)}" rendered="#{not track.edit}" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
-                                <h:commandButton actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}" image="/faces/resources/icon/glyphicons-207-ok.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
                             </p:column>
 
-                            <p:column style="width: 40px;">
+                            <p:column style="width: 40px;" priority="1">
                                 <h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}" image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
 
-                            <p:column style="width: 35px">
+                            <p:column style="width: 40px">
                                 <h:commandLink actionListener="#{jukeboxBean.setPlay(track.link)}">
-                                    <h:graphicImage library="icon" name="glyphicons-174-play.png" />
+                                    <h:graphicImage library="icon" name="glyphicons-221-play-button.png" />
                                 </h:commandLink>
                             </p:column>
 
