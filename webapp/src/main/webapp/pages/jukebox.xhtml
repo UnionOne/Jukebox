@@ -134,27 +134,27 @@
                                 </div>
                             </f:facet>
 
-                            <p:column headerText="Name">
+                            <p:column headerText="Name" filterBy="#{track.name}" filterMatchMode="contains">
                                 <h:inputText value="#{jukeboxBean.name}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.name}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Duration" priority="1">
+                            <p:column headerText="Duration" filterBy="#{track.duration}" filterMatchMode="contains" priority="1">
                                 <h:inputText value="#{jukeboxBean.duration}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.duration}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Genre" priority="1">
+                            <p:column headerText="Genre" filterBy="#{track.genreName}" filterMatchMode="contains" priority="1">
                                 <h:inputText value="#{jukeboxBean.genreName}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.genreName}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Album" priority="3">
+                            <p:column headerText="Album" filterBy="#{track.album}" filterMatchMode="contains" priority="3">
                                 <h:inputText value="#{jukeboxBean.album}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.album}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Band">
+                            <p:column headerText="Band" filterBy="#{track.band}" filterMatchMode="contains">
                                 <h:inputText value="#{jukeboxBean.band}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.band}" rendered="#{not track.edit}"/>
                             </p:column>
