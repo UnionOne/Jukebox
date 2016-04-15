@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.faces.application.FacesMessage;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +45,7 @@ public class FileUploadController {
     public String getSingleUploadPage(ModelMap model) {
         FileBucket fileModel = new FileBucket();
         model.addAttribute("fileBucket", fileModel);
-        return "user-page";
+        return "jukebox";
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
@@ -52,7 +53,7 @@ public class FileUploadController {
 
         if (result.hasErrors()) {
             System.out.println("validation errors");
-            return "singleFileUploader";
+            return "jukebox";
         } else {
             System.out.println("Fetching file");
             MultipartFile multipartFile = fileBucket.getFile();
