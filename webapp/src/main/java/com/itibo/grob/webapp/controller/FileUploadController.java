@@ -59,10 +59,6 @@ public class FileUploadController {
             MultipartFile multipartFile = fileBucket.getFile();
             File dir = new File(UPLOAD_LOCATION + File.separator + SecurityContextHolder.getContext().getAuthentication().getName());
 
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
-
             FileCopyUtils.copy(fileBucket.getFile().getBytes(),
                     new File(dir.getAbsolutePath() + File.separator + fileBucket.getFile().getOriginalFilename()));
 
@@ -79,7 +75,7 @@ public class FileUploadController {
 
     private void addTrack(String fileName, String filePath, String login) {
         Genre genre = new Genre("genre");
-        Track track = new Track(fileName, "default", genre, "album", "band", filePath);
+        Track track = new Track(fileName, "default", genre, "album", "band", filePath.substring(2, filePath.length()));
 
         managerAccountService.addTrack(accountService.findOneAccountByLogin(login), track);
     }
