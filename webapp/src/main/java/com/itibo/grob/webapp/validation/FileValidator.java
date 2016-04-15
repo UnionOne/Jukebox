@@ -1,4 +1,4 @@
-package com.itibo.grob.webapp.util;
+package com.itibo.grob.webapp.validation;
 
 import com.itibo.grob.webapp.model.FileBucket;
 import org.springframework.stereotype.Component;
@@ -14,12 +14,10 @@ public class FileValidator implements Validator {
     public void validate(Object o, Errors errors) {
         FileBucket fileBucket = (FileBucket) o;
 
-        if(fileBucket.getMultipartFile() != null) {
-            if(fileBucket.getMultipartFile().getSize() == 0) {
+        if (fileBucket.getFile() != null) {
+            if (fileBucket.getFile().getSize() == 0) {
                 errors.rejectValue("file", "missiing.file");
             }
         }
     }
-
-
 }
