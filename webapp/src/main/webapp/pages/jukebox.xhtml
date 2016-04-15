@@ -39,9 +39,6 @@
                 <audio controls="controls">
                     <source src="#{jukeboxBean.getPlay()}" type="audio/mpeg"/>
                 </audio>
-                <!--<audio controls="controls">-->
-                    <!--<source src="D:\audio.mp3" type="audio/mpeg"/>-->
-                <!--</audio>-->
             </div>
         </div>
         <hr/>
@@ -49,12 +46,19 @@
             <div class="container">
                 <ul class="nav nav-pills pull-left">
                     <li role="presentation">
-                        <h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-md btn-primary" style="margin-bottom: 10px;"/>
+                        <h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-md btn-primary" style="margin-bottom: -34px; margin-right: 89%;"/>
+
+                        <form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <div class="input-group" style="display: inline-block; margin-bottom: 5px;">
+                                <input type="submit" value="Upload" class="btn btn-primary btn-md" style="margin-left: 93%; margin-bottom: 5px"/>
+                                <input id="file" name="file" type="file" value="" class="filestyle" style="margin-bottom: 10px;"/>
+                            </div>
+                        </form>
                     </li>
                 </ul>
             </div>
 
-            <p:dialog header="Track" widgetVar="dlg" resizable="false">
+            <p:dialog header="Track" widgetVar="dlg" resizable="false" width="500">
                 <h:form styleClass="form-horizontal">
                     <div class="form-group">
                         <label class="col-md-4 control-label">Name</label>
@@ -98,35 +102,6 @@
                         </div>
                     </div>
 
-                    <!--<div class="form-group">-->
-
-                            <!--<div class="input-group">-->
-                            <!--<span class="input-group-btn">-->
-                                <!--<button class="btn btn-default" type="button">Go!</button>-->
-                            <!--</span>-->
-                                <!--<input type="text" class="form-control input-sm" placeholder="Search for..."/>-->
-                            <!--</div>-->
-
-                    <!--</div>-->
-
-
-                    <!--<div class="form-group">-->
-                        <!--<div class="col-md-8">-->
-                            <!--<form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data" class="form-horizontal">-->
-                                <!--<div class="row">-->
-                                    <!--<div class="form-group col-md-12">-->
-                                        <!--<div class="col-md-7">-->
-                                            <!--<input id="file" name="file" type="file" value="" class="filestyle"/>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="row">-->
-                                    <!--<input type="submit" value="Upload" class="btn btn-primary btn-sm"/>-->
-                                <!--</div>-->
-                            <!--</form>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
                     <div class="form-group">
                         <label class="col-md-3 control-label"/>
                         <div class="col-md-8">
@@ -146,8 +121,8 @@
                                      styleClass="table table-bordered"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                                     rowsPerPageTemplate="3, 5, 10, 15"
-                                     draggableColumns="true" draggableRows="true" sortMode="multiple">
+                                     rowsPerPageTemplate="3, 5, 10, 15" sortMode="multiple"
+                                     draggableColumns="true" draggableRows="true">
 
                             <f:facet name="header">
                                 <div class="table-header" style="margin: 4px;">
