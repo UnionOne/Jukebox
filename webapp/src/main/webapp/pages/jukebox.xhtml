@@ -98,6 +98,35 @@
                         </div>
                     </div>
 
+                    <!--<div class="form-group">-->
+
+                            <!--<div class="input-group">-->
+                            <!--<span class="input-group-btn">-->
+                                <!--<button class="btn btn-default" type="button">Go!</button>-->
+                            <!--</span>-->
+                                <!--<input type="text" class="form-control input-sm" placeholder="Search for..."/>-->
+                            <!--</div>-->
+
+                    <!--</div>-->
+
+
+                    <!--<div class="form-group">-->
+                        <!--<div class="col-md-8">-->
+                            <!--<form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data" class="form-horizontal">-->
+                                <!--<div class="row">-->
+                                    <!--<div class="form-group col-md-12">-->
+                                        <!--<div class="col-md-7">-->
+                                            <!--<input id="file" name="file" type="file" value="" class="filestyle"/>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<input type="submit" value="Upload" class="btn btn-primary btn-sm"/>-->
+                                <!--</div>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
                     <div class="form-group">
                         <label class="col-md-3 control-label"/>
                         <div class="col-md-8">
@@ -166,28 +195,14 @@
                                 <h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}" image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
 
-                            <p:column style="width: 40px">
+                            <p:column style="width: 36px">
                                 <h:commandLink actionListener="#{jukeboxBean.setPlay(track.link)}">
-                                    <h:graphicImage library="icon" name="glyphicons-221-play-button.png" />
+                                    <h:graphicImage library="icon" name="glyphicons-174-play.png" />
                                 </h:commandLink>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </div>
-
-                <form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data" class="form-horizontal">
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <div class="col-md-7">
-                                <input id="file" name="file" type="file" value="" class="input-sm"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <input type="submit" value="Upload" class="btn btn-primary btn-sm"/>
-                    </div>
-                </form>
-
             </div>
 
         </div>
@@ -198,6 +213,7 @@
     </div>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <h:outputScript library="js" name="bootstrap-filestyle.js"/>
     <h:outputScript library="js" name="bootstrap3_player.js"/>
 </f:view>
 </html>

@@ -47,6 +47,7 @@
                 $(play).removeClass('disabled');
                 if (toggle === 'play') {
                     $(play).html('<i class="glyphicon glyphicon-play"></i>');
+                    // $(play).html('<img src="glyphicons-174-play.png"/>');
                     $(play).click(function () {
                         song.play();
                     });
