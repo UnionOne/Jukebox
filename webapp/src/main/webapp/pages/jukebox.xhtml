@@ -9,7 +9,7 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
     <h:outputStylesheet library="css" name="bootstrap.css"/>
-    <h:outputStylesheet library="css" name="bootstrap3_player.css"/>
+    <!--<h:outputStylesheet library="css" name="bootstrap3_player.css"/>-->
     <h:outputStylesheet library="css" name="style.css"/>
     <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
 </h:head>
@@ -47,7 +47,7 @@
             <div class="container">
                 <ul class="nav nav-pills pull-left">
                     <li role="presentation">
-                        <h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-md btn-primary" style="margin-bottom: -34px; margin-right: 89%;"/>
+                        <!--<h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-md btn-primary" style="margin-bottom: -34px; margin-right: 89%;"/>-->
 
                         <form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data" class="form-horizontal">
                             <div class="input-group" style="display: inline-block; margin-bottom: 5px;">
@@ -116,6 +116,8 @@
             </p:dialog>
 
             <div class="container">
+                <h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-md btn-primary" style="margin-bottom: -34px; margin-right: 89%;"/>
+
                 <div class="table-responsive">
                     <h:form>
                         <p:dataTable id="tracks" var="track" value="#{jukeboxBean.trackList()}" rows="10"
@@ -188,8 +190,8 @@
         </footer>
     </div>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
     <h:outputScript library="js" name="bootstrap-filestyle.js"/>
-    <h:outputScript library="js" name="bootstrap3_player.js"/>
+    <!--<h:outputScript library="js" name="bootstrap3_player.js"/>-->
 </f:view>
 </html>

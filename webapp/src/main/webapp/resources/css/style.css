@@ -142,3 +142,7 @@ thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th
     border-style: none;
 }
 
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
+}
+
