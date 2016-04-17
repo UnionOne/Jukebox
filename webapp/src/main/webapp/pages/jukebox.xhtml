@@ -11,6 +11,7 @@
     <h:outputStylesheet library="css" name="bootstrap.css"/>
     <h:outputStylesheet library="css" name="bootstrap3_player.css"/>
     <h:outputStylesheet library="css" name="style.css"/>
+    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
 </h:head>
 
 <f:view>
@@ -157,9 +158,9 @@
                                 <h:outputText value="#{track.album}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Link" priority="2">
-                                <h:inputText value="#{jukeboxBean.link}" style="width: 100%;" rendered="#{track.edit}"/>
-                            </p:column>
+                            <!--<p:column headerText="Link" priority="2">-->
+                                <!--<h:inputText value="#{jukeboxBean.link}" style="width: 100%;" rendered="#{track.edit}"/>-->
+                            <!--</p:column>-->
 
                             <p:column style="width: 40px" priority="1">
                                 <h:commandButton actionListener="#{jukeboxBean.editTrack(track)}" rendered="#{not track.edit}" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
