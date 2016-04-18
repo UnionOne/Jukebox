@@ -103,12 +103,6 @@ body {
     font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
 }
 
-/*@media screen and (min-width: 30em) {*/
-    /*th.ui-column-p-2, td.ui-column-p-2 {*/
-         /*display: none;*/
-    /*}*/
-/*}*/
-
 .ui-widget-content {
     color: #66615b;
     font-size: 17px;
@@ -117,11 +111,6 @@ body {
 .ui-paginator .ui-paginator-current, .ui-paginator .ui-paginator-rpp-options {
     font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
 }
-
-/*.ui-datatable table {*/
-    /*width: auto;*/
-    /*table-layout: auto;*/
-/*}*/
 
 @media (min-width: 1200px) {
     .container {
@@ -146,3 +135,6 @@ thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th
     font-family: 'Montserrat', "Helvetica", Arial, sans-serif;
 }
 
+.table-icons {
+    opacity: 0.7;
+}

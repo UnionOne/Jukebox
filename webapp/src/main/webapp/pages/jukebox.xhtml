@@ -9,9 +9,10 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
     <h:outputStylesheet library="css" name="bootstrap.css"/>
-    <!--<h:outputStylesheet library="css" name="bootstrap3_player.css"/>-->
     <h:outputStylesheet library="css" name="style.css"/>
-    <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"/>
+    <h:outputStylesheet library="fonts" name="font.css"/>
+    <h:outputScript library="js" name="file-input.js"/>
+    <h:outputScript library="js" name="bootstrap.js"/>
 </h:head>
 
 <f:view>
@@ -37,26 +38,16 @@
             </div>
 
             <div class="row col-md-6 col-md-offset-3 col-xs-12" id="player" style="margin-left: -15px; width: 50%;">
-                <audio controls="controls">
+                <audio controls="controls" style="opacity: 0.85;">
                     <source src="#{jukeboxBean.getPlay()}" type="audio/mpeg"/>
                 </audio>
             </div>
         </div>
         <hr/>
+
         <div class="jumbotron">
             <div class="container">
-                <ul class="nav nav-pills pull-left">
-                    <li role="presentation">
-                        <!--<h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-md btn-primary" style="margin-bottom: -34px; margin-right: 89%;"/>-->
-
-                        <form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data" class="form-horizontal">
-                            <div class="input-group" style="display: inline-block; margin-bottom: 5px;">
-                                <input type="submit" value="Upload" class="btn btn-primary btn-md" style="margin-left: 93%; margin-bottom: 5px"/>
-                                <input id="file" name="file" type="file" value="" class="filestyle" style="margin-bottom: 10px;"/>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
+                <h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-primary btn-md" style="float: left;"/>
             </div>
 
             <p:dialog header="Track" widgetVar="dlg" resizable="false" width="500">
@@ -116,8 +107,6 @@
             </p:dialog>
 
             <div class="container">
-                <h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-md btn-primary" style="margin-bottom: -34px; margin-right: 89%;"/>
-
                 <div class="table-responsive">
                     <h:form>
                         <p:dataTable id="tracks" var="track" value="#{jukeboxBean.trackList()}" rows="10"
@@ -165,33 +154,38 @@
                             <!--</p:column>-->
 
                             <p:column style="width: 40px" priority="1">
-                                <h:commandButton actionListener="#{jukeboxBean.editTrack(track)}" rendered="#{not track.edit}" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
-                                <h:commandButton actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.editTrack(track)}" rendered="#{not track.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
                             </p:column>
 
                             <p:column style="width: 40px;" priority="1">
-                                <h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}" image="/faces/resources/icon/glyphicons-17-bin.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
 
                             <p:column style="width: 36px">
-                                <h:commandLink actionListener="#{jukeboxBean.setPlay(track.link)}">
-                                    <h:graphicImage library="icon" name="glyphicons-174-play.png" />
-                                </h:commandLink>
+                                <h:commandButton actionListener="#{jukeboxBean.setPlay(track.link)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-174-play.png"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </div>
+                <div class="form-group" style="float: left;">
+                    <form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <input id="file" name="file" type="file" data-filename-placement="inside"/>
+                        <input type="submit" value="Upload" class="btn btn-primary btn-md"/>
+                    </form>
+                </div>
             </div>
-
         </div>
         <hr/>
         <footer class="footer">
             <p>© 2016 Jukebox.</p>
         </footer>
     </div>
-
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
-    <h:outputScript library="js" name="bootstrap-filestyle.js"/>
-    <!--<h:outputScript library="js" name="bootstrap3_player.js"/>-->
+    <script>
+        $(document).ready(function(){
+            $('input[type=file]').bootstrapFileInput();
+            $('.file-inputs').bootstrapFileInput();
+        });
+    </script>
 </f:view>
 </html>

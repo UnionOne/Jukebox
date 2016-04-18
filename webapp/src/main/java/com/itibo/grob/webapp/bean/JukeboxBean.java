@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.io.File;
 import java.util.List;
 
 @ManagedBean(name = "jukeboxBean")
@@ -52,6 +53,11 @@ public class JukeboxBean {
 
     public void deleteTrack(Track track) {
         trackService.delete(track);
+
+        File file = new File("C:" + track.getLink());
+        if (file.delete()) {
+            System.out.println("C:" + track.getLink() + "file deleted");
+        } else System.out.println("No such file" + "C:" + track.getLink());
     }
 
     public void editTrack(Track track) {
@@ -86,7 +92,7 @@ public class JukeboxBean {
 
     public List<Track> trackList() {
 //        Track track = new Track();
-       return getAccount().getJukebox().getTracks();
+        return getAccount().getJukebox().getTracks();
     }
 
     public void reset() {

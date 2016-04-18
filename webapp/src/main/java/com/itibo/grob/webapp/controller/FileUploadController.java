@@ -70,7 +70,7 @@ public class FileUploadController {
             System.out.println(dir.getAbsolutePath());
             model.addAttribute("fileName", fileName);
         }
-        return "jukebox";
+        return "redirect:/pages/jukebox.xhtml";
     }
 
     private void addTrack(String fileName, String filePath, String login) {
