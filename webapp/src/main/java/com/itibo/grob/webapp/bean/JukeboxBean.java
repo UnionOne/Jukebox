@@ -54,10 +54,10 @@ public class JukeboxBean {
     public void deleteTrack(Track track) {
         trackService.delete(track);
 
-        File file = new File("C:" + track.getLink());
+        File file = new File("/home/union" + track.getLink());
         if (file.delete()) {
-            System.out.println("C:" + track.getLink() + "file deleted");
-        } else System.out.println("No such file" + "C:" + track.getLink());
+            System.out.println("/home/union" + track.getLink() + "file deleted");
+        } else System.out.println("No such file" + "/home/union" + track.getLink());
     }
 
     public void editTrack(Track track) {
