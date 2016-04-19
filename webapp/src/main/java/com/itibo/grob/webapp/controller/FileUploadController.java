@@ -25,7 +25,7 @@ import java.io.IOException;
 
 @Controller
 public class FileUploadController {
-    private static final String UPLOAD_LOCATION = "C:/temp/";
+    private static final String UPLOAD_LOCATION = "/home/union/temp/";
 
     @Autowired
     FileValidator fileValidator;
@@ -59,6 +59,10 @@ public class FileUploadController {
             MultipartFile multipartFile = fileBucket.getFile();
             File dir = new File(UPLOAD_LOCATION + File.separator + SecurityContextHolder.getContext().getAuthentication().getName());
 
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
             FileCopyUtils.copy(fileBucket.getFile().getBytes(),
                     new File(dir.getAbsolutePath() + File.separator + fileBucket.getFile().getOriginalFilename()));
 
@@ -75,7 +79,7 @@ public class FileUploadController {
 
     private void addTrack(String fileName, String filePath, String login) {
         Genre genre = new Genre("genre");
-        Track track = new Track(fileName, "default", genre, "album", "band", filePath.substring(2, filePath.length()));
+        Track track = new Track(fileName, "default", genre, "album", "band", filePath.substring(11, filePath.length()));
 
         managerAccountService.addTrack(accountService.findOneAccountByLogin(login), track);
     }

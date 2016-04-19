@@ -12,7 +12,7 @@ public class FileServlet extends HttpServlet {
     private String filePath;
 
     public void init() throws ServletException {
-        this.filePath = "C:/temp";
+        this.filePath = "/home/union/temp/";
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class FileServlet extends HttpServlet {
         response.setBufferSize(DEFAULT_BUFFER_SIZE);
         response.setContentType(contentType);
         response.setHeader("Content-Length", String.valueOf(file.length()));
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + file.getName() + "\"");
+        response.setHeader("Content-Disposition", "attachment; filename=/" + file.getName() + "/");
 
         BufferedInputStream input = null;
         BufferedOutputStream output = null;
