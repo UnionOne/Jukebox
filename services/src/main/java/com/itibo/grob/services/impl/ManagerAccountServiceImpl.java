@@ -24,6 +24,7 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
     public void addAccount(Account account) {
         List<Role> roles = new ArrayList<>();
         roles.add(new Role("ROLE_USER"));
+//        roles.add(new Role("ROLE_ADMIN"));
 
         Genre genre = new Genre("default");
         List<Track> tracks = new LinkedList<>();
