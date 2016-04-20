@@ -49,6 +49,9 @@ public class Account implements Persistable<Integer> {
     @JoinColumn(name = "jukebox_id")
     private Jukebox jukebox;
 
+    @Column(name = "edit", nullable = false)
+    private Boolean edit;
+
     public Account() {
         super();
     }
@@ -60,6 +63,7 @@ public class Account implements Persistable<Integer> {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.edit = false;
     }
 
     @Override
@@ -131,6 +135,14 @@ public class Account implements Persistable<Integer> {
 
     public void setJukebox(Jukebox jukebox) {
         this.jukebox = jukebox;
+    }
+
+    public Boolean getEdit() {
+        return edit;
+    }
+
+    public void setEdit(Boolean edit) {
+        this.edit = edit;
     }
 
     @Override

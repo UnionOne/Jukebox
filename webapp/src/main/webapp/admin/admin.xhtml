@@ -33,14 +33,58 @@
                 </ul>
             </nav>
             <div>
-                <h3 class="text-muted">Jukebox</h3>
+                <h3 class="text-muted">JsfMyAdmin</h3>
             </div>
         </div>
 
         <hr/>
 
         <div class="jumbotron">
+            <div class="container">
+                <div class="table-responsive">
+                    <h:form>
+                        <p:dataTable id="accounts" var="account" value="#{accountBean.accountList}" rows="10"
+                                     styleClass="table table-bordered"
+                                     paginator="true"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PageLinks} {LastPageLink} {RowsPerPageDropdown}"
+                                     rowsPerPageTemplate="3, 5, 10, 15">
 
+                            <p:column headerText="Id">
+                                <h:outputText value="#{account.id}" rendered="#{not account.edit}"/>
+                            </p:column>
+
+                            <p:column headerText="Login">
+                                <h:inputText value="#{accountBean.login}" rendered="#{account.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{account.login}" rendered="#{not account.edit}"/>
+                            </p:column>
+
+                            <p:column headerText="Email">
+                                <h:inputText value="#{accountBean.email}" rendered="#{account.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{account.email}" rendered="#{not account.edit}"/>
+                            </p:column>
+
+                            <p:column headerText="First Name">
+                                <h:inputText value="#{accountBean.firstName}" rendered="#{account.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{account.firstName}" rendered="#{not account.edit}"/>
+                            </p:column>
+
+                            <p:column headerText="Last Name">
+                                <h:inputText value="#{accountBean.lastName}" rendered="#{account.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{account.lastName}" rendered="#{not account.edit}"/>
+                            </p:column>
+
+                            <p:column style="width: 40px">
+                                <h:commandButton value="Edit" actionListener="#{accountBean.editAccount(account)}" rendered="#{not account.edit}" styleClass="btn btn-primary btn-sm"/>
+                                <h:commandButton value="Save" actionListener="#{accountBean.saveAccount(account)}" rendered="#{account.edit}" styleClass="btn btn-sm btn-success"/>
+                            </p:column>
+
+                            <!--<p:column style="width: 40px;" priority="1">-->
+                                <!--<h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-17-bin.png"/>-->
+                            <!--</p:column>-->
+                        </p:dataTable>
+                    </h:form>
+                </div>
+            </div>
         </div>
 
         <hr/>

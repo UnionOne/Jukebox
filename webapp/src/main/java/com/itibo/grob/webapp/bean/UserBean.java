@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 
 @ManagedBean(name = "userBean")
 @SessionScoped

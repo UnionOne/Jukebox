@@ -5,7 +5,8 @@ CREATE TABLE account(
   password TEXT NOT NULL,
   first_name TEXT NOT NULL,
   last_name TEXT NOT NULL,
-  jukebox_id INTEGER
+  jukebox_id INTEGER,
+  edit BOOLEAN NOT NULL
 );
 
 CREATE TABLE role(
@@ -15,8 +16,8 @@ CREATE TABLE role(
 
 CREATE TABLE account_role(
   id SERIAL PRIMARY KEY NOT NULL,
-  account_id INTEGER NOT NULL,
-  role_id INTEGER NOT NULL
+  account_id INTEGER NOT NULL REFERENCES account ON DELETE CASCADE,
+  role_id INTEGER NOT NULL REFERENCES role ON DELETE CASCADE
 );
 
 CREATE TABLE track(
