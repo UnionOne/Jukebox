@@ -7,4 +7,6 @@ public interface ManagerAccountService {
     void addAccount(Account account);
 
     void addTrack(Account account, Track track);
+
+    void deleteAccount(Account account);
 }

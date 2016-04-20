@@ -2,6 +2,7 @@ package com.itibo.grob.webapp.bean;
 
 import com.itibo.grob.dataaccess.model.Account;
 import com.itibo.grob.services.AccountService;
+import com.itibo.grob.services.ManagerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,9 @@ public class AccountBean implements Serializable {
 
     @Autowired
     AccountService accountService;
+
+    @Autowired
+    ManagerAccountService managerAccountService;
 
     private String login;
     private String email;
@@ -50,6 +54,10 @@ public class AccountBean implements Serializable {
         account.setFirstName(this.firstName);
         account.setLastName(this.lastName);
         accountService.saveAndFlush(account);
+    }
+
+    public void deleteAccount(Account account) {
+        managerAccountService.deleteAccount(account);
     }
 
     public String getLogin() {
@@ -85,6 +93,7 @@ public class AccountBean implements Serializable {
     }
 
     public List<Account> getAccountList() {
+        accountList = accountService.findAll();
         return accountList;
     }
 

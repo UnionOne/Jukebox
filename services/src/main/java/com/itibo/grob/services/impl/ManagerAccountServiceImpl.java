@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,6 +21,18 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    RoleService roleService;
+
+    @Autowired
+    private GenreService genreService;
+
+    @Autowired
+    JukeboxService jukeboxService;
+
+    @Autowired
+    TrackService trackService;
+
     @Override
     public void addAccount(Account account) {
         List<Role> roles = new ArrayList<>();
@@ -31,6 +44,7 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
         tracks.add(new Track("default", "default", genre, "default", "default", "default"));
 
         Jukebox jukebox = new Jukebox();
+        jukeboxService.save(jukebox);
         jukebox.setTracks(tracks);
 
         account.setRoles(roles);
@@ -45,7 +59,7 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
         Jukebox jukebox = account.getJukebox();
         List<Track> tracks = new LinkedList<>();
 
-        if(jukebox.getTracks().size() != 0) {
+        if (jukebox.getTracks().size() != 0) {
             tracks = jukebox.getTracks();
         } else {
             Genre genre = new Genre("default");
@@ -60,5 +74,51 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
         accountService.save(account);
 
         LOGGER.info("Add track to {} entity", account);
+    }
+
+    @Override
+    public void deleteAccount(Account account) {
+        List<Role> roleList = account.getRoles();
+
+        Jukebox jukebox = account.getJukebox();
+
+        List<Track> trackList = jukebox.getTracks();
+
+//        List<Genre> genreList = new ArrayList<>();
+//
+//        for(Track track : trackList) {
+//            genreList.add(track.getGenre());
+//        }
+
+        List<String> linkList = new ArrayList<>();
+        for (Track track : trackList) {
+            linkList.add(track.getLink());
+        }
+
+        for (String link : linkList) {
+            File file = new File("/home/union" + link);
+            if (file.delete()) {
+                System.out.println("/home/union" + link + "file deleted");
+            } else {
+                System.out.println("No such file" + "/home/union" + link);
+            }
+        }
+        linkList.clear();
+
+//        for(Genre genre : genreList) {
+//            genreService.delete(genre.getId());
+//        }
+
+//        trackService.delete(trackList);
+
+        accountService.deleteByLogin(account.getLogin());
+
+        jukeboxService.delete(jukebox);
+
+        roleService.delete(roleList);
+
+
+
+        LOGGER.info("Delete {} entity", account);
     }
 }

@@ -38,4 +38,11 @@ public class ManagerAccountServiceTest extends AbstractSpringTest{
         managerAccountService.addAccount(account);
         managerAccountService.addTrack(account, track);
     }
+
+    @Test
+    public void deleteAccount() {
+        managerAccountService.addAccount(account);
+        managerAccountService.addTrack(account, track);
+        managerAccountService.deleteAccount(account);
+    }
 }
