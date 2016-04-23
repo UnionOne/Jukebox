@@ -58,7 +58,8 @@ CREATE TABLE band(
   id SERIAL PRIMARY KEY NOT NULL,
   name TEXT UNIQUE NOT NULL,
   year TEXT,
-  description TEXT
+  description TEXT,
+  edit BOOLEAN NOT NULL
 );
 
 CREATE TABLE member(

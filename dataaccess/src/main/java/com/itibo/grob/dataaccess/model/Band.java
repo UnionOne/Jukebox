@@ -44,6 +44,9 @@ public class Band implements Persistable<Integer> {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "edit", nullable = false)
+    private Boolean edit;
+
     public Band() {
         super();
     }
@@ -107,6 +110,14 @@ public class Band implements Persistable<Integer> {
 
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
+    }
+
+    public Boolean getEdit() {
+        return edit;
+    }
+
+    public void setEdit(Boolean edit) {
+        this.edit = edit;
     }
 
     @Override

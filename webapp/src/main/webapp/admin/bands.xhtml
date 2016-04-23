@@ -18,11 +18,11 @@
         <div class="header clearfix">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active">
+                    <li role="presentation">
                         <h:link value="MyAdmin" outcome="admin.xhtml"/>
                     </li>
 
-                    <li role="presentation">
+                    <li role="presentation" class="active">
                         <h:link value="Bands" outcome="bands.xhtml"/>
                     </li>
 
@@ -46,45 +46,41 @@
             <div class="container">
                 <div class="table-responsive">
                     <h:form>
-                        <p:dataTable id="accounts" var="account" value="#{accountBean.accountList}" rows="10"
+                        <p:dataTable id="bands" var="band" value="#{bandBean.bandList}" rows="10"
                                      styleClass="table table-bordered"
                                      paginator="true"
                                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PageLinks} {LastPageLink} {RowsPerPageDropdown}"
                                      rowsPerPageTemplate="3, 5, 10, 15">
 
                             <p:column headerText="Id">
-                                <h:outputText value="#{account.id}" rendered="#{not account.edit}"/>
+                                <h:outputText value="#{band.id}" rendered="#{not band.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Login">
-                                <h:inputText value="#{accountBean.login}" rendered="#{account.edit}" style="width: 100%;"/>
-                                <h:outputText value="#{account.login}" rendered="#{not account.edit}"/>
+                            <p:column headerText="Name">
+                                <h:inputText value="#{bandBean.name}" rendered="#{band.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{band.name}" rendered="#{not band.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Email">
-                                <h:inputText value="#{accountBean.email}" rendered="#{account.edit}" style="width: 100%;"/>
-                                <h:outputText value="#{account.email}" rendered="#{not account.edit}"/>
+                            <p:column headerText="Year">
+                                <h:inputText value="#{bandBean.year}" rendered="#{band.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{band.year}" rendered="#{not band.edit}"/>
                             </p:column>
 
-                            <p:column headerText="First Name">
-                                <h:inputText value="#{accountBean.firstName}" rendered="#{account.edit}" style="width: 100%;"/>
-                                <h:outputText value="#{account.firstName}" rendered="#{not account.edit}"/>
-                            </p:column>
-
-                            <p:column headerText="Last Name">
-                                <h:inputText value="#{accountBean.lastName}" rendered="#{account.edit}" style="width: 100%;"/>
-                                <h:outputText value="#{account.lastName}" rendered="#{not account.edit}"/>
-                            </p:column>
+                            <!--<p:column headerText="Last Name">-->
+                                <!--<h:inputText value="#{accountBean.lastName}" rendered="#{account.edit}" style="width: 100%;"/>-->
+                                <!--<h:outputText value="#{account.lastName}" rendered="#{not account.edit}"/>-->
+                            <!--</p:column>-->
 
                             <p:column style="width: 40px">
-                                <h:commandButton value="Edit" actionListener="#{accountBean.editAccount(account)}" rendered="#{not account.edit}" styleClass="btn btn-primary btn-sm"/>
-                                <h:commandButton value="Save" actionListener="#{accountBean.saveAccount(account)}" rendered="#{account.edit}" styleClass="btn btn-success btn-sm"/>
+                                <h:commandButton value="Edit" actionListener="#{bandBean.editBand(band)}" rendered="#{not band.edit}" styleClass="btn btn-primary btn-sm"/>
+                                <h:commandButton value="Save" actionListener="#{bandBean.saveBand(band)}" rendered="#{band.edit}" styleClass="btn btn-success btn-sm"/>
                             </p:column>
 
                             <p:column style="width: 40px;" priority="1">
-                                <h:commandButton value="Delete" actionListener="#{accountBean.deleteAccount(account)}" styleClass="btn btn-danger btn-sm"/>
+                                <h:commandButton value="Delete" actionListener="#{bandBean.deleteBand(band)}" styleClass="btn btn-danger btn-sm"/>
                             </p:column>
                         </p:dataTable>
+                        <h:commandButton value="Add new band" action="#{bandBean.addBand()}" styleClass="btn btn-success btn-sm"/>
                     </h:form>
                 </div>
             </div>
