@@ -1,9 +1,7 @@
 package com.itibo.grob.webapp.bean;
 
 import com.itibo.grob.dataaccess.model.Account;
-import com.itibo.grob.dataaccess.model.Jukebox;
 import com.itibo.grob.services.AccountService;
-import com.itibo.grob.services.JukeboxService;
 import com.itibo.grob.services.ManagerAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -13,8 +11,9 @@ import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
 
 @ManagedBean(name = "userBean")
 @SessionScoped
@@ -24,9 +23,6 @@ public class UserBean implements Serializable {
 
     @Autowired
     private AccountService accountService;
-
-    @Autowired
-    private JukeboxService jukeboxService;
 
     @Autowired
     private ManagerAccountService managerAccountService;
@@ -41,6 +37,11 @@ public class UserBean implements Serializable {
         if (!login.isEmpty() && !email.isEmpty() && !password.isEmpty() && !firstName.isEmpty() && !lastName.isEmpty()) {
             Account newAccount = new Account(this.login, this.email, this.password, this.firstName, this.lastName);
             managerAccountService.addAccount(newAccount);
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("login.xhtml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
