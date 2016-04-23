@@ -2,7 +2,6 @@ package com.itibo.grob.webapp.bean;
 
 import com.itibo.grob.dataaccess.model.Account;
 import com.itibo.grob.dataaccess.model.Genre;
-import com.itibo.grob.dataaccess.model.Jukebox;
 import com.itibo.grob.dataaccess.model.Track;
 import com.itibo.grob.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.File;
@@ -26,12 +24,6 @@ public class JukeboxBean {
 
     @Autowired
     ManagerAccountService managerAccountService;
-
-    @Autowired
-    private JukeboxService jukeboxService;
-
-    @Autowired
-    private GenreService genreService;
 
     @Autowired
     private TrackService trackService;

@@ -51,6 +51,12 @@
                 </div>
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+                <hr/>
+
+                <c:if test="${param.auth == 'fail'}">
+                    <div class="alert alert-danger" role="alert">Incorrect login or password</div>
+                </c:if>
             </form>
         </div>
         <hr/>
