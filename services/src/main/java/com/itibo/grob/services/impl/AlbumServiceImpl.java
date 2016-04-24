@@ -17,8 +17,8 @@ public class AlbumServiceImpl extends AbstractGenericService<Album, Integer, Alb
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountServiceImpl.class);
 
     @Override
-    public Album findAlbumByNameIgnoreCase(String name) {
-        LOGGER.info("Finding {} entity with name = {}", simpleTypeName, name);
-        return repository.findAlbumByNameIgnoreCase(name);
+    public Album findOneAlbumById(Integer id) {
+        LOGGER.info("Finding {} entity with id = {}", simpleTypeName, id);
+        return repository.findOneAlbumById(id);
     }
 }

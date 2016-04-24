@@ -326,10 +326,10 @@ public class AppTest {
     }
 
     @Test
-    public void testFindAlbumByName() {
-        System.out.println("\n********** ALBUM BY NAME **********");
-        System.out.println("Album by name: " + albumRepository.findAlbumByNameIgnoreCase("Cryptic Writings"));
-        System.out.println("********** ALBUM BY NAME **********");
+    public void testFindOneAlbumByIdTest() {
+        System.out.println("\n********** ALBUM BY ID **********");
+        System.out.println("Album by id: " + albumRepository.findOneAlbumById(2));
+        System.out.println("********** ALBUM BY ID **********");
     }
 
     @After

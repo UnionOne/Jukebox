@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -36,12 +38,14 @@ public class AlbumBean implements Serializable {
     }
 
     public void addAlbum() {
-        Album album = new Album("unknown", "unknown", this.currentBand.getName());
-        album.setEdit(true);
-        List<Album> albumList = currentBand.getAlbums();
-        albumList.add(album);
+        this.albumList.add(new Album("name", "year", "band"));
         currentBand.setAlbums(albumList);
         bandService.save(currentBand);
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("albums.xhtml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void editAlbum(Album album) {
@@ -58,6 +62,7 @@ public class AlbumBean implements Serializable {
         album.setYear(this.year);
         album.setBand(this.band);
         albumService.save(album);
+        reset();
     }
 
     public void editDescription() {
@@ -73,7 +78,14 @@ public class AlbumBean implements Serializable {
     }
 
     public void deleteAlbum(Album album) {
-        albumService.delete(album);
+        albumService.delete(album.getId());
+        this.albumList = currentBand.getAlbums();
+    }
+
+    private void reset() {
+        this.name = "";
+        this.year = "";
+        this.band = "";
     }
 
     public String getName() {

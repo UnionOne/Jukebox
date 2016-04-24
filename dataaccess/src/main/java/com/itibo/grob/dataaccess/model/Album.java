@@ -47,6 +47,7 @@ public class Album implements Persistable<Integer> {
         this.name = name;
         this.year = year;
         this.band = band;
+        this.edit = false;
     }
 
     @Override

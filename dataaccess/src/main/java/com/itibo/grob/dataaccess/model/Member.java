@@ -24,6 +24,9 @@ public class Member implements Persistable<Integer> {
     @Column(name = "biography")
     private String biography;
 
+    @Column(name = "edit", nullable = false)
+    private Boolean edit;
+
     public Member() {
         super();
     }
@@ -70,6 +73,14 @@ public class Member implements Persistable<Integer> {
 
     public void setBiography(String biography) {
         this.biography = biography;
+    }
+
+    public Boolean getEdit() {
+        return edit;
+    }
+
+    public void setEdit(Boolean edit) {
+        this.edit = edit;
     }
 
     @Override

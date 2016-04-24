@@ -26,8 +26,12 @@
                         <h:link value="Bands" outcome="bands.xhtml"/>
                     </li>
 
-                    <li role="presentation" class="active">
+                    <li role="presentation">
                         <h:link value="Albums" outcome="albums.xhtml"/>
+                    </li>
+
+                    <li role="presentation" class="active">
+                        <h:link value="Tracks" outcome="tracks.xhtml"/>
                     </li>
 
                     <li role="presentation">
@@ -46,46 +50,48 @@
             <div class="container">
                 <div class="table-responsive">
                     <h:form>
-                        <p:dataTable id="albums" var="album" value="#{albumBean.albumList}"
+                        <p:dataTable id="tracks" var="track" value="#{trackBean.trackList}"
                                      styleClass="table table-bordered">
 
                             <p:column headerText="Id">
-                                <h:outputText value="#{album.id}" rendered="#{not album.edit}"/>
+                                <h:outputText value="#{track.id}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column headerText="Name">
-                                <h:inputText value="#{albumBean.name}" rendered="#{album.edit}" style="width: 100%;"/>
-                                <h:outputText value="#{album.name}" rendered="#{not album.edit}"/>
+                                <h:inputText value="#{trackBean.name}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.name}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Year">
-                                <h:inputText value="#{albumBean.year}" rendered="#{album.edit}" style="width: 100%;"/>
-                                <h:outputText value="#{album.year}" rendered="#{not album.edit}"/>
+                            <p:column headerText="Duration">
+                                <h:inputText value="#{trackBean.duration}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.duration}" rendered="#{not track.edit}"/>
+                            </p:column>
+
+                            <p:column headerText="Genre">
+                                <h:inputText value="#{trackBean.genre}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.genreName}" rendered="#{not track.edit}"/>
+                            </p:column>
+
+                            <p:column headerText="Album">
+                                <h:inputText value="#{trackBean.album}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.album}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column headerText="Band">
-                                <h:inputText value="#{albumBean.band}" rendered="#{album.edit}" style="width: 100%;"/>
-                                <h:outputText value="#{album.band}" rendered="#{not album.edit}"/>
+                                <h:inputText value="#{trackBean.band}" rendered="#{track.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{track.band}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{trackBean.setCurrentAlbum(album)}" action="tracks" styleClass="table-icons" image="/faces/resources/icon/glyphicons-160-playlist.png"/>
-                            </p:column>
-
-                            <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{albumBean.setCurrentAlbum(album)}" action="album-description" styleClass="table-icons" image="/faces/resources/icon/glyphicons-72-book.png"/>
-                            </p:column>
-
-                            <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{albumBean.editAlbum(album)}" rendered="#{not album.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
-                                <h:commandButton actionListener="#{albumBean.saveAlbum(album)}" rendered="#{album.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
+                                <h:commandButton actionListener="#{trackBean.editTrack(track)}" rendered="#{not track.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
+                                <h:commandButton actionListener="#{trackBean.saveTrack(track)}" rendered="#{track.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
                             </p:column>
 
                             <p:column style="width: 40px;" priority="1">
-                                <h:commandButton value="Delete" actionListener="#{albumBean.deleteAlbum(album)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-17-bin.png"/>
+                                <h:commandButton value="Delete" actionListener="#{trackBean.deleteTrack(track)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
                         </p:dataTable>
-                        <h:commandButton value="Add new album" action="#{albumBean.addAlbum()}" styleClass="btn btn-success btn-sm"/>
+                        <h:commandButton value="Add new track" action="#{trackBean.addTrack()}" styleClass="btn btn-success btn-sm"/>
                     </h:form>
                 </div>
             </div>

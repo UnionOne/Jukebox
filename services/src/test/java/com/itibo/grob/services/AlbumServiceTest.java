@@ -28,9 +28,9 @@ public class AlbumServiceTest extends GenericServiceTest<Album, Integer, AlbumSe
     }
 
     @Test
-    public void findAlbumByNameIgnoreCaseTest() {
+    public void findOneAlbumByIdTest() {
         Album saved = service.save(entity);
-        Album found = service.findAlbumByNameIgnoreCase(entity.getName());
+        Album found = service.findOneAlbumById(entity.getId());
 
         Assert.assertEquals(saved, found);
     }
