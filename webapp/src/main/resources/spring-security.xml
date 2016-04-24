@@ -17,8 +17,12 @@
         <bean:intercept-url pattern="/pages/jukebox.xhtml" access="hasAuthority('ROLE_USER')"/>
         <bean:intercept-url pattern="/pages/account.xhtml" access="hasAuthority('ROLE_USER')"/>
         <bean:intercept-url pattern="/pages/global-band.xhtml" access="hasAuthority('ROLE_USER')"/>
+        <bean:intercept-url pattern="/pages/global-band-description.xhtml" access="hasAuthority('ROLE_USER')"/>
         <bean:intercept-url pattern="/admin/admin.xhtml" access="hasAuthority('ROLE_ADMIN')"/>
         <bean:intercept-url pattern="/admin/bands.xhtml" access="hasAuthority('ROLE_ADMIN')"/>
+        <bean:intercept-url pattern="/admin/band-description.xhtml" access="hasAuthority('ROLE_ADMIN')"/>
+        <bean:intercept-url pattern="/admin/albums.xhtml" access="hasAuthority('ROLE_ADMIN')"/>
+        <bean:intercept-url pattern="/admin/album-description.xhtml" access="hasAuthority('ROLE_ADMIN')"/>
         <bean:access-denied-handler error-page="/pages/denied.xhtml"/>
         <bean:form-login login-page="/pages/login.xhtml" default-target-url="/pages/jukebox.xhtml"
                          authentication-failure-url="/pages/login.xhtml?auth=fail"/>

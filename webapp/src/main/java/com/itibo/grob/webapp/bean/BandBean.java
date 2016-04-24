@@ -113,7 +113,7 @@ public class BandBean implements Serializable {
     public void setCurrentBand(Band currentBand) {
         this.currentBand = currentBand;
 //        try {
-//            FacesContext.getCurrentInstance().getExternalContext().redirect("description.xhtml");
+//            FacesContext.getCurrentInstance().getExternalContext().redirect("band-description.xhtml");
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }

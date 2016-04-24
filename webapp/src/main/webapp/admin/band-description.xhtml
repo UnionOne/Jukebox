@@ -19,15 +19,15 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation">
-                        <h:link value="Bands" outcome="global-band"/>
-                    </li>
-
-                    <li role="presentation" class="active">
-                        <h:link value="Description" outcome="global-description"/>
+                        <h:link value="MyAdmin" outcome="admin.xhtml"/>
                     </li>
 
                     <li role="presentation">
-                        <h:link value="Jukebox" outcome="jukebox"/>
+                        <h:link value="Bands" outcome="bands.xhtml"/>
+                    </li>
+
+                    <li role="presentation" class="active">
+                        <h:link value="Description" outcome="band-description.xhtml"/>
                     </li>
 
                     <li role="presentation">
@@ -36,7 +36,7 @@
                 </ul>
             </nav>
             <div>
-                <h3 class="text-muted">Napster</h3>
+                <h3 class="text-muted">JsfMyAdmin</h3>
             </div>
         </div>
 
@@ -45,8 +45,14 @@
         <h:form>
             <div class="jumbotron">
                 <p style="text-align: justify; font-size: 17px;">
-                    <h:outputText value="#{bandBean.currentBand.description}"/>
+                    <h:outputText value="#{bandBean.currentBand.description}" rendered="#{not bandBean.currentBand.edit}"/>
                 </p>
+                <h:inputTextarea value="#{bandBean.description}" rendered="#{bandBean.currentBand.edit}" style="width: 100%; height: 50%;"/>
+
+                <div>
+                    <h:commandButton actionListener="#{bandBean.editDescription()}" rendered="#{not bandBean.currentBand.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
+                    <h:commandButton actionListener="#{bandBean.saveDescription}" rendered="#{bandBean.currentBand.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
+                </div>
             </div>
 
 

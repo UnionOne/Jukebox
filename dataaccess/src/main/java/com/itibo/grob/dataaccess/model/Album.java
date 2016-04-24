@@ -35,6 +35,9 @@ public class Album implements Persistable<Integer> {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "edit", nullable = false)
+    private Boolean edit;
+
     public Album() {
         super();
     }
@@ -99,6 +102,14 @@ public class Album implements Persistable<Integer> {
 
     public void setTracks(List<Track> tracks) {
         this.tracks = tracks;
+    }
+
+    public Boolean getEdit() {
+        return edit;
+    }
+
+    public void setEdit(Boolean edit) {
+        this.edit = edit;
     }
 
     @Override

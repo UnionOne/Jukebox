@@ -51,7 +51,8 @@ CREATE TABLE album(
   name TEXT NOT NULL,
   year TEXT,
   band TEXT,
-  description TEXT
+  description TEXT,
+  edit BOOLEAN NOT NULL
 );
 
 CREATE TABLE band(
