@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Random;
@@ -23,6 +25,8 @@ public class BandBean implements Serializable {
 
     private String name;
     private String year;
+    private String description;
+    private Band currentBand;
     private List<Band> bandList;
 
     public BandBean() {
@@ -53,6 +57,18 @@ public class BandBean implements Serializable {
         bandService.save(band);
     }
 
+    public void editDescription() {
+        currentBand.setEdit(true);
+        this.description = currentBand.getDescription();
+        bandService.save(currentBand);
+    }
+
+    public void saveDescription() {
+        currentBand.setEdit(false);
+        currentBand.setDescription(this.description);
+        bandService.save(currentBand);
+    }
+
     public void deleteBand(Band band) {
         bandService.delete(band);
     }
@@ -73,6 +89,14 @@ public class BandBean implements Serializable {
         this.year = year;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public List<Band> getBandList() {
         this.bandList = bandService.findAll();
         return bandList;
@@ -80,5 +104,18 @@ public class BandBean implements Serializable {
 
     public void setBandList(List<Band> bandList) {
         this.bandList = bandList;
+    }
+
+    public Band getCurrentBand() {
+        return currentBand;
+    }
+
+    public void setCurrentBand(Band currentBand) {
+        this.currentBand = currentBand;
+//        try {
+//            FacesContext.getCurrentInstance().getExternalContext().redirect("description.xhtml");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 }

@@ -17,7 +17,7 @@
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation" class="active">
-                        <h:link value="Global" outcome="global-band"/>
+                        <h:link value="Bands" outcome="global-band"/>
                     </li>
 
                     <li role="presentation">
@@ -56,6 +56,10 @@
 
                             <p:column headerText="Year">
                                 <h:outputText value="#{band.year}" rendered="#{not band.edit}"/>
+                            </p:column>
+
+                            <p:column style="width: 40px">
+                                <h:commandButton actionListener="#{bandBean.setCurrentBand(band)}" action="global-description" styleClass="table-icons" image="/faces/resources/icon/glyphicons-72-book.png"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>

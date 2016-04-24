@@ -70,14 +70,17 @@
                                 <!--<h:inputText value="#{accountBean.lastName}" rendered="#{account.edit}" style="width: 100%;"/>-->
                                 <!--<h:outputText value="#{account.lastName}" rendered="#{not account.edit}"/>-->
                             <!--</p:column>-->
+                            <p:column style="width: 40px">
+                                <h:commandButton actionListener="#{bandBean.setCurrentBand(band)}" action="description" styleClass="table-icons" image="/faces/resources/icon/glyphicons-72-book.png"/>
+                            </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton value="Edit" actionListener="#{bandBean.editBand(band)}" rendered="#{not band.edit}" styleClass="btn btn-primary btn-sm"/>
-                                <h:commandButton value="Save" actionListener="#{bandBean.saveBand(band)}" rendered="#{band.edit}" styleClass="btn btn-success btn-sm"/>
+                                <h:commandButton actionListener="#{bandBean.editBand(band)}" rendered="#{not band.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
+                                <h:commandButton actionListener="#{bandBean.saveBand(band)}" rendered="#{band.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
                             </p:column>
 
                             <p:column style="width: 40px;" priority="1">
-                                <h:commandButton value="Delete" actionListener="#{bandBean.deleteBand(band)}" styleClass="btn btn-danger btn-sm"/>
+                                <h:commandButton value="Delete" actionListener="#{bandBean.deleteBand(band)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
                         </p:dataTable>
                         <h:commandButton value="Add new band" action="#{bandBean.addBand()}" styleClass="btn btn-success btn-sm"/>
