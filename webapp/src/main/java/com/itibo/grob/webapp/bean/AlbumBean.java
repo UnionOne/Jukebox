@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.PostLoad;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -35,6 +36,11 @@ public class AlbumBean implements Serializable {
     private Album currentAlbum;
 
     public AlbumBean() {
+    }
+
+    @PostLoad
+    public void init() {
+        this.albumList = currentBand.getAlbums();
     }
 
     public void addAlbum() {
@@ -86,6 +92,7 @@ public class AlbumBean implements Serializable {
         this.name = "";
         this.year = "";
         this.band = "";
+        this.albumList = currentBand.getAlbums();
     }
 
     public String getName() {

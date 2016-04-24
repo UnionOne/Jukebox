@@ -40,7 +40,6 @@ public class TrackBean implements Serializable {
     public void addTrack() {
         Genre genre = new Genre("unknown");
         Track track = new Track("unknown", "unknown", genre, currentAlbum.getName(), currentAlbum.getBand(), "unknown");
-//        track.setEdit(true);
         List<Track> list = currentAlbum.getTracks();
         list.add(track);
         currentAlbum.setTracks(list);
