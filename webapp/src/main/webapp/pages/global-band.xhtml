@@ -47,23 +47,27 @@
                                      rowsPerPageTemplate="3, 5, 10, 15">
 
                             <p:column headerText="Id">
-                                <h:outputText value="#{band.id}" rendered="#{not band.edit}"/>
+                                <h:outputText value="#{band.id}"/>
                             </p:column>
 
                             <p:column headerText="Name">
-                                <h:outputText value="#{band.name}" rendered="#{not band.edit}"/>
+                                <h:outputText value="#{band.name}"/>
                             </p:column>
 
                             <p:column headerText="Year">
-                                <h:outputText value="#{band.year}" rendered="#{not band.edit}"/>
+                                <h:outputText value="#{band.year}"/>
                             </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{albumBean.setCurrentBand(band)}" action="global-album" styleClass="table-icons" image="/faces/resources/icon/glyphicons-504-cd.png"/>
+                                <h:commandButton actionListener="#{albumBean.setCurrentBand(band)}"
+                                                 action="global-album" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-504-cd.png"/>
                             </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{bandBean.setCurrentBand(band)}" action="global-band-description" styleClass="table-icons" image="/faces/resources/icon/glyphicons-72-book.png"/>
+                                <h:commandButton actionListener="#{bandBean.setCurrentBand(band)}"
+                                                 action="global-band-description" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-72-book.png"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>

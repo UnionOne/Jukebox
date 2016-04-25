@@ -57,32 +57,39 @@
                             </p:column>
 
                             <p:column headerText="Login">
-                                <h:inputText value="#{accountBean.login}" rendered="#{account.edit}" style="width: 100%;"/>
+                                <h:inputText value="#{accountBean.login}" rendered="#{account.edit}"
+                                             style="width: 100%;"/>
                                 <h:outputText value="#{account.login}" rendered="#{not account.edit}"/>
                             </p:column>
 
                             <p:column headerText="Email">
-                                <h:inputText value="#{accountBean.email}" rendered="#{account.edit}" style="width: 100%;"/>
+                                <h:inputText value="#{accountBean.email}" rendered="#{account.edit}"
+                                             style="width: 100%;"/>
                                 <h:outputText value="#{account.email}" rendered="#{not account.edit}"/>
                             </p:column>
 
                             <p:column headerText="First Name">
-                                <h:inputText value="#{accountBean.firstName}" rendered="#{account.edit}" style="width: 100%;"/>
+                                <h:inputText value="#{accountBean.firstName}" rendered="#{account.edit}"
+                                             style="width: 100%;"/>
                                 <h:outputText value="#{account.firstName}" rendered="#{not account.edit}"/>
                             </p:column>
 
                             <p:column headerText="Last Name">
-                                <h:inputText value="#{accountBean.lastName}" rendered="#{account.edit}" style="width: 100%;"/>
+                                <h:inputText value="#{accountBean.lastName}" rendered="#{account.edit}"
+                                             style="width: 100%;"/>
                                 <h:outputText value="#{account.lastName}" rendered="#{not account.edit}"/>
                             </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton value="Edit" actionListener="#{accountBean.editAccount(account)}" rendered="#{not account.edit}" styleClass="btn btn-primary btn-sm"/>
-                                <h:commandButton value="Save" actionListener="#{accountBean.saveAccount(account)}" rendered="#{account.edit}" styleClass="btn btn-success btn-sm"/>
+                                <h:commandButton value="Edit" actionListener="#{accountBean.editAccount(account)}"
+                                                 rendered="#{not account.edit}" styleClass="btn btn-primary btn-sm"/>
+                                <h:commandButton value="Save" actionListener="#{accountBean.saveAccount(account)}"
+                                                 rendered="#{account.edit}" styleClass="btn btn-success btn-sm"/>
                             </p:column>
 
                             <p:column style="width: 40px;" priority="1">
-                                <h:commandButton value="Delete" actionListener="#{accountBean.deleteAccount(account)}" styleClass="btn btn-danger btn-sm"/>
+                                <h:commandButton value="Delete" actionListener="#{accountBean.deleteAccount(account)}"
+                                                 styleClass="btn btn-danger btn-sm"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>

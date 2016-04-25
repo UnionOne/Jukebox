@@ -51,7 +51,8 @@
 
         <div class="jumbotron">
             <div class="container">
-                <h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-primary btn-md" style="float: left;"/>
+                <h:commandButton value="Add new track" onclick="PF('dlg').show();" styleClass="btn btn-primary btn-md"
+                                 style="float: left;"/>
             </div>
 
             <p:dialog header="Track" widgetVar="dlg" resizable="false" width="500">
@@ -59,49 +60,56 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Name</label>
                         <div class="col-md-8">
-                            <h:inputText id="name" a:placeholder="Name" value="#{jukeboxBean.name}" styleClass="form-control input-sm"/>
+                            <h:inputText id="name" a:placeholder="Name" value="#{jukeboxBean.name}"
+                                         styleClass="form-control input-sm"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-4 control-label">Duration</label>
                         <div class="col-md-8">
-                            <h:inputText id="duration" a:placeholder="Duration" value="#{jukeboxBean.duration}" styleClass="form-control input-sm"/>
+                            <h:inputText id="duration" a:placeholder="Duration" value="#{jukeboxBean.duration}"
+                                         styleClass="form-control input-sm"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-4 control-label">Genre</label>
                         <div class="col-md-8">
-                            <h:inputText id="genre" a:placeholder="Genre" value="#{jukeboxBean.genreName}" styleClass="form-control input-sm"/>
+                            <h:inputText id="genre" a:placeholder="Genre" value="#{jukeboxBean.genreName}"
+                                         styleClass="form-control input-sm"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-4 control-label">Album</label>
                         <div class="col-md-8">
-                            <h:inputText id="album" a:placeholder="Album" value="#{jukeboxBean.album}" styleClass="form-control input-sm"/>
+                            <h:inputText id="album" a:placeholder="Album" value="#{jukeboxBean.album}"
+                                         styleClass="form-control input-sm"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-4 control-label">Band</label>
                         <div class="col-md-8">
-                            <h:inputText id="band" a:placeholder="Band" value="#{jukeboxBean.band}" styleClass="form-control input-sm"/>
+                            <h:inputText id="band" a:placeholder="Band" value="#{jukeboxBean.band}"
+                                         styleClass="form-control input-sm"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-4 control-label">Link</label>
                         <div class="col-md-8">
-                            <h:inputText id="link" a:placeholder="Link" value="#{jukeboxBean.link}" styleClass="form-control input-sm"/>
+                            <h:inputText id="link" a:placeholder="Link" value="#{jukeboxBean.link}"
+                                         styleClass="form-control input-sm"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label"/>
                         <div class="col-md-8">
-                            <h:commandButton value="Add new" action="#{jukeboxBean.addTrack}" styleClass="btn btn-success" style="margin: 5px">
+                            <h:commandButton value="Add new" action="#{jukeboxBean.addTrack}"
+                                             styleClass="btn btn-success" style="margin: 5px">
                                 <f:ajax execute="name duration genre album band link"/>
                             </h:commandButton>
                             <h:commandButton value="Reset" action="#{jukeboxBean.reset}" styleClass="btn btn-danger"/>
@@ -123,57 +131,75 @@
                             <f:facet name="header">
                                 <div class="table-header" style="margin: 4px;">
                                     Jukebox
-                                    <p:commandButton id="toggler" type="button" value="Columns" style="float: right;" icon="ui-icon-calculator"/>
+                                    <p:commandButton id="toggler" type="button" value="Columns" style="float: right;"
+                                                     icon="ui-icon-calculator"/>
                                     <p:columnToggler trigger="toggler" datasource="tracks"/>
                                 </div>
                             </f:facet>
 
-                            <p:column headerText="Band" filterBy="#{track.band}" filterMatchMode="contains" sortBy="#{track.band}">
+                            <p:column headerText="Band" filterBy="#{track.band}" filterMatchMode="contains"
+                                      sortBy="#{track.band}">
                                 <h:inputText value="#{jukeboxBean.band}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.band}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Name" filterBy="#{track.name}" filterMatchMode="contains" sortBy="#{track.name}">
+                            <p:column headerText="Name" filterBy="#{track.name}" filterMatchMode="contains"
+                                      sortBy="#{track.name}">
                                 <h:inputText value="#{jukeboxBean.name}" rendered="#{track.edit}" style="width: 100%;"/>
                                 <h:outputText value="#{track.name}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Duration" filterBy="#{track.duration}" filterMatchMode="contains" sortBy="#{track.duration}" priority="1">
-                                <h:inputText value="#{jukeboxBean.duration}" rendered="#{track.edit}" style="width: 100%;"/>
+                            <p:column headerText="Duration" filterBy="#{track.duration}" filterMatchMode="contains"
+                                      sortBy="#{track.duration}" priority="1">
+                                <h:inputText value="#{jukeboxBean.duration}" rendered="#{track.edit}"
+                                             style="width: 100%;"/>
                                 <h:outputText value="#{track.duration}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Genre" filterBy="#{track.genreName}" filterMatchMode="contains" sortBy="#{track.genreName}" priority="1">
-                                <h:inputText value="#{jukeboxBean.genreName}" rendered="#{track.edit}" style="width: 100%;"/>
+                            <p:column headerText="Genre" filterBy="#{track.genreName}" filterMatchMode="contains"
+                                      sortBy="#{track.genreName}" priority="1">
+                                <h:inputText value="#{jukeboxBean.genreName}" rendered="#{track.edit}"
+                                             style="width: 100%;"/>
                                 <h:outputText value="#{track.genreName}" rendered="#{not track.edit}"/>
                             </p:column>
 
-                            <p:column headerText="Album" filterBy="#{track.album}" filterMatchMode="contains" sortBy="#{track.album}" priority="3">
-                                <h:inputText value="#{jukeboxBean.album}" rendered="#{track.edit}" style="width: 100%;"/>
+                            <p:column headerText="Album" filterBy="#{track.album}" filterMatchMode="contains"
+                                      sortBy="#{track.album}" priority="3">
+                                <h:inputText value="#{jukeboxBean.album}" rendered="#{track.edit}"
+                                             style="width: 100%;"/>
                                 <h:outputText value="#{track.album}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <!--<p:column headerText="Link" priority="2">-->
-                                <!--<h:inputText value="#{jukeboxBean.link}" style="width: 100%;" rendered="#{track.edit}"/>-->
+                            <!--<h:inputText value="#{jukeboxBean.link}" style="width: 100%;" rendered="#{track.edit}"/>-->
                             <!--</p:column>-->
 
                             <p:column style="width: 40px" priority="1">
-                                <h:commandButton actionListener="#{jukeboxBean.editTrack(track)}" rendered="#{not track.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
-                                <h:commandButton actionListener="#{jukeboxBean.saveTrack(track)}" rendered="#{track.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.editTrack(track)}"
+                                                 rendered="#{not track.edit}" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.saveTrack(track)}"
+                                                 rendered="#{track.edit}" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
                             </p:column>
 
                             <p:column style="width: 40px;" priority="1">
-                                <h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-17-bin.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}"
+                                                 styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
 
                             <p:column style="width: 36px">
-                                <h:commandButton actionListener="#{jukeboxBean.setPlay(track.link)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-174-play.png"/>
+                                <h:commandButton actionListener="#{jukeboxBean.setPlay(track.link)}"
+                                                 styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-174-play.png"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
                 </div>
                 <div class="form-group" style="float: left;">
-                    <form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form id="fileBucket" action="${pageContext.request.contextPath}/upload" method="post"
+                          enctype="multipart/form-data" class="form-horizontal">
                         <input id="file" name="file" type="file" data-filename-placement="inside"/>
                         <input type="submit" value="Upload" class="btn btn-primary btn-md"/>
                     </form>
@@ -186,7 +212,7 @@
         </footer>
     </div>
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             $('input[type=file]').bootstrapFileInput();
             $('.file-inputs').bootstrapFileInput();
         });

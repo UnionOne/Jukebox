@@ -66,29 +66,35 @@
                                 <h:outputText value="#{band.year}" rendered="#{not band.edit}"/>
                             </p:column>
 
-                            <!--<p:column headerText="Last Name">-->
-                                <!--<h:inputText value="#{accountBean.lastName}" rendered="#{account.edit}" style="width: 100%;"/>-->
-                                <!--<h:outputText value="#{account.lastName}" rendered="#{not account.edit}"/>-->
-                            <!--</p:column>-->
-
                             <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{albumBean.setCurrentBand(band)}" action="albums" styleClass="table-icons" image="/faces/resources/icon/glyphicons-504-cd.png"/>
+                                <h:commandButton actionListener="#{albumBean.setCurrentBand(band)}" action="albums"
+                                                 styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-504-cd.png"/>
                             </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{bandBean.setCurrentBand(band)}" action="band-description" styleClass="table-icons" image="/faces/resources/icon/glyphicons-72-book.png"/>
+                                <h:commandButton actionListener="#{bandBean.setCurrentBand(band)}"
+                                                 action="band-description" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-72-book.png"/>
                             </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{bandBean.editBand(band)}" rendered="#{not band.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
-                                <h:commandButton actionListener="#{bandBean.saveBand(band)}" rendered="#{band.edit}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
+                                <h:commandButton actionListener="#{bandBean.editBand(band)}" rendered="#{not band.edit}"
+                                                 styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
+                                <h:commandButton actionListener="#{bandBean.saveBand(band)}" rendered="#{band.edit}"
+                                                 styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
                             </p:column>
 
                             <p:column style="width: 40px;" priority="1">
-                                <h:commandButton value="Delete" actionListener="#{bandBean.deleteBand(band)}" styleClass="table-icons" image="/faces/resources/icon/glyphicons-17-bin.png"/>
+                                <h:commandButton value="Delete" actionListener="#{bandBean.deleteBand(band)}"
+                                                 styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-17-bin.png"/>
                             </p:column>
                         </p:dataTable>
-                        <h:commandButton value="Add new band" action="#{bandBean.addBand()}" styleClass="btn btn-success btn-sm"/>
+                        <h:commandButton value="Add new band" action="#{bandBean.addBand()}"
+                                         styleClass="btn btn-success btn-sm"/>
                     </h:form>
                 </div>
             </div>

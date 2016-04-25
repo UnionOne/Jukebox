@@ -14,7 +14,7 @@
         <module>services</module>
     </modules>
     <packaging>pom</packaging>
-    <name>GROB NIKITKI</name>
+    <name>Jukebox GROB</name>
     <url>https://github.com/UnionOne/Jukebox</url>
 
 

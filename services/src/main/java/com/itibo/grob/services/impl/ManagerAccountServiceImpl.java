@@ -25,9 +25,6 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
     RoleService roleService;
 
     @Autowired
-    private GenreService genreService;
-
-    @Autowired
     JukeboxService jukeboxService;
 
     @Autowired
@@ -84,12 +81,6 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
 
         List<Track> trackList = jukebox.getTracks();
 
-//        List<Genre> genreList = new ArrayList<>();
-//
-//        for(Track track : trackList) {
-//            genreList.add(track.getGenre());
-//        }
-
         List<String> linkList = new ArrayList<>();
         for (Track track : trackList) {
             linkList.add(track.getLink());
@@ -105,19 +96,11 @@ public class ManagerAccountServiceImpl implements ManagerAccountService {
         }
         linkList.clear();
 
-//        for(Genre genre : genreList) {
-//            genreService.delete(genre.getId());
-//        }
-
-//        trackService.delete(trackList);
-
         accountService.deleteByLogin(account.getLogin());
 
         jukeboxService.delete(jukebox);
 
         roleService.delete(roleList);
-
-
 
         LOGGER.info("Delete {} entity", account);
     }

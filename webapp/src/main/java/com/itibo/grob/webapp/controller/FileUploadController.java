@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.faces.application.FacesMessage;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;

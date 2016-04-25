@@ -41,7 +41,8 @@
                 <div class="form-group">
                     <h:outputLabel value="Login" styleClass="col-lg-4 control-label"/>
                     <div class="col-md-4">
-                        <h:inputText id="login" value="#{userBean.login}" a:placeholder="Login" styleClass="form-control input-lg">
+                        <h:inputText id="login" value="#{userBean.login}" a:placeholder="Login"
+                                     styleClass="form-control input-lg">
                             <f:validator validatorId="login"/>
                             <f:ajax event="blur" execute="@this" render="loginError"/>
                         </h:inputText>
@@ -54,7 +55,8 @@
                 <div class="form-group">
                     <h:outputLabel value="Password" styleClass="col-md-4 control-label"/>
                     <div class="col-md-4">
-                        <h:inputSecret id="password" value="#{userBean.password}" a:placeholder="Password" styleClass="form-control input-lg">
+                        <h:inputSecret id="password" value="#{userBean.password}" a:placeholder="Password"
+                                       styleClass="form-control input-lg">
                             <f:validator validatorId="password"/>
                             <f:ajax event="blur" execute="@this" render="passwordError"/>
                         </h:inputSecret>
@@ -65,7 +67,8 @@
                 <div class="form-group">
                     <h:outputLabel value="Email" styleClass="col-md-4 control-label"/>
                     <div class="col-md-4">
-                        <h:inputText id="email" value="#{userBean.email}" a:placeholder="Email" styleClass="form-control input-lg">
+                        <h:inputText id="email" value="#{userBean.email}" a:placeholder="Email"
+                                     styleClass="form-control input-lg">
                             <f:validator validatorId="email"/>
                             <f:ajax event="blur" execute="@this" render="emailError"/>
                         </h:inputText>
@@ -76,7 +79,8 @@
                 <div class="form-group">
                     <h:outputLabel value="First Name" styleClass="col-md-4 control-label"/>
                     <div class="col-md-4">
-                        <h:inputText id="firstName" value="#{userBean.firstName}" a:placeholder="First Name" styleClass="form-control input-lg">
+                        <h:inputText id="firstName" value="#{userBean.firstName}" a:placeholder="First Name"
+                                     styleClass="form-control input-lg">
                             <f:validator validatorId="firstName"/>
                             <f:ajax event="blur" execute="@this" render="firstNameError"/>
                         </h:inputText>
@@ -87,7 +91,8 @@
                 <div class="form-group">
                     <h:outputLabel value="Last Name" styleClass="col-md-4 control-label" for="lastName"/>
                     <div class="col-md-4">
-                        <h:inputText id="lastName" value="#{userBean.lastName}" a:placeholder="Last Name" styleClass="form-control input-lg">
+                        <h:inputText id="lastName" value="#{userBean.lastName}" a:placeholder="Last Name"
+                                     styleClass="form-control input-lg">
                             <f:validator validatorId="lastName"/>
                             <f:ajax event="blur" execute="@this" render="lastNameError"/>
                         </h:inputText>
@@ -97,11 +102,13 @@
 
                 <div class="form-group">
 
-                    <h:commandButton value="Register" action="#{userBean.addUser}" style="margin: 5px" styleClass="btn btn-lg btn-primary">
+                    <h:commandButton value="Register" action="#{userBean.addUser}" style="margin: 5px"
+                                     styleClass="btn btn-lg btn-primary">
                         <f:ajax execute="login password email firstName lastName"/>
                     </h:commandButton>
 
-                    <h:commandButton value="Reset" action="#{userBean.reset}" style="margin: 5px" styleClass="btn btn-lg btn-danger"/>
+                    <h:commandButton value="Reset" action="#{userBean.reset}" style="margin: 5px"
+                                     styleClass="btn btn-lg btn-danger"/>
                 </div>
             </h:form>
         </div>

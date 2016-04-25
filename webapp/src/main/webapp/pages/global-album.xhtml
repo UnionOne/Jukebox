@@ -40,29 +40,34 @@
             <div class="container">
                 <div class="table-responsive">
                     <h:form>
-                        <p:dataTable id="albums" var="album" value="#{albumBean.albumList}" styleClass="table table-bordered">
+                        <p:dataTable id="albums" var="album" value="#{albumBean.albumList}"
+                                     styleClass="table table-bordered">
                             <p:column headerText="Id">
-                                <h:outputText value="#{album.id}" rendered="#{not album.edit}"/>
+                                <h:outputText value="#{album.id}"/>
                             </p:column>
 
                             <p:column headerText="Name">
-                                <h:outputText value="#{album.name}" rendered="#{not album.edit}"/>
+                                <h:outputText value="#{album.name}"/>
                             </p:column>
 
                             <p:column headerText="Year">
-                                <h:outputText value="#{album.year}" rendered="#{not album.edit}"/>
+                                <h:outputText value="#{album.year}"/>
                             </p:column>
 
                             <p:column headerText="Band">
-                                <h:outputText value="#{album.band}" rendered="#{not album.edit}"/>
+                                <h:outputText value="#{album.band}"/>
                             </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{trackBean.setCurrentAlbum(album)}" action="global-tracks" styleClass="table-icons" image="/faces/resources/icon/glyphicons-160-playlist.png"/>
+                                <h:commandButton actionListener="#{trackBean.setCurrentAlbum(album)}"
+                                                 action="global-tracks" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-160-playlist.png"/>
                             </p:column>
 
                             <p:column style="width: 40px">
-                                <h:commandButton actionListener="#{albumBean.setCurrentAlbum(album)}" action="global-album-description" styleClass="table-icons" image="/faces/resources/icon/glyphicons-72-book.png"/>
+                                <h:commandButton actionListener="#{albumBean.setCurrentAlbum(album)}"
+                                                 action="global-album-description" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-72-book.png"/>
                             </p:column>
                         </p:dataTable>
                     </h:form>
