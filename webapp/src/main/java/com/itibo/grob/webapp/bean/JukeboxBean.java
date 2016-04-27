@@ -12,7 +12,9 @@ import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 @ManagedBean(name = "jukeboxBean")
@@ -36,11 +38,12 @@ public class JukeboxBean {
     private String link;
     private String play;
 
-    public void addTrack() {
+    public void addTrack() throws IOException {
         Genre genre = new Genre(genreName);
         Track track = new Track(name, duration, genre, album, band, link);
 
         managerAccountService.addTrack(getAccount(), track);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("jukebox.xhtml");
     }
 
     public void deleteTrack(Track track) {

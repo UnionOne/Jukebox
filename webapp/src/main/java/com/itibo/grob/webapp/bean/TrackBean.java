@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
@@ -37,13 +39,15 @@ public class TrackBean implements Serializable {
     public TrackBean() {
     }
 
-    public void addTrack() {
+    public void addTrack() throws IOException {
         Genre genre = new Genre("unknown");
         Track track = new Track("unknown", "unknown", genre, currentAlbum.getName(), currentAlbum.getBand(), "unknown");
         List<Track> list = currentAlbum.getTracks();
         list.add(track);
         currentAlbum.setTracks(list);
         albumService.save(currentAlbum);
+        this.trackList = currentAlbum.getTracks();
+        FacesContext.getCurrentInstance().getExternalContext().redirect("tracks.xhtml");
     }
 
     public void editTrack(Track track) {

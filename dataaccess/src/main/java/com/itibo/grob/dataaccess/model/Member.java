@@ -34,6 +34,7 @@ public class Member implements Persistable<Integer> {
     public Member(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.edit = false;
     }
 
     @Override

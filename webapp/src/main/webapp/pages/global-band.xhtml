@@ -57,6 +57,12 @@
                             </p:column>
 
                             <p:column style="width: 40px">
+                                <h:commandButton actionListener="#{memberBean.setCurrentBand(band)}"
+                                                 action="global-member" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-4-user.png"/>
+                            </p:column>
+
+                            <p:column style="width: 40px">
                                 <h:commandButton actionListener="#{albumBean.setCurrentBand(band)}"
                                                  action="global-album" styleClass="table-icons"
                                                  image="/faces/resources/icon/glyphicons-504-cd.png"/>

@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="fonts" name="font.css"/>
+</h:head>
+
+<f:view>
+    <div class="container">
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation">
+                        <h:link value="MyAdmin" outcome="admin.xhtml"/>
+                    </li>
+
+                    <li role="presentation">
+                        <h:link value="Bands" outcome="bands.xhtml"/>
+                    </li>
+
+                    <li role="presentation" class="active">
+                        <h:link value="Members" outcome="members.xhtml"/>
+                    </li>
+
+                    <li role="presentation">
+                        <a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <div>
+                <h3 class="text-muted">JsfMyAdmin</h3>
+            </div>
+        </div>
+
+        <hr/>
+
+        <div class="jumbotron">
+            <div class="container">
+                <div class="table-responsive">
+                    <h:form>
+                        <p:dataTable id="members" var="member" value="#{memberBean.memberList}"
+                                     styleClass="table table-bordered">
+
+                            <p:column headerText="Id">
+                                <h:outputText value="#{member.id}" rendered="#{not member.edit}"/>
+                            </p:column>
+
+                            <p:column headerText="First Name">
+                                <h:inputText value="#{memberBean.firstName}" rendered="#{member.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{member.firstName}" rendered="#{not member.edit}"/>
+                            </p:column>
+
+                            <p:column headerText="Last Name">
+                                <h:inputText value="#{memberBean.lastName}" rendered="#{member.edit}" style="width: 100%;"/>
+                                <h:outputText value="#{member.lastName}" rendered="#{not member.edit}"/>
+                            </p:column>
+
+                            <!--<p:column style="width: 40px">-->
+                                <!--<h:commandButton actionListener="#{trackBean.setCurrentAlbum(album)}" action="tracks"-->
+                                                 <!--styleClass="table-icons"-->
+                                                 <!--image="/faces/resources/icon/glyphicons-160-playlist.png"/>-->
+                            <!--</p:column>-->
+
+                            <!--<p:column style="width: 40px">-->
+                                <!--<h:commandButton actionListener="#{memberBean.setCurrentMember(member)}"-->
+                                                 <!--action="album-description" styleClass="table-icons"-->
+                                                 <!--image="/faces/resources/icon/glyphicons-72-book.png"/>-->
+                            <!--</p:column>-->
+
+                            <p:column style="width: 40px">
+                                <h:commandButton actionListener="#{memberBean.editMember(member)}"
+                                                 rendered="#{not member.edit}" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
+                                <h:commandButton actionListener="#{memberBean.saveMember(member)}" rendered="#{member.edit}"
+                                                 styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
+                            </p:column>
+
+                            <p:column style="width: 40px;" priority="1">
+                                <h:commandButton value="Delete" actionListener="#{memberBean.deleteMember(member)}"
+                                                 styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-17-bin.png"/>
+                            </p:column>
+                        </p:dataTable>
+                        <h:commandButton value="Add new member" action="#{memberBean.addMember()}"
+                                         styleClass="btn btn-success btn-sm"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
+        <hr/>
+        <footer class="footer">
+            <p>© 2016 Jukebox.</p>
+        </footer>
+    </div>
+</f:view>
+</html>
