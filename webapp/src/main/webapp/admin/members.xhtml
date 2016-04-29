@@ -59,17 +59,11 @@
                                 <h:outputText value="#{member.lastName}" rendered="#{not member.edit}"/>
                             </p:column>
 
-                            <!--<p:column style="width: 40px">-->
-                                <!--<h:commandButton actionListener="#{trackBean.setCurrentAlbum(album)}" action="tracks"-->
-                                                 <!--styleClass="table-icons"-->
-                                                 <!--image="/faces/resources/icon/glyphicons-160-playlist.png"/>-->
-                            <!--</p:column>-->
-
-                            <!--<p:column style="width: 40px">-->
-                                <!--<h:commandButton actionListener="#{memberBean.setCurrentMember(member)}"-->
-                                                 <!--action="album-description" styleClass="table-icons"-->
-                                                 <!--image="/faces/resources/icon/glyphicons-72-book.png"/>-->
-                            <!--</p:column>-->
+                            <p:column style="width: 40px">
+                                <h:commandButton actionListener="#{memberBean.setCurrentMember(member)}"
+                                                 action="member-description" styleClass="table-icons"
+                                                 image="/faces/resources/icon/glyphicons-72-book.png"/>
+                            </p:column>
 
                             <p:column style="width: 40px">
                                 <h:commandButton actionListener="#{memberBean.editMember(member)}"

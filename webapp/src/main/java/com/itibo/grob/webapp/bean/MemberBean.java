@@ -60,17 +60,17 @@ public class MemberBean implements Serializable {
         memberService.save(member);
     }
 
-//    public void editDescription() {
-//        currentMember.setEdit(true);
-//        this.biography = currentMember.getBiography();
-//        memberService.save(currentMember);
-//    }
-//
-//    public void saveDescription() {
-//        currentMember.setEdit(false);
-//        currentMember.setBiography(this.biography);
-//        memberService.save(currentMember);
-//    }
+    public void editDescription() {
+        currentMember.setEdit(true);
+        this.biography = currentMember.getBiography();
+        memberService.save(currentMember);
+    }
+
+    public void saveDescription() {
+        currentMember.setEdit(false);
+        currentMember.setBiography(this.biography);
+        memberService.save(currentMember);
+    }
 
     public void deleteMember(Member member) {
         memberService.delete(member);

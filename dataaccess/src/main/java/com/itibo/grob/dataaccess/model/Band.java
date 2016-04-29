@@ -55,6 +55,7 @@ public class Band implements Persistable<Integer> {
         super();
         this.name = name;
         this.year = year;
+        this.edit = false;
     }
 
     @Override
