@@ -51,12 +51,12 @@
                                  style="width: 100%; height: 50%;"/>
 
                 <div>
-                    <h:commandButton actionListener="#{memberBean.editDescription()}"
-                                     rendered="#{not memberBean.currentMember.edit}" styleClass="table-icons"
-                                     image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
-                    <h:commandButton actionListener="#{memberBean.saveDescription()}"
-                                     rendered="#{memberBean.currentMember.edit}" styleClass="table-icons"
-                                     image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
+                    <h:commandButton value="Edit" actionListener="#{memberBean.editDescription()}"
+                                     rendered="#{not memberBean.currentMember.edit}"
+                                     styleClass="btn btn-primary btn-sm"/>
+                    <h:commandButton value="Save" actionListener="#{memberBean.saveDescription()}"
+                                     rendered="#{memberBean.currentMember.edit}"
+                                     styleClass="btn btn-success btn-sm"/>
                 </div>
             </div>
 

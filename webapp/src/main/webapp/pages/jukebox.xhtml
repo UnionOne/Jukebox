@@ -147,21 +147,21 @@
                             </p:column>
 
                             <p:column headerText="Duration" filterBy="#{track.duration}" filterMatchMode="contains"
-                                      sortBy="#{track.duration}" priority="1">
+                                      sortBy="#{track.duration}">
                                 <h:inputText value="#{jukeboxBean.duration}" rendered="#{track.edit}"
                                              style="width: 100%;"/>
                                 <h:outputText value="#{track.duration}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column headerText="Genre" filterBy="#{track.genreName}" filterMatchMode="contains"
-                                      sortBy="#{track.genreName}" priority="1">
+                                      sortBy="#{track.genreName}">
                                 <h:inputText value="#{jukeboxBean.genreName}" rendered="#{track.edit}"
                                              style="width: 100%;"/>
                                 <h:outputText value="#{track.genreName}" rendered="#{not track.edit}"/>
                             </p:column>
 
                             <p:column headerText="Album" filterBy="#{track.album}" filterMatchMode="contains"
-                                      sortBy="#{track.album}" priority="3">
+                                      sortBy="#{track.album}">
                                 <h:inputText value="#{jukeboxBean.album}" rendered="#{track.edit}"
                                              style="width: 100%;"/>
                                 <h:outputText value="#{track.album}" rendered="#{not track.edit}"/>
@@ -171,7 +171,7 @@
                             <!--<h:inputText value="#{jukeboxBean.link}" style="width: 100%;" rendered="#{track.edit}"/>-->
                             <!--</p:column>-->
 
-                            <p:column style="width: 40px" priority="1">
+                            <p:column style="width: 40px">
                                 <h:commandButton actionListener="#{jukeboxBean.editTrack(track)}"
                                                  rendered="#{not track.edit}" styleClass="table-icons"
                                                  image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
@@ -180,7 +180,7 @@
                                                  image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
                             </p:column>
 
-                            <p:column style="width: 40px;" priority="1">
+                            <p:column style="width: 40px;">
                                 <h:commandButton actionListener="#{jukeboxBean.deleteTrack(track)}"
                                                  styleClass="table-icons"
                                                  image="/faces/resources/icon/glyphicons-17-bin.png"/>

@@ -51,12 +51,12 @@
                                  style="width: 100%; height: 50%;"/>
 
                 <div>
-                    <h:commandButton actionListener="#{albumBean.editDescription()}"
-                                     rendered="#{not albumBean.currentAlbum.edit}" styleClass="table-icons"
-                                     image="/faces/resources/icon/glyphicons-137-cogwheel.png"/>
-                    <h:commandButton actionListener="#{albumBean.saveDescription}"
-                                     rendered="#{albumBean.currentAlbum.edit}" styleClass="table-icons"
-                                     image="/faces/resources/icon/glyphicons-444-floppy-disk.png"/>
+                    <h:commandButton value="Edit" actionListener="#{albumBean.editDescription()}"
+                                     rendered="#{not albumBean.currentAlbum.edit}"
+                                     styleClass="btn btn-primary btn-sm"/>
+                    <h:commandButton value="Save" actionListener="#{albumBean.saveDescription()}"
+                                     rendered="#{albumBean.currentAlbum.edit}"
+                                     styleClass="btn btn-success btn-sm"/>
                 </div>
             </div>
 
