@@ -44,7 +44,7 @@ public class FileUploadController {
     public String getSingleUploadPage(ModelMap model) {
         FileBucket fileModel = new FileBucket();
         model.addAttribute("fileBucket", fileModel);
-        return "jukebox";
+        return "redirect:/pages/jukebox.xhtml";
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
@@ -52,7 +52,7 @@ public class FileUploadController {
 
         if (result.hasErrors()) {
             System.out.println("validation errors");
-            return "jukebox";
+            return "redirect:/pages/jukebox.xhtml";
         } else {
             System.out.println("Fetching file");
             MultipartFile multipartFile = fileBucket.getFile();

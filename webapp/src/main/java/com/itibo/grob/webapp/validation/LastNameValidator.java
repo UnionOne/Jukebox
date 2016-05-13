@@ -17,7 +17,7 @@ public class LastNameValidator implements Validator {
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
         Pattern pattern = Pattern.compile(LAST_NAME_PATTERN);
         Matcher matcher = pattern.matcher(o.toString());
-        if (!matcher.matches() || o.toString().equals("")) {
+        if (!matcher.matches() || "".equals(o.toString())) {
             throw new ValidatorException(new FacesMessage("Last name is not ok"));
         }
     }

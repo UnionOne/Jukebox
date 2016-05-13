@@ -8,11 +8,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Random;
 
 @ManagedBean(name = "bandBean")
 @SessionScoped
@@ -112,10 +109,5 @@ public class BandBean implements Serializable {
 
     public void setCurrentBand(Band currentBand) {
         this.currentBand = currentBand;
-//        try {
-//            FacesContext.getCurrentInstance().getExternalContext().redirect("band-description.xhtml");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 }

@@ -48,7 +48,7 @@ public class AppTest {
 
 
     @Before
-    @Rollback(true)
+    @Rollback()
     public void setUp() {
         // USER
 
@@ -144,6 +144,15 @@ public class AppTest {
         megadeth.setAlbums(albums);
 
         bandRepository.save(megadeth);
+    }
+
+    @After
+    public void clean() {
+        accountRepository.deleteAll();
+        roleRepository.deleteAll();
+        trackRepository.deleteAll();
+        jukeboxRepository.deleteAll();
+        genreRepository.deleteAll();
     }
 
     @Test
@@ -330,14 +339,5 @@ public class AppTest {
         System.out.println("\n********** ALBUM BY ID **********");
         System.out.println("Album by id: " + albumRepository.findOneAlbumById(2));
         System.out.println("********** ALBUM BY ID **********");
-    }
-
-    @After
-    public void clean() {
-        accountRepository.deleteAll();
-        roleRepository.deleteAll();
-        trackRepository.deleteAll();
-        jukeboxRepository.deleteAll();
-        genreRepository.deleteAll();
     }
 }

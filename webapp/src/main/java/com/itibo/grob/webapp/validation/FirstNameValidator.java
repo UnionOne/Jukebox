@@ -17,7 +17,7 @@ public class FirstNameValidator implements Validator {
     public void validate(FacesContext facesContext, UIComponent uiComponent, Object o) throws ValidatorException {
         Pattern pattern = Pattern.compile(FIRST_NAME_PATTERN);
         Matcher matcher = pattern.matcher(o.toString());
-        if (!matcher.matches() || o.toString().equals("")) {
+        if (!matcher.matches() || "".equals(o.toString())) {
             throw new ValidatorException(new FacesMessage("First name is not ok"));
         }
     }

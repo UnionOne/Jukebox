@@ -1,10 +1,7 @@
 package com.itibo.grob.services;
 
 import com.itibo.grob.dataaccess.model.Genre;
-import com.itibo.grob.services.common.EntityUtils;
 import com.itibo.grob.services.common.GenericServiceTest;
-import org.junit.Assert;
-import org.junit.Test;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedList;
@@ -27,20 +24,4 @@ public class GenreServiceTest extends GenericServiceTest<Genre, Integer, GenreSe
 
         return list;
     }
-
-//    @Test
-//    public void findAllByNameIgnoreCaseTest() {
-//        List<Genre> genres = new LinkedList<>();
-//
-//        for(int i = 0; i < EntityUtils.getRandomInteger(EntityUtils.MAX_ENTITIES_COUNT); i++) {
-//            genres.add(entityUtils.generateGenre());
-//        }
-//
-//        List<Genre> saved = service.save(genres);
-//        List<Genre> found = service.findAllByNameIgnoreCase(entity.getName());
-//
-//        Assert.assertEquals(saved, found);
-//
-//
-//    }
 }

@@ -124,6 +124,4 @@ public class MemberBean implements Serializable {
     public void setCurrentMember(Member currentMember) {
         this.currentMember = currentMember;
     }
-
-
 }
